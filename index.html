@@ -3,317 +3,1548 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصمم بطاقات التهنئة - جمعية بناء</title>
+    <title>جمعية بناء وتنمية مساكن بجازان - بوابة المستفيدين الرقمية 2026</title>
     
-    <!-- مكتبة Tailwind CSS للتصميم -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- أيقونات Lucide -->
+    <!-- Google Fonts (Tajawal) for Premium Arabic Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- الخطوط العربية (المراعي و كايرو) -->
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Configure Brand Identity Colors inside Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brandOrange: '#f37021', // C2 M61 Y100 K0
+                        brandGreen: '#81bd41',  // C55 M7 Y100 K0
+                        brandGray: '#9c9c9e',   // C41 M33 Y33 K1
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* تخصيص الخطوط */
-        .font-brand { font-family: 'Almarai', sans-serif; }
-        .font-cairo { font-family: 'Cairo', sans-serif; }
-        
-        /* ألوان الهوية */
-        :root {
-            --color-orange: #E86D1F;
-            --color-green: #83C341;
-            --color-dark: #2D2D2D;
+        body {
+            font-family: 'Tajawal', sans-serif;
         }
-
-        .text-brand-orange { color: var(--color-orange); }
-        .bg-brand-orange { background-color: var(--color-orange); }
-        .border-brand-orange { border-color: var(--color-orange); }
-        
-        .text-brand-green { color: var(--color-green); }
-        .bg-brand-green { background-color: var(--color-green); }
-        .border-brand-green { border-color: var(--color-green); }
-
-        /* تخصيص الطباعة */
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white; -webkit-print-color-adjust: exact; }
-            .print-container { 
-                box-shadow: none !important; 
-                margin: 0 !important; 
-                width: 100% !important; 
-                height: 100% !important;
-                page-break-inside: avoid;
-            }
-            @page { size: landscape; margin: 0; }
+        /* Custom scrollbar matching brand orange */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-
-        /* أنماط مخصصة للصور */
-        .skew-section {
-            transform: skewX(-6deg);
-            transform-origin: bottom left;
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
         }
-        .unskew-img {
-            transform: skewX(6deg);
-            transform-origin: bottom left;
+        ::-webkit-scrollbar-thumb {
+            background: #f37021;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d95f16;
         }
     </style>
 </head>
-<body class="bg-gray-100 font-brand min-h-screen py-8">
+<body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col selection:bg-brandOrange selection:text-white">
 
-    <!-- الرأس -->
-    <div class="max-w-6xl mx-auto px-4 mb-6 flex justify-between items-center no-print">
-        <h1 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
-            <i data-lucide="layout" class="text-brand-orange"></i>
-            مصمم بطاقات التهنئة (بروفايل)
-        </h1>
-        <button onclick="window.print()" class="bg-brand-green hover:opacity-90 text-white px-6 py-2 rounded-lg flex items-center gap-2 shadow font-bold transition-all">
-            <i data-lucide="printer"></i>
-            حفظ / طباعة
-        </button>
-    </div>
-
-    <div class="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto px-4 items-start">
-        
-        <!-- لوحة التحكم (يمين) -->
-        <div class="w-full lg:w-1/3 space-y-4 no-print order-2 lg:order-1">
+    <!-- ================= HEADER BRANDING ================= -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             
-            <!-- قسم الصور -->
-            <div class="bg-white p-5 rounded-xl shadow border-r-4 border-brand-green">
-                <h3 class="font-bold mb-4 text-gray-700 flex items-center gap-2">
-                    <i data-lucide="image"></i> الصور
-                </h3>
-                
-                <div class="flex gap-3 mb-4">
-                    <!-- رفع الشعار -->
-                    <div onclick="document.getElementById('logoInput').click()" class="flex-1 h-24 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 relative overflow-hidden group">
-                        <img id="logoPreview" class="h-full object-contain p-2 hidden" alt="Logo">
-                        <div id="logoPlaceholder" class="text-center text-gray-400">
-                            <i data-lucide="upload" class="mx-auto mb-1 w-5 h-5"></i>
-                            <span class="text-xs">الشعار</span>
-                        </div>
-                        <input type="file" id="logoInput" class="hidden" accept="image/*" onchange="handleImageUpload(event, 'logoPreview', 'logoPlaceholder')">
-                    </div>
-
-                    <!-- رفع صورة الشخص -->
-                    <div onclick="document.getElementById('personInput').click()" class="flex-1 h-24 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:bg-gray-50 relative overflow-hidden group">
-                        <img id="personPreviewThumb" class="h-full w-full object-cover hidden" alt="Person">
-                        <div id="personPlaceholder" class="text-center text-gray-400">
-                            <i data-lucide="user" class="mx-auto mb-1 w-5 h-5"></i>
-                            <span class="text-xs">صورة الشخص</span>
-                        </div>
-                        <input type="file" id="personInput" class="hidden" accept="image/*" onchange="handleImageUpload(event, 'personImg', null, 'personPreviewThumb', 'personPlaceholder')">
-                    </div>
-                </div>
-
-                <!-- تحكم الصورة -->
-                <div class="bg-gray-50 p-3 rounded border border-gray-200">
-                    <label class="text-xs font-bold text-gray-500 mb-1 block">تكبير / تصغير الصورة</label>
-                    <input type="range" id="scaleInput" min="50" max="250" value="100" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="updateImageTransform()">
-                    
-                    <label class="text-xs font-bold text-gray-500 mt-2 mb-1 block">تحريك (فوق / تحت)</label>
-                    <input type="range" id="posInput" min="-200" max="200" value="0" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-brand-orange" oninput="updateImageTransform()">
-                </div>
-            </div>
-
-            <!-- قسم النصوص -->
-            <div class="bg-white p-5 rounded-xl shadow border-r-4 border-brand-orange">
-                <h3 class="font-bold mb-4 text-gray-700 flex items-center gap-2">
-                    <i data-lucide="type"></i> البيانات
-                </h3>
-                <div class="space-y-3">
-                    <div>
-                        <label class="text-xs text-gray-500">اسم الجهة</label>
-                        <input type="text" id="assocInput" value="جمعية بناء وتنمية مساكن بجازان" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('assocDisplay', this.value)">
-                    </div>
-                    <div>
-                        <label class="text-xs text-gray-500">عنوان التهنئة</label>
-                        <input type="text" id="headerInput" value="تهنئة وتبريك" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('headerDisplay', this.value)">
-                    </div>
-                    <div>
-                        <label class="text-xs text-gray-500">مقدمة</label>
-                        <input type="text" id="introInput" value="نتقدم بأسمى آيات التهاني والتبريكات" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('introDisplay', this.value)">
-                    </div>
-                    <div>
-                        <label class="text-xs text-gray-500">اللقب</label>
-                        <input type="text" id="titleInput" value="لسعادة المهندس" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('titleDisplay', this.value)">
-                    </div>
-                    <div class="bg-orange-50 p-2 rounded border border-orange-100">
-                        <label class="text-xs font-bold text-brand-orange">اسم المحتفى به</label>
-                        <input type="text" id="nameInput" value="أحمد سالم خواجي" class="w-full border border-orange-200 p-2 rounded font-bold text-sm mt-1 focus:ring-2 focus:ring-brand-orange outline-none" oninput="updateText('nameDisplay', this.value)">
-                    </div>
-                    <div>
-                        <label class="text-xs text-gray-500">نص القرار</label>
-                        <textarea id="bodyInput" rows="4" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('bodyDisplay', this.value)">صدور قرار سعادة أمين المنطقة بتعيينه وكيلاً لوكالة المشاركة المجتمعية ومديرًا عامًا للإدارة العامة للإسكان التنموي</textarea>
-                    </div>
-                    <div>
-                        <label class="text-xs text-gray-500">الخاتمة</label>
-                        <input type="text" id="footerInput" value="سائلين المولى عز وجل له العون والتوفيق والسداد" class="w-full border p-2 rounded text-sm focus:border-brand-orange outline-none" oninput="updateText('footerDisplay', this.value)">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- المعاينة (يسار) -->
-        <div class="w-full lg:w-2/3 flex justify-center order-1 lg:order-2">
-            
-            <div class="print-container relative bg-white w-full max-w-[850px] aspect-[1.5/1] shadow-2xl overflow-hidden flex flex-row">
-                
-                <!-- الخلفية الزخرفية العامة -->
-                <div class="absolute inset-0 z-0 pointer-events-none">
-                    <svg width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="none">
-                         <!-- مثلثات الخلفية -->
-                         <path d="M0 0 L400 0 L550 600 L0 600 Z" fill="#F3F4F6" />
-                         <!-- الخطوط الفاصلة المائلة -->
-                         <path d="M350 0 L370 0 L520 600 L500 600 Z" fill="#E86D1F" opacity="0.9" /> <!-- برتقالي -->
-                         <path d="M380 0 L395 0 L545 600 L530 600 Z" fill="#83C341" opacity="0.9" /> <!-- أخضر -->
+            <!-- Logo Brand Frame -->
+            <div class="flex items-center gap-3">
+                <div class="w-14 h-14 shrink-0 bg-gray-50 rounded-xl p-1 flex items-center justify-center border border-gray-100 shadow-inner">
+                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                        <path d="M 20,80 C 10,60 15,30 35,45 C 22,35 18,55 25,80 Z" fill="#81bd41" />
+                        <path d="M 80,80 C 90,60 85,30 65,45 C 78,35 82,55 75,80 Z" fill="#81bd41" />
+                        <path d="M 25,70 Q 50,85 75,70" stroke="#f37021" stroke-width="4" fill="none" stroke-linecap="round" />
+                        <rect x="33" y="32" width="10" height="35" fill="#9c9c9e" rx="1" transform="rotate(-6 38 49)" />
+                        <rect x="57" y="32" width="10" height="35" fill="#9c9c9e" rx="1" transform="rotate(6 62 49)" />
+                        <path d="M 45,18 L 55,24 L 53,67 L 47,67 Z" fill="#f37021" />
                     </svg>
                 </div>
-
-                <!-- الجانب الأيمن: النصوص (حوالي 55%) -->
-                <div class="w-[55%] h-full relative z-10 p-10 flex flex-col justify-between">
-                    
-                    <!-- الهيدر: الشعار واسم الجمعية -->
-                    <div class="flex flex-col items-start w-full">
-                        <div class="h-20 w-48 mb-2 flex items-center justify-start">
-                            <img id="logoPreview" class="h-full object-contain object-right hidden" alt="">
-                            <div id="logoTextPlaceholder" class="border-2 border-dashed border-gray-300 w-full h-full rounded flex items-center justify-center text-xs text-gray-400">
-                                الشعار هنا
-                            </div>
-                        </div>
-                        <h2 id="assocDisplay" class="text-sm font-bold text-gray-500 font-brand">جمعية بناء وتنمية مساكن بجازان</h2>
-                        <div class="w-16 h-1 mt-1 rounded bg-brand-orange"></div>
-                    </div>
-
-                    <!-- المحتوى النصي -->
-                    <div class="flex-1 flex flex-col justify-center py-4">
-                        <h3 id="headerDisplay" class="text-2xl font-bold font-cairo text-brand-orange mb-3">تهنئة وتبريك</h3>
-                        
-                        <p id="introDisplay" class="text-gray-600 font-brand text-lg mb-2">نتقدم بأسمى آيات التهاني والتبريكات</p>
-                        
-                        <div class="mb-4">
-                            <span id="titleDisplay" class="text-gray-500 font-brand text-lg block">لسعادة المهندس</span>
-                            <h1 id="nameDisplay" class="text-4xl font-black font-brand leading-tight text-gray-800 mt-1">
-                                أحمد سالم خواجي
-                            </h1>
-                        </div>
-
-                        <p id="bodyDisplay" class="text-gray-700 font-brand text-lg leading-relaxed font-medium">
-                            صدور قرار سعادة أمين المنطقة بتعيينه وكيلاً لوكالة المشاركة المجتمعية ومديرًا عامًا للإدارة العامة للإسكان التنموي
-                        </p>
-                    </div>
-
-                    <!-- الفوتر -->
-                    <div>
-                        <p id="footerDisplay" class="text-gray-500 font-brand text-sm font-bold">سائلين المولى عز وجل له العون والتوفيق والسداد</p>
-                        <div class="flex gap-2 mt-2">
-                            <div class="w-2 h-2 rounded-full bg-brand-green"></div>
-                            <div class="w-2 h-2 rounded-full bg-brand-orange"></div>
-                            <div class="w-2 h-2 rounded-full bg-gray-800"></div>
-                        </div>
-                    </div>
-
+                
+                <div>
+                    <h1 class="text-xl font-bold text-gray-900 tracking-wide leading-tight">
+                        جمعية بناء وتنمية مساكن بمنطقة جازان
+                    </h1>
+                    <p class="text-xs text-brandGreen font-semibold flex items-center gap-1 mt-0.5">
+                        <span class="inline-block w-1.5 h-1.5 rounded-full bg-brandOrange"></span>
+                        بوابة المستفيدين الإلكترونية لتدقيق طلبات الإسكان 2026
+                    </p>
                 </div>
+            </div>
 
-                <!-- الجانب الأيسر: الصورة (حوالي 45%) -->
-                <div class="w-[45%] h-full relative z-20 overflow-hidden bg-gray-200">
-                    
-                    <!-- الحاوية المائلة للصورة -->
-                    <div class="absolute inset-0 w-full h-full skew-section origin-bottom-left scale-110 border-r-8 border-white overflow-hidden bg-gray-300">
-                        
-                        <!-- الصورة الفعلية -->
-                        <div class="w-full h-full unskew-img origin-bottom-left relative overflow-hidden">
-                            <!-- الصورة الافتراضية / المرفوعة -->
-                            <img id="personImg" src="" class="absolute w-full h-full object-cover hidden transition-transform duration-100" style="transform: scale(1) translateY(0px);">
-                            
-                            <!-- رسالة إذا لم توجد صورة -->
-                            <div id="noImgMsg" class="w-full h-full flex flex-col items-center justify-center text-gray-400">
-                                <i data-lucide="user" class="w-16 h-16 mb-2"></i>
-                                <span class="text-sm font-bold">مساحة الصورة</span>
-                            </div>
+            <!-- Navigation Links -->
+            <div class="flex items-center flex-wrap gap-2 md:gap-3">
+                <button onclick="switchTab('home')" id="nav-home" class="px-3 py-1.5 rounded-lg text-sm font-medium transition bg-orange-50 text-brandOrange">
+                    الرئيسية
+                </button>
+                
+                <button onclick="switchTab('apply')" id="nav-apply" class="px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50 hidden">
+                    تقديم طلب جديد
+                </button>
+                
+                <button onclick="switchTab('my-applications')" id="nav-my-applications" class="px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50 hidden">
+                    طلباتي الحالية
+                </button>
 
-                            <!-- تدرج لوني سفلي لدمج الصورة -->
-                            <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
+                <button onclick="switchTab('admin')" id="nav-admin" class="px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50 hidden">
+                    بوابة الجمعية التدقيقية
+                </button>
+
+                <!-- User profile greeting / Login triggers -->
+                <div id="user-profile-section" class="flex items-center gap-2 border-r pr-3 border-gray-200 mr-2">
+                    <button onclick="scrollToAuth()" id="login-trigger-btn" class="bg-brandOrange text-white hover:bg-[#d95f16] px-4 py-2 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2">
+                        <i data-lucide="log-in" class="w-4 h-4"></i> تسجيل الدخول
+                    </button>
+                    <div id="logged-user-info" class="hidden flex items-center gap-2">
+                        <div class="text-left hidden lg:block">
+                          <p class="text-xs text-gray-500 font-bold leading-none">حباً بك،</p>
+                          <p id="logged-user-name" class="text-sm font-black text-gray-800 leading-tight mt-1"></p>
                         </div>
-
+                        <button onclick="logout()" class="bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-xl transition" title="تسجيل الخروج">
+                          <i data-lucide="log-out" class="w-5 h-5"></i>
+                        </button>
                     </div>
-
-                    <!-- شريط نصي صغير عائم فوق الصورة -->
-                    <div class="absolute bottom-8 left-0 bg-white px-5 py-2 shadow-lg rounded-r-full z-30 flex items-center gap-2">
-                        <span class="text-sm font-bold text-brand-green font-brand">ألف مبروك</span>
-                    </div>
-
                 </div>
-
             </div>
 
         </div>
+    </header>
+
+    <!-- ================= MAIN CONTAINER ================= -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- ================= TAB 1: HOME ================= -->
+        <section id="tab-home" class="space-y-12">
+            
+            <!-- Hero banner area -->
+            <div class="relative overflow-hidden bg-gradient-to-br from-brandOrange/10 via-white to-brandGreen/10 border border-orange-100 rounded-3xl p-8 lg:p-12 shadow-sm">
+              <div class="absolute top-0 left-0 w-64 h-64 bg-radial-gradient from-white to-transparent opacity-20 pointer-events-none transform -translate-x-12 -translate-y-12 rounded-full"></div>
+              
+              <div class="grid lg:grid-cols-2 gap-8 items-center relative z-10">
+                <div class="space-y-6">
+                  <span class="inline-block bg-[#81bd41]/20 text-[#699c32] text-xs font-extrabold px-3 py-1.5 rounded-full tracking-wide">
+                    المنصة الرسمية الموحدة لخدمات الإسكان التنموي 2026
+                  </span>
+                  <h2 class="text-3xl lg:text-5xl font-black text-gray-900 leading-tight">
+                    منصة الإسكان التنموية الرقمية بمنطقة جازان
+                  </h2>
+                  <p class="text-gray-600 leading-relaxed text-base">
+                    تمكنك هذه المنصة الرقمية من تقديم وتدقيق طلبات خدمات الإسكان التنموي (بناء مسكن جديد، استكمال بناء قائم، أو ترميم المنازل) بموجب الشروط الرسمية. ارفع مستنداتك وسيقوم الموظف المختص بمراجعتها بدقة تامة لإنهاء ملفك.
+                  </p>
+                  
+                  <div class="flex flex-wrap gap-4 pt-2">
+                    <button onclick="handleStartJourney()" class="bg-brandOrange text-white hover:bg-[#d95f16] px-6 py-3.5 rounded-2xl text-base font-bold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
+                      <i data-lucide="building-2" class="w-5 h-5"></i> ابدأ تقديم طلبك الآن
+                    </button>
+                    <a href="#requirements-overview" class="bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 px-6 py-3.5 rounded-2xl text-base font-bold shadow-sm transition flex items-center gap-2">
+                      <i data-lucide="file-text" class="w-5 h-5"></i> دليل الشروط الرسمية
+                    </a>
+                  </div>
+                </div>
+
+                <div class="relative flex justify-center">
+                  <div class="relative w-full max-w-sm bg-white p-6 rounded-2xl shadow-xl border border-gray-100 transform lg:rotate-2">
+                    <div class="absolute -top-3 -right-3 bg-brandGreen text-white px-3 py-1 rounded-lg text-xs font-bold shadow-sm">خطوات الاستفادة</div>
+                    <h4 class="text-md font-bold mb-3 pb-2 border-b text-gray-800">رحلة تقديم الطلب:</h4>
+                    <div class="space-y-4">
+                      <div class="flex items-start gap-3 text-xs text-gray-600">
+                        <span class="w-5 h-5 rounded-full bg-orange-100 text-brandOrange flex items-center justify-center font-bold shrink-0">١</span>
+                        <div>
+                          <p class="font-bold text-gray-800">إنشاء حساب برقم الهوية</p>
+                          <p class="text-[10px] text-gray-400 mt-0.5">تسجيل سريع وإثبات رقم الجوال الفعلي</p>
+                        </div>
+                      </div>
+                      <div class="flex items-start gap-3 text-xs text-gray-600">
+                        <span class="w-5 h-5 rounded-full bg-orange-100 text-brandOrange flex items-center justify-center font-bold shrink-0">٢</span>
+                        <div>
+                          <p class="font-bold text-gray-800">اختيار نوع الخدمة ورفع الشروط</p>
+                          <p class="text-[10px] text-gray-400 mt-0.5">بناء فضاء، استكمال مبنى، أو ترميم مسكن</p>
+                        </div>
+                      </div>
+                      <div class="flex items-start gap-3 text-xs text-gray-600">
+                        <span class="w-5 h-5 rounded-full bg-orange-100 text-brandOrange flex items-center justify-center font-bold shrink-0">٣</span>
+                        <div>
+                          <p class="font-bold text-gray-800">التدقيق الفني واللجان</p>
+                          <p class="text-[10px] text-gray-400 mt-0.5">متابعة دقيقة مع تحديثات فورية لحالة المستندات</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Authentication Block -->
+            <div id="auth-section" class="max-w-md mx-auto bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden transform transition duration-500 hover:shadow-2xl">
+                <div class="flex border-b border-gray-100 bg-gray-50/50">
+                  <button onclick="toggleAuthTab('login')" id="auth-btn-login" class="flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange">
+                    تسجيل الدخول للمستفيدين
+                  </button>
+                  <button onclick="toggleAuthTab('register')" id="auth-btn-register" class="flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800">
+                    إنشاء ملف مستفيد جديد
+                  </button>
+                </div>
+
+                <div class="p-8">
+                  <!-- Login form -->
+                  <form id="form-login" onsubmit="handleLoginSubmit(event)" class="space-y-5">
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهوية الوطنية أو اسم المستخدم</label>
+                        <input type="text" id="login-nationalId" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center font-mono" placeholder="الهوية الوطنية أو اسم المستخدم">
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">كلمة المرور</label>
+                        <input type="password" id="login-password" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center" placeholder="••••••••">
+                      </div>
+
+                      <button type="submit" class="w-full bg-brandOrange text-white hover:bg-[#d95f16] py-3.5 rounded-xl font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                        دخول <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                      </button>
+                  </form>
+
+                  <!-- Register form -->
+                  <form id="form-register" onsubmit="handleRegisterSubmit(event)" class="space-y-4 hidden">
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">الاسم الكامل للمستفيد</label>
+                        <input type="text" id="register-name" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-right" placeholder="الاسم الرباعي كما في الهوية">
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">رقم الهوية الوطنية</label>
+                        <input type="text" id="register-nationalId" required pattern="[0-9]{10}" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center font-mono" placeholder="مثال: 1023456789">
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">رقم الجوال</label>
+                        <input type="tel" id="register-phone" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center font-mono" placeholder="مثال: 0551056560">
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">المحافظة / المدينة السكنية</label>
+                        <select id="register-city" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm">
+                          <option value="جازان">جازان</option>
+                          <option value="صبيا">صبيا</option>
+                          <option value="أبو عريش">أبو عريش</option>
+                          <option value="صامطة">صامطة</option>
+                          <option value="بيش">بيش</option>
+                          <option value="الدرب">الدرب</option>
+                          <option value="العارضة">العارضة</option>
+                          <option value="أحد المسارحة">أحد المسارحة</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label class="block text-xs font-bold text-gray-700 mb-1">كلمة المرور</label>
+                        <input type="password" id="register-password" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center" placeholder="••••••••">
+                      </div>
+                      <button type="submit" class="w-full bg-brandGreen text-white hover:bg-[#6fa337] py-3.5 rounded-xl font-bold shadow-md transition-all flex items-center justify-center gap-2">
+                        إنشاء الملف وبدء التقديم <i data-lucide="check" class="w-4 h-4"></i>
+                      </button>
+                  </form>
+                </div>
+            </div>
+
+            <!-- Guidelines and Requirements Cards Overview -->
+            <div id="requirements-overview" class="space-y-6">
+              <div class="text-center max-w-xl mx-auto">
+                <h3 class="text-2xl font-bold text-gray-900">دليل الشروط والمستندات لعام 2026</h3>
+                <p class="text-sm text-gray-500 mt-2">اختر الخدمة للاطلاع الفوري على المستندات الرسمية اللازمة لإرفاقها وتعديلها</p>
+              </div>
+
+              <div class="grid md:grid-cols-3 gap-6">
+                <!-- Building -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
+                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                  </div>
+                  <h4 class="text-lg font-bold text-gray-800 mb-2">1. اشتراطات البناء الكلي</h4>
+                  <p class="text-xs text-gray-500 mb-4 leading-relaxed">خاص بالمستفيدين الذين يملكون أرضاً فضاء ويرغبون ببنائها بالكامل من خلال الجمعية.</p>
+                  <ul class="text-xs text-gray-600 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> صك إلكتروني باسم المستفيد</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> مشهد من منصة ملم</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> صور واضحة للأرض</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> سداد رسوم الرخصة والمكتب الهندسي</li>
+                  </ul>
+                </div>
+
+                <!-- Completion -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
+                    <i data-lucide="home" class="w-6 h-6"></i>
+                  </div>
+                  <h4 class="text-lg font-bold text-gray-800 mb-2">2. اشتراطات استكمال البناء</h4>
+                  <p class="text-xs text-gray-500 mb-4 leading-relaxed">لإكمال المنازل القائمة غير المكتملة بشرط ألا تزيد المساحة عن 250 متر مربع.</p>
+                  <ul class="text-xs text-gray-600 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> رخصة بناء سارية المفعول</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> تقرير سلامة مبنى من مكتب هندسي</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> المساحة لا تزيد عن 250م²</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> وجود عداد كهرباء ومياه باسمك</li>
+                  </ul>
+                </div>
+
+                <!-- Restoration -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
+                  <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
+                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                  </div>
+                  <h4 class="text-lg font-bold text-gray-800 mb-2">3. اشتراطات ترميم المساكن</h4>
+                  <p class="text-xs text-gray-500 mb-4 leading-relaxed">للمساكن القائمة التي تحتاج صيانة عاجلة بشرط ألا تزيد المساحة عن 200 متر مربع.</p>
+                  <ul class="text-xs text-gray-600 space-y-2 border-t pt-4">
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> تقرير فني يثبت صلاحية الترميم</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> حجة معتمدة في منصة إحكام أو صك</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> المساحة لا تزيد عن 200م²</li>
+                    <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-brandOrange"></i> صور للمبنى القائم المترهل</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer information banner -->
+            <div class="bg-white border border-gray-100 p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="space-y-1 text-center md:text-right">
+                <p class="text-sm font-bold text-gray-800">الجمعية الخيرية لبناء وتنمية المساكن بجازان</p>
+                <p class="text-xs text-gray-500 flex items-center gap-2 justify-center md:justify-start">
+                  <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brandGreen"></i> المنطقة الإدارية بجازان، المملكة العربية السعودية
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-4 text-xs font-semibold">
+                <span class="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                  <i data-lucide="phone" class="w-3.5 h-3.5 text-brandOrange"></i> 00966551056560
+                </span>
+                <span class="flex items-center gap-1.5 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
+                  <i data-lucide="globe" class="w-3.5 h-3.5 text-brandGreen"></i> www.bena-jazan.sa
+                </span>
+              </div>
+            </div>
+
+        </section>
+
+        <!-- ================= TAB 2: MY APPLICATIONS ================= -->
+        <section id="tab-my-applications" class="space-y-6 hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">حالة طلباتك والملف الشخصي</h2>
+                <p class="text-xs text-gray-500 mt-1">تتبع المراجعة الرسمية لملفاتك وملاحظات إدارة الجمعية</p>
+              </div>
+              <button onclick="switchTab('apply')" class="bg-brandOrange text-white hover:bg-[#d95f16] px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2 self-start">
+                <i data-lucide="building-2" class="w-4 h-4"></i> تقديم طلب خدمة جديد
+              </button>
+            </div>
+
+            <div id="applications-list-container" class="grid gap-6">
+              <!-- Rendered dynamically by JavaScript -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: APPLY SUBMISSION FORM ================= -->
+        <section id="tab-apply" class="space-y-6 hidden">
+            <div class="border-b pb-4">
+              <h2 class="text-2xl font-bold text-gray-900">طلب خدمة إسكان تنموي جديدة</h2>
+              <p class="text-xs text-gray-500 mt-1">اختر نوع الخدمة لتعبئة استمارة التقديم الرسمية لعام 2026</p>
+            </div>
+
+            <!-- Service Selector Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <button type="button" onclick="selectAppType('building')" id="btn-select-building" class="p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center shrink-0">
+                  <i data-lucide="building-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-gray-800">1. تقديم طلب بناء كلي</h3>
+                  <p class="text-xs text-gray-500 mt-1">بناء مسكن على أرض فضاء يملكها المستفيد</p>
+                </div>
+              </button>
+
+              <button type="button" onclick="selectAppType('completion')" id="btn-select-completion" class="p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center shrink-0">
+                  <i data-lucide="home" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-gray-800">2. تقديم طلب استكمال بناء</h3>
+                  <p class="text-xs text-gray-500 mt-1">استكمال مبنى قائم (المساحة المستهدفة ≤ 250م²)</p>
+                </div>
+              </button>
+
+              <button type="button" onclick="selectAppType('restoration')" id="btn-select-restoration" class="p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center shrink-0">
+                  <i data-lucide="wrench" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-base text-gray-800">3. تقديم طلب ترميم مسكن</h3>
+                  <p class="text-xs text-gray-500 mt-1">صيانة وترميم المنازل المتهالكة (المساحة المستهدفة ≤ 200م²)</p>
+                </div>
+              </button>
+            </div>
+
+            <!-- Submission wizard form -->
+            <div id="wizard-form-container" class="hidden">
+              <form id="wizard-form" onsubmit="handleApplicationSubmit(event)" class="bg-white border border-gray-100 rounded-3xl p-6 lg:p-8 shadow-sm space-y-8">
+                
+                <div class="flex items-center gap-3 pb-4 border-b">
+                  <span class="w-3 h-6 rounded-full bg-brandGreen"></span>
+                  <h3 class="text-lg font-black text-gray-900">أولاً: البيانات العامة والتحقق من النطاق</h3>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                  <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">عدد أفراد الأسرة المقيمين بالمنزل</label>
+                    <input type="number" id="form-familySize" required min="1" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange outline-none text-sm" placeholder="مثال: 5">
+                  </div>
+
+                  <div>
+                    <label class="block text-xs font-bold text-gray-700 mb-1">إجمالي الدخل الشهري للأسرة (ريال)</label>
+                    <input type="number" id="form-monthlyIncome" required min="0" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange outline-none text-sm" placeholder="مثال: 4500">
+                  </div>
+
+                  <div id="area-input-wrapper" class="hidden">
+                    <label class="block text-xs font-bold text-gray-700 mb-1">مساحة المنزل التقريبية بالمتر المربع (م²)</label>
+                    <input type="number" id="form-houseArea" min="1" oninput="validateAreaBoundary()" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange outline-none text-sm" placeholder="أدخل المساحة">
+                    <p id="area-warning" class="text-[10px] text-red-600 font-bold mt-1.5 hidden flex items-center gap-1">
+                      <i data-lucide="alert-triangle" class="w-3.5 h-3.5 shrink-0"></i>
+                      <span id="area-warning-text"></span>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-3 pb-2 pt-4 border-b">
+                  <span class="w-3 h-6 rounded-full bg-brandGreen"></span>
+                  <h3 class="text-lg font-black text-gray-900">ثانياً: رفع المستندات والأوراق الرسمية المطلوبة</h3>
+                </div>
+                <p class="text-xs text-gray-500 leading-normal">
+                  يرجى رفع المستندات المطلوبة أدناه بصيغة صور واضحة أو مستندات. يمكنك مراجعة وتنزيل المستند المرفوع للتأكد من صحته.
+                </p>
+
+                <!-- Requirements grid -->
+                <div id="requirements-uploads-grid" class="grid md:grid-cols-2 gap-4">
+                  <!-- Dynamically drawn by JavaScript -->
+                </div>
+
+                <!-- Pledges block -->
+                <div class="flex items-center gap-3 pb-2 pt-4 border-b">
+                  <span class="w-3 h-6 rounded-full bg-brandOrange"></span>
+                  <h3 class="text-lg font-black text-gray-900">ثالثاً: الإقرارات والتعهدات الرسمية</h3>
+                </div>
+
+                <div class="space-y-4 bg-orange-50/40 p-5 rounded-2xl border border-orange-100">
+                  <label class="flex items-start gap-3 cursor-pointer">
+                    <input type="checkbox" id="pledge-housing" required class="mt-1 w-4 h-4 rounded text-brandOrange focus:ring-brandOrange accent-orange-600 cursor-pointer">
+                    <span class="text-xs text-gray-700 leading-relaxed font-bold">
+                      أقر وأتعهد بعدم مطالبة الجمعية الخيرية لبناء وتنمية المساكن بجازان بإسكان بديل خلال كامل فترة البناء أو الترميم المحددة للطلب.
+                    </span>
+                  </label>
+
+                  <label id="pledge-costs-wrapper" class="hidden flex items-start gap-3 cursor-pointer border-t pt-3 border-orange-100">
+                    <input type="checkbox" id="pledge-costs" class="mt-1 w-4 h-4 rounded text-brandOrange focus:ring-brandOrange accent-orange-600 cursor-pointer">
+                    <span class="text-xs text-gray-700 leading-relaxed font-bold">
+                      أقر بأن كافة التكاليف التي تسبق عملية البناء (منها رسوم قرار مساحي، مخطط هندسي، واختبار التربة، واستخراج التراخيص، والتأمين ضد العيوب الخفية) تكون بالكامل على حسابي الخاص دون أي مسؤولية على الجمعية.
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Wizard Actions -->
+                <div class="pt-4 flex items-center justify-between">
+                  <p class="text-xs text-gray-500">* الحقول والمستندات الإلزامية محددة وسيتم مراجعتها من لجنة التدقيق بالجمعية.</p>
+                  <button type="submit" id="btn-submit-wizard" class="bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md">
+                    إرسال الطلب للجمعية ومتابعة التدقيق
+                  </button>
+                </div>
+
+              </form>
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: ADMIN PORTAL ================= -->
+        <section id="tab-admin" class="space-y-6 hidden">
+            <div class="border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div>
+                <h2 class="text-2xl font-bold text-gray-900">بوابة الإدارة والموظفين (تدقيق الطلبات ومعاينة المرفقات)</h2>
+                <p class="text-xs text-gray-500 mt-1">منصة مراجعة ملفات المستفيدين وقبول شروط البناء والترميم لعام 2026</p>
+              </div>
+              <div class="flex items-center gap-3 bg-[#81bd41]/10 text-[#699c32] px-4 py-2 rounded-xl text-xs font-bold border border-[#81bd41]/20">
+                <i data-lucide="users" class="w-4 h-4"></i> لوحة التحكم التدقيقية والتحميل
+              </div>
+            </div>
+
+            <!-- Search and Filter panel -->
+            <div class="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col md:flex-row gap-4 items-center justify-between shadow-sm">
+              <div class="relative w-full md:w-80">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-3.5"></i>
+                <input type="text" id="admin-search-input" oninput="filterAdminTable()" placeholder="ابحث برقم الهوية أو اسم المستفيد..." class="w-full pr-9 pl-4 py-2.5 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-brandOrange text-xs">
+              </div>
+
+              <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="filter" class="w-4 h-4 text-gray-400"></i>
+                  <span class="text-xs text-gray-500">نوع الخدمة:</span>
+                  <select id="admin-filter-type" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-1.5 text-xs text-gray-700 outline-none font-bold">
+                    <option value="all">كل المسارات</option>
+                    <option value="building">بناء جديد</option>
+                    <option value="completion">استكمال بناء</option>
+                    <option value="restoration">ترميم مسكن</option>
+                  </select>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <span class="text-xs text-gray-500">حالة الملف:</span>
+                  <select id="admin-filter-status" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-1.5 text-xs text-gray-700 outline-none font-bold">
+                    <option value="all">الكل</option>
+                    <option value="pending">قيد المراجعة</option>
+                    <option value="incomplete">غير مكتمل (يحتاج تعديل)</option>
+                    <option value="approved">مقبول</option>
+                    <option value="rejected">مرفوض</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Table content -->
+            <div class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+              <table class="w-full text-right border-collapse">
+                <thead>
+                  <tr class="bg-gray-50/50 border-b border-gray-100 text-xs text-gray-500 font-bold">
+                    <th class="p-4">المستفيد</th>
+                    <th class="p-4">نوع الطلب</th>
+                    <th class="p-4">تاريخ التقديم</th>
+                    <th class="p-4">الملفات المرفوعة</th>
+                    <th class="p-4">مساحة المنزل</th>
+                    <th class="p-4">الحالة العامة</th>
+                    <th class="p-4 text-center">الإجراء</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-table-body" class="divide-y divide-gray-100 text-xs text-gray-700">
+                  <!-- Rendered dynamically by JavaScript -->
+                </tbody>
+              </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= ADIMN DETAILED INSPECT MODAL ================= -->
+    <div id="inspect-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl w-full max-w-5xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col my-8">
+            <div class="bg-gray-50 p-6 border-b flex items-center justify-between">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span id="inspect-app-id" class="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded font-mono"></span>
+                    <span id="inspect-app-status"></span>
+                  </div>
+                  <h3 id="inspect-user-name" class="text-lg font-black text-gray-900 mt-1"></h3>
+                  <p id="inspect-user-meta" class="text-xs text-gray-500"></p>
+                </div>
+                <button onclick="closeInspectModal()" class="bg-gray-200 hover:bg-gray-300 p-2 rounded-xl transition">
+                  <i data-lucide="x" class="w-5 h-5 text-gray-600"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto flex-1 space-y-6">
+                <!-- Meta metrics card -->
+                <div class="grid md:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-2xl border">
+                  <div>
+                    <span class="text-xs text-gray-400 block">نوع التقديم:</span>
+                    <span id="inspect-meta-type" class="text-sm font-bold text-gray-800"></span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-gray-400 block">مساحة المنزل المدخلة:</span>
+                    <span id="inspect-meta-area" class="text-sm font-bold text-gray-800"></span>
+                  </div>
+                  <div>
+                    <span class="text-xs text-gray-400 block">أفراد العائلة / الدخل:</span>
+                    <span id="inspect-meta-family" class="text-sm font-bold text-gray-800"></span>
+                  </div>
+                </div>
+
+                <!-- Requirements files checklist -->
+                <div class="space-y-4">
+                  <div class="flex items-center justify-between pb-2 border-b">
+                    <h4 class="text-sm font-bold text-gray-800">مراجعة ومعاينة المستندات المرفقة لعام 2026:</h4>
+                    <span class="text-xs text-brandGreen font-bold">💡 انقر على زر "معاينة الملف" لمشاهدة المرفق وصور العقار مباشرة</span>
+                  </div>
+                  
+                  <div id="inspect-requirements-list" class="space-y-3">
+                    <!-- Rendered dynamically inside JS -->
+                  </div>
+                </div>
+
+                <!-- Actions card -->
+                <div class="bg-gray-50 p-6 rounded-3xl border border-gray-100 space-y-4">
+                  <h4 class="text-sm font-bold text-gray-800">تحديث الحالة العامة للطلب وتوجيهات لجنة الجمعية:</h4>
+                  <div>
+                    <label class="block text-xs font-bold text-gray-500 mb-1">الملاحظات والتوجيهات العامة (تظهر فوراً بحساب المستفيد):</label>
+                    <textarea id="inspect-comments" rows="3" class="w-full p-3 rounded-xl border border-gray-200 text-xs focus:ring-2 focus:ring-brandOrange outline-none text-right" placeholder="يرجى كتابة أسباب الطلب غير المكتمل أو النواقص بدقة هنا..."></textarea>
+                  </div>
+
+                  <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+                    <span class="text-xs text-gray-500 font-medium">القرارات الإدارية المتاحة:</span>
+                    <div class="flex items-center gap-2">
+                      <button onclick="updateInspectAppStatus('incomplete')" class="bg-orange-100 text-orange-700 hover:bg-orange-200 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                        <i data-lucide="alert-circle" class="w-4 h-4"></i> طلب استكمال النواقص
+                      </button>
+                      <button onclick="updateInspectAppStatus('approved')" class="bg-green-100 text-green-700 hover:bg-green-200 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> قبول نهائي مكتمل
+                      </button>
+                      <button onclick="updateInspectAppStatus('rejected')" class="bg-red-100 text-red-700 hover:bg-red-200 px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
+                        <i data-lucide="x-circle" class="w-4 h-4"></i> رفض الطلب بالكامل
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 px-6 py-4 border-t flex justify-end">
+                <button onclick="closeInspectModal()" class="bg-brandOrange hover:bg-[#d95f16] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">إغلاق نافذة التدقيق</button>
+            </div>
+        </div>
     </div>
 
-    <!-- Script للتعامل مع المنطق -->
-    <script>
-        // تهيئة الأيقونات
-        lucide.createIcons();
+    <!-- ================= GLOBAL LIGHTBOX FILE PREVIEW MODAL ================= -->
+    <div id="preview-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[100] p-4">
+      <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[95vh] flex flex-col overflow-hidden shadow-2xl">
+        <div class="p-5 border-b bg-gray-50 flex items-center justify-between">
+          <div>
+            <h4 id="preview-modal-title" class="font-black text-gray-900 text-base"></h4>
+            <p id="preview-modal-meta" class="text-xs text-gray-500 font-mono"></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <a id="preview-modal-download" download class="bg-brandGreen hover:bg-[#6fa337] text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <i data-lucide="download" class="w-4 h-4"></i> حفظ وتحميل المستند
+            </a>
+            <button onclick="closePreviewModal()" class="bg-gray-200 hover:bg-gray-300 p-2 rounded-xl transition" title="إغلاق المعاينة">
+              <i data-lucide="x" class="w-5 h-5 text-gray-700"></i>
+            </button>
+          </div>
+        </div>
 
-        // دالة تحديث النصوص
-        function updateText(elementId, value) {
-            document.getElementById(elementId).innerText = value;
+        <div class="p-6 overflow-y-auto flex-1 bg-gray-100 flex items-center justify-center min-h-[400px]">
+          <div id="preview-modal-body" class="w-full flex justify-center max-h-[70vh]">
+            <!-- Dynamic Preview Content -->
+          </div>
+        </div>
+
+        <div class="p-4 bg-gray-50 border-t text-center text-xs text-gray-500 font-medium">
+          بوابة معاينة المستندات لجمعية بناء وتنمية المساكن بجازان - 2026
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= TOAST NOTIFICATION BOX ================= -->
+    <div id="toast-notification" class="fixed bottom-5 left-5 hidden z-50 p-4 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-0 text-white flex items-center gap-2">
+      <!-- Generated message inside JS -->
+    </div>
+
+    <!-- ================= FLOATING ACTION ALERT BANNER ================= -->
+    <div id="floating-alert-banner" class="fixed bottom-4 right-4 max-w-sm bg-orange-600 text-white rounded-2xl shadow-2xl p-4 border border-orange-500 z-50 hidden flex items-start gap-3">
+      <i data-lucide="bell" class="w-5 h-5 shrink-0 mt-0.5 text-orange-100"></i>
+      <div>
+        <h4 class="text-xs font-bold">تنبيه من لجنة تدقيق المستندات:</h4>
+        <p class="text-[11px] text-orange-100 mt-1 leading-relaxed">
+          أحد طلباتك يحتاج لتعديل لعدم اكتمال الشروط المعتمدة. اضغط على "طلباتي الحالية" لمراجعة توجيهات الجمعية وتعديل المرفق المعني.
+        </p>
+        <button onclick="switchTab('my-applications')" class="mt-2 bg-white text-orange-600 px-2.5 py-1 rounded-md text-[10px] font-extrabold shadow-sm hover:bg-orange-50 transition">
+          عرض وتعديل الطلب الآن
+        </button>
+      </div>
+    </div>
+
+
+    <!-- ================= SYSTEM ENGINE & LOGIC (JAVASCRIPT) ================= -->
+    <script>
+        // Database arrays (using LocalStorage or system state)
+        let currentUser = null;
+        let activeTab = 'home';
+        let selectedAppType = null;
+        let uploadedFiles = {}; // tracks file details during active upload session
+
+        // Initialize structures from localStorage or seed
+        let users = JSON.parse(localStorage.getItem('bena_users')) || [
+            { id: 'admin1', name: 'محمد بابعير (المهندس)', nationalId: 'admin', phone: '00966551056560', password: 'admin', role: 'admin' }
+        ];
+
+        let applications = JSON.parse(localStorage.getItem('bena_applications')) || [];
+
+        // Save Helpers
+        function saveApps() {
+            localStorage.setItem('bena_applications', JSON.stringify(applications));
+        }
+        function saveUsers() {
+            localStorage.setItem('bena_users', JSON.stringify(users));
         }
 
-        // دالة رفع الصور
-        function handleImageUpload(event, targetImgId, placeholderId, thumbId = null, thumbPlaceholderId = null) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    // تحديث الصورة الرئيسية
-                    const img = document.getElementById(targetImgId);
-                    
-                    // إذا كان الشعار (لدينا عدة أماكن له)
-                    if (targetImgId === 'logoPreview') {
-                        // الشعار في لوحة التحكم
-                        const ctrlLogo = document.getElementById('logoPreview');
-                        ctrlLogo.src = e.target.result;
-                        ctrlLogo.classList.remove('hidden');
-                        if (placeholderId) document.getElementById(placeholderId).classList.add('hidden');
+        // Custom Notification Engine
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-notification');
+            toast.className = `fixed bottom-5 left-5 z-50 p-4 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-0 text-white flex items-center gap-2 ${
+                type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-orange-500'
+            }`;
+            toast.innerHTML = `<span class="font-bold">${message}</span>`;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4000);
+        }
 
-                        // الشعار في البطاقة
-                        const cardLogo = document.querySelector('.print-container #logoPreview');
-                        cardLogo.src = e.target.result;
-                        cardLogo.classList.remove('hidden');
-                        document.getElementById('logoTextPlaceholder').classList.add('hidden');
-                    } else {
-                        // صورة الشخص
-                        img.src = e.target.result;
-                        img.classList.remove('hidden');
-                        document.getElementById('noImgMsg').classList.add('hidden');
-                        
-                        // تحديث المصغرة في لوحة التحكم
-                        if (thumbId) {
-                            const thumb = document.getElementById(thumbId);
-                            thumb.src = e.target.result;
-                            thumb.classList.remove('hidden');
-                            if (thumbPlaceholderId) document.getElementById(thumbPlaceholderId).classList.add('hidden');
-                        }
-                    }
-                };
-                reader.readAsDataURL(file);
+        // Tab Navigator
+        function switchTab(tabId) {
+            activeTab = tabId;
+            
+            // Hide all tabs
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            
+            // Show the target tab
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            if (targetSec) {
+                targetSec.classList.remove('hidden');
+            }
+
+            // Style nav buttons
+            document.querySelectorAll('header button[id^="nav-"]').forEach(btn => {
+                btn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50";
+            });
+            const activeNavBtn = document.getElementById(`nav-${tabId}`);
+            if (activeNavBtn) {
+                activeNavBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-orange-50 text-brandOrange";
+            }
+
+            // Sync dynamic lists inside tabs
+            if (tabId === 'my-applications') {
+                renderMyApplications();
+            } else if (tabId === 'admin') {
+                renderAdminPortal();
+            }
+
+            // Refresh icons inside any dynamically updated view
+            lucide.createIcons();
+        }
+
+        function scrollToAuth() {
+            document.getElementById('auth-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleStartJourney() {
+            if (currentUser) {
+                switchTab('apply');
+            } else {
+                scrollToAuth();
+                showToast("يرجى تسجيل الدخول أو إنشاء حساب جديد للبدء بالتقديم", "warning");
             }
         }
 
-        // دالة تحديث تحويلات الصورة (Scale & Translate)
-        function updateImageTransform() {
-            const scale = document.getElementById('scaleInput').value / 100;
-            const posY = document.getElementById('posInput').value;
-            const img = document.getElementById('personImg');
-            
-            // نطبق التحويل مع مراعاة إلغاء الانحراف (Unskew) الموجود أصلاً في CSS
-            // الترتيب: Skew (لإلغاء انحراف الحاوية) -> Scale -> Translate
-            // ملاحظة: الـ CSS Class .unskew-img يطبق skewX(6deg). سنضيف عليه الـ Scale و Translate
-            // ولكن بما أننا نعدل الـ Style مباشرة، يجب أن نعيد كتابة الـ Skew يدوياً هنا
-            
-            img.style.transform = `skewX(6deg) scale(${scale}) translateY(${posY}px)`;
+        // Auth Logic Controls
+        function toggleAuthTab(tab) {
+            const loginBtn = document.getElementById('auth-btn-login');
+            const registerBtn = document.getElementById('auth-btn-register');
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+
+            if (tab === 'login') {
+                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
+                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
+                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
         }
+
+        function updateHeaderProfile() {
+            const loginBtn = document.getElementById('login-trigger-btn');
+            const loggedSection = document.getElementById('logged-user-info');
+            const loggedNameText = document.getElementById('logged-user-name');
+            const navApply = document.getElementById('nav-apply');
+            const navMyApps = document.getElementById('nav-my-applications');
+            const navAdmin = document.getElementById('nav-admin');
+
+            if (currentUser) {
+                loginBtn.classList.add('hidden');
+                loggedSection.classList.remove('hidden');
+                loggedNameText.innerText = currentUser.name;
+
+                if (currentUser.role === 'admin') {
+                    navAdmin.classList.remove('hidden');
+                    navApply.classList.add('hidden');
+                    navMyApps.classList.add('hidden');
+                } else {
+                    navApply.classList.remove('hidden');
+                    navMyApps.classList.remove('hidden');
+                    navAdmin.classList.add('hidden');
+                }
+            } else {
+                loginBtn.classList.remove('hidden');
+                loggedSection.classList.add('hidden');
+                navApply.classList.add('hidden');
+                navMyApps.classList.add('hidden');
+                navAdmin.classList.add('hidden');
+            }
+            checkFloatingAlertBanner();
+            lucide.createIcons();
+        }
+
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const natId = document.getElementById('login-nationalId').value.trim();
+            const pass = document.getElementById('login-password').value;
+
+            const user = users.find(u => u.nationalId === natId && u.password === pass);
+            if (user) {
+                currentUser = user;
+                updateHeaderProfile();
+                showToast(`أهلاً بك مجدداً، ${currentUser.name}`, 'success');
+                if (currentUser.role === 'admin') {
+                    switchTab('admin');
+                } else {
+                    switchTab('my-applications');
+                }
+                document.getElementById('form-login').reset();
+            } else {
+                showToast("خطأ في رقم الهوية الوطنية أو كلمة المرور!", 'error');
+            }
+        }
+
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value.trim();
+            const natId = document.getElementById('register-nationalId').value.trim();
+            const phone = document.getElementById('register-phone').value.trim();
+            const city = document.getElementById('register-city').value;
+            const pass = document.getElementById('register-password').value;
+
+            if (users.some(u => u.nationalId === natId)) {
+                showToast("رقم الهوية الوطنية مسجل مسبقاً!", "error");
+                return;
+            }
+
+            const newUser = {
+                id: 'u_' + Date.now(),
+                name: name,
+                nationalId: natId,
+                phone: phone,
+                password: pass,
+                role: 'beneficiary',
+                city: city
+            };
+
+            users.push(newUser);
+            saveUsers();
+            currentUser = newUser;
+            updateHeaderProfile();
+            showToast("تم إنشاء حسابك بنجاح! يمكنك الآن التقديم ورفع الملفات.", "success");
+            switchTab('apply');
+            document.getElementById('form-register').reset();
+        }
+
+        function logout() {
+            currentUser = null;
+            updateHeaderProfile();
+            showToast("تم تسجيل الخروج بنجاح", "info");
+            switchTab('home');
+        }
+
+        const requirementsData = {
+            building: [
+              { id: 'req_1', title: 'صورة من الهوية الوطنية', required: true, description: 'يجب أن تكون الهوية سارية المفعول وبصورة واضحة' },
+              { id: 'req_2', title: 'صورة من سجل الأسرة', required: true, description: 'صورة واضحة لجميع أفراد الأسرة' },
+              { id: 'req_3', title: 'إثبات الدخل', required: true, description: 'مشهد الضمان – مشهد الراتب – مشهد التأمينات – تأهيل شامل – حساب مواطن – مشهد التقاعد' },
+              { id: 'req_4', title: 'تقرير بالحالة الصحية', required: false, description: 'تأهيل شامل – أمراض مزمنة – إعاقة دائمة (إن وجد)' },
+              { id: 'req_5', title: 'مشهد من أبشر', required: true, description: 'لوحة المعلومات بالكامل من منصة أبشر' },
+              { id: 'req_6', title: 'مشهد من التأمينات للزوج والزوجة', required: true },
+              { id: 'req_7', title: 'مشهد من التأمينات مع المؤهل العلمي للأبناء', required: false, description: 'للأبناء فوق سن 18 سنة' },
+              { id: 'req_8', title: 'صورة من شهادة الوفاة وصك حصر الورثة', required: false, description: 'خاص بالأرامل وأسر الأيتام فقط' },
+              { id: 'req_9', title: 'العنوان الوطني', required: true, description: 'مستخرج حديثاً بعنوان السكن الفعلي بمنطقة جازان' },
+              { id: 'req_10', title: 'مشهد ملم', required: true, description: 'مشهد رسمي من منصة ملم' },
+              { id: 'req_11', title: 'عقد إيجار إلكتروني', required: false, description: 'يرفق العقد الإلكتروني في حال توفره' },
+              { id: 'req_12', title: 'مشهد من البورصة العقارية', required: true, description: 'توضيح كافة أملاك المستفيد العقارية' },
+              { id: 'req_13', title: 'صك إلكتروني باسم المستفيد', required: true, description: 'صك ملكية الأرض المراد البناء عليها' },
+              { id: 'req_14', title: 'وجود عداد كهرباء باسم المستفيد', required: true },
+              { id: 'req_15', title: 'وجود عداد مياه باسم المستفيد', required: true },
+              { id: 'req_16', title: 'صور للأرض المراد البناء عليها', required: true, description: 'صور فوتوغرافية واضحة للأرض من زوايا مختلفة' },
+              { id: 'req_17', title: 'رسوم المكتب الهندسي', required: true, description: 'قرار مساحي – المخطط – اختبار التربة' },
+              { id: 'req_18', title: 'رسوم رخصة البناء', required: true, description: 'إثبات سداد رسوم رخصة البناء' },
+              { id: 'req_19', title: 'رسوم تأمين العيوب الخفية للبناء', required: true, description: 'وثيقة تأمين العيوب الخفية المعتمدة' }
+            ],
+            completion: [
+              { id: 'req_1', title: 'صورة من الهوية الوطنية', required: true },
+              { id: 'req_2', title: 'صورة من سجل الأسرة', required: true },
+              { id: 'req_3', title: 'إثبات الدخل', required: true, description: 'مشهد الضمان – مشهد الراتب – مشهد التأمينات – تأهيل شامل – حساب مواطن – مشهد التقاعد' },
+              { id: 'req_4', title: 'تقرير بالحالة الصحية', required: false, description: 'تأهيل شامل – أمراض مزمنة – إعاقة دائمة' },
+              { id: 'req_5', title: 'مشهد من أبشر', required: true, description: 'لوحة المعلومات من أبشر' },
+              { id: 'req_6', title: 'مشهد من التأمينات للزوج والزوجة', required: true },
+              { id: 'req_7', title: 'مشهد من التأمينات مع المؤهل العلمي للأبناء', required: false, description: 'للأبناء فوق سن 18 سنة' },
+              { id: 'req_8', title: 'صورة من شهادة الوفاة وصك حصر الورثة', required: false, description: 'للأرملة وأسر الأيتام' },
+              { id: 'req_9', title: 'العنوان الوطني', required: true },
+              { id: 'req_10', title: 'عقد إيجار إلكتروني', required: false, description: 'عقد إيجار إلكتروني ساري المفعول إن وجد' },
+              { id: 'req_11', title: 'مشهد من البورصة العقارية', required: true, description: 'لتوضيح أملاك المستفيد' },
+              { id: 'req_12', title: 'صك إلكتروني باسم المستفيد', required: true },
+              { id: 'req_13', title: 'رخصة البناء سارية المفعول', required: true },
+              { id: 'req_14', title: 'تقرير فني يوضح سلامة المبنى بوضعه الحالي', required: true, description: 'صادر من مكتب هندسي معتمد' },
+              { id: 'req_15', title: 'المخطط', required: true, description: 'المخطط الهندسي المعتمد للاستكمال' },
+              { id: 'req_16', title: 'وجود عداد كهرباء باسم المستفيد', required: true },
+              { id: 'req_17', title: 'وجود عداد مياه باسم المستفيد', required: true },
+              { id: 'req_18', title: 'صور للمبنى القائم', required: true, description: 'صور توضح الهيكل الإنشائي الحالي للمنزل المراد استكماله' }
+            ],
+            restoration: [
+              { id: 'req_1', title: 'صورة من الهوية الوطنية', required: true },
+              { id: 'req_2', title: 'صورة من سجل الأسرة', required: true },
+              { id: 'req_3', title: 'إثبات الدخل', required: true, description: 'مشهد الضمان – مشهد الراتب – مشهد التأمينات – تأهيل شامل – حساب مواطن – مشهد التقاعد' },
+              { id: 'req_4', title: 'تقرير بالحالة الصحية', required: false, description: 'تأهيل شامل – أمراض مزمنة – إعاقة دائمة' },
+              { id: 'req_5', title: 'مشهد من أبشر', required: true, description: 'لوحة المعلومات من أبشر' },
+              { id: 'req_6', title: 'مشهد من التأمينات للزوج والزوجة', required: true },
+              { id: 'req_7', title: 'مشهد من التأمينات مع المؤهل العلمي للأبناء', required: false, description: 'للأبناء فوق سن 18 سنة' },
+              { id: 'req_8', title: 'صورة من شهادة الوفاة وصك حصر الورثة', required: false, description: 'للأرملة وأسر الأيتام' },
+              { id: 'req_9', title: 'العنوان الوطني', required: true },
+              { id: 'req_10', title: 'عقد إيجار إلكتروني', required: false, description: 'إن وجد' },
+              { id: 'req_11', title: 'مشهد من البورصة العقارية', required: true, description: 'لتوضيح أملاك المستفيد' },
+              { id: 'req_12', title: 'صك إلكتروني أو حجة مرفوعة في منصة إحكام', required: true },
+              { id: 'req_13', title: 'تقرير فني يوضح سلامة وقابلية المبنى للترميم', required: true, description: 'تقرير فني من مكتب هندسي يوضح وضع المبنى الحالي وإمكانية ترميمه' },
+              { id: 'req_14', title: 'المخطط', required: true },
+              { id: 'req_15', title: 'وجود عداد كهرباء باسم المستفيد', required: true },
+              { id: 'req_16', title: 'وجود عداد مياه باسم المستفيد', required: true },
+              { id: 'req_17', title: 'صور للمبنى القائم', required: true, description: 'صور توضح التصدعات أو الأضرار المطلوب ترميمها' }
+            ]
+        };
+
+        function selectAppType(type) {
+            selectedAppType = type;
+            uploadedFiles = {}; // reset files session upload
+
+            // Highlight choice
+            ['building', 'completion', 'restoration'].forEach(t => {
+                const btn = document.getElementById(`btn-select-${t}`);
+                if (t === type) {
+                    btn.className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-brandOrange bg-orange-50/50 shadow-sm";
+                } else {
+                    btn.className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300";
+                }
+            });
+
+            // Show wizard
+            document.getElementById('wizard-form-container').classList.remove('hidden');
+
+            // Handle optional input area limits
+            const areaWrapper = document.getElementById('area-input-wrapper');
+            const costsPledge = document.getElementById('pledge-costs-wrapper');
+
+            if (type === 'completion' || type === 'restoration') {
+                areaWrapper.classList.remove('hidden');
+                document.getElementById('form-houseArea').setAttribute('required', 'true');
+            } else {
+                areaWrapper.classList.add('hidden');
+                document.getElementById('form-houseArea').removeAttribute('required');
+            }
+
+            if (type === 'building') {
+                costsPledge.classList.remove('hidden');
+                document.getElementById('pledge-costs').setAttribute('required', 'true');
+            } else {
+                costsPledge.classList.add('hidden');
+                document.getElementById('pledge-costs').removeAttribute('required');
+            }
+
+            // Draw dynamic requirement file upload items
+            renderRequirementsUploadGrid();
+            validateAreaBoundary();
+            lucide.createIcons();
+        }
+
+        function validateAreaBoundary() {
+            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
+            const warningBox = document.getElementById('area-warning');
+            const warningText = document.getElementById('area-warning-text');
+            const submitBtn = document.getElementById('btn-submit-wizard');
+
+            if (isNaN(areaValue)) {
+                warningBox.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md";
+                return;
+            }
+
+            let limitExceeded = false;
+            if (selectedAppType === 'completion' && areaValue > 250) {
+                warningText.innerText = "تنبيه: يشترط ألا تزيد مساحة المنزل عن 250 متر مربع لاستكمال البناء.";
+                limitExceeded = true;
+            } else if (selectedAppType === 'restoration' && areaValue > 200) {
+                warningText.innerText = "تنبيه: يشترط ألا تزيد مساحة المنزل عن 200 متر مربع للقبول بالترميم.";
+                limitExceeded = true;
+            }
+
+            if (limitExceeded) {
+                warningBox.classList.remove('hidden');
+                submitBtn.disabled = true;
+                submitBtn.className = "bg-gray-300 text-gray-500 px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md cursor-not-allowed";
+            } else {
+                warningBox.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md";
+            }
+        }
+
+        function renderRequirementsUploadGrid() {
+            const container = document.getElementById('requirements-uploads-grid');
+            container.innerHTML = '';
+
+            requirementsData[selectedAppType].forEach((req, index) => {
+                const isUploaded = uploadedFiles[req.id];
+                const card = document.createElement('div');
+                card.className = "border border-gray-100 rounded-2xl p-4 bg-gray-50 hover:bg-white hover:shadow-sm transition-all duration-300";
+
+                let innerHtml = `
+                    <div class="flex items-start justify-between gap-2 mb-2">
+                        <div class="space-y-1">
+                            <h4 class="text-sm font-bold text-gray-800">
+                                <span class="text-gray-400 font-mono text-xs ml-1">${index + 1}.</span> 
+                                ${req.title}
+                            </h4>
+                            ${req.description ? `<p class="text-[11px] text-gray-500">${req.description}</p>` : ''}
+                        </div>
+                        ${req.required ? '<span class="text-[10px] text-orange-600 bg-orange-50 font-bold px-2 py-0.5 rounded-full border border-orange-100">مطلوب إلزامي</span>' : '<span class="text-[10px] text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">اختياري (إن وجد)</span>'}
+                    </div>
+                    <div class="mt-3">
+                `;
+
+                if (isUploaded) {
+                    innerHtml += `
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between bg-green-50 text-green-800 p-2.5 rounded-xl border border-green-100 text-xs">
+                                <span class="flex items-center gap-2 font-semibold truncate max-w-[180px]">
+                                    <i data-lucide="check-circle" class="w-4 h-4 text-green-600 shrink-0"></i>
+                                    ${uploadedFiles[req.id].name}
+                                </span>
+                                <div class="flex items-center gap-2">
+                                    <span class="text-[10px] text-gray-400 font-mono">${uploadedFiles[req.id].size}</span>
+                                    <button type="button" onclick="deleteLocalUploadedFile('${req.id}')" class="text-red-600 hover:text-red-800 p-1" title="حذف المستند">
+                                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2 justify-end">
+                                <button type="button" onclick="triggerFilePreview('${req.title}', '${uploadedFiles[req.id].name}', '${uploadedFiles[req.id].dataUrl}')" class="text-[10px] bg-white border text-gray-600 px-2.5 py-1 rounded flex items-center gap-1 hover:bg-gray-50 transition">
+                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة المستند المرفوع
+                                </button>
+                                <a href="${uploadedFiles[req.id].dataUrl}" download="${uploadedFiles[req.id].name}" class="text-[10px] bg-orange-50 text-brandOrange px-2.5 py-1 rounded flex items-center gap-1 hover:bg-orange-100 transition">
+                                    <i data-lucide="download" class="w-3 h-3"></i> تحميل المرفق
+                                </a>
+                              </div>
+                        </div>
+                    `;
+                } else {
+                    innerHtml += `
+                        <label class="cursor-pointer flex items-center justify-center gap-2 border-2 border-dashed border-gray-200 hover:border-brandOrange bg-white p-3 rounded-xl text-xs font-bold text-gray-600 hover:text-brandOrange transition-all">
+                            <i data-lucide="upload" class="w-4 h-4 text-gray-400"></i>
+                            اضغط هنا لرفع الملف
+                            <input type="file" ${req.required ? 'required' : ''} class="hidden" onchange="processFileSelection('${req.id}', this)">
+                        </label>
+                    `;
+                }
+
+                innerHtml += `</div>`;
+                card.innerHTML = innerHtml;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function processFileSelection(reqId, inputElement) {
+            const file = inputElement.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                uploadedFiles[reqId] = {
+                    name: file.name,
+                    size: (file.size / 1024).toFixed(1) + ' KB',
+                    status: 'pending',
+                    feedback: '',
+                    dataUrl: event.target.result
+                };
+                renderRequirementsUploadGrid();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function deleteLocalUploadedFile(reqId) {
+            delete uploadedFiles[reqId];
+            renderRequirementsUploadGrid();
+        }
+
+        function handleApplicationSubmit(e) {
+            e.preventDefault();
+
+            if (!currentUser) {
+                showToast("يرجى تسجيل الدخول أولاً لإرسال الطلب", "error");
+                return;
+            }
+
+            if (isAreaLimitExceeded()) {
+                showToast("عذراً، لا يمكن استكمال الطلب لتجاوز الحد الأقصى للمساحة المعتمدة.", "error");
+                return;
+            }
+
+            // Ensure required uploads
+            const currentReqs = requirementsData[selectedAppType];
+            const missingRequired = currentReqs
+                .filter(r => r.required)
+                .filter(r => !uploadedFiles[r.id]);
+
+            if (missingRequired.length > 0) {
+                showToast(`برجاء رفع كافة المستندات الإلزامية المطلوبة. يتبقى لك ${missingRequired.length} مستند مطلوب.`, "warning");
+                return;
+            }
+
+            // Submit application
+            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
+            const newApp = {
+                id: 'app_' + Date.now(),
+                userId: currentUser.id,
+                userName: currentUser.name,
+                userPhone: currentUser.phone,
+                nationalId: currentUser.nationalId,
+                type: selectedAppType,
+                date: new Date().toISOString().split('T')[0],
+                houseArea: isNaN(areaValue) ? null : areaValue,
+                personalInfo: {
+                    familySize: document.getElementById('form-familySize').value,
+                    monthlyIncome: document.getElementById('form-monthlyIncome').value,
+                },
+                files: { ...uploadedFiles },
+                status: 'pending',
+                adminComments: ''
+            };
+
+            applications.unshift(newApp);
+            saveApps();
+
+            // Clear Wizard
+            selectedAppType = null;
+            uploadedFiles = {};
+            document.getElementById('wizard-form').reset();
+            document.getElementById('wizard-form-container').classList.add('hidden');
+            
+            // Un-highlight selections
+            ['building', 'completion', 'restoration'].forEach(t => {
+                document.getElementById(`btn-select-${t}`).className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300";
+            });
+
+            switchTab('my-applications');
+            showToast("تم إرسال طلبك بنجاح إلى إدارة الجمعية ومراجع المختصين!", "success");
+        }
+
+        function renderMyApplications() {
+            const container = document.getElementById('applications-list-container');
+            container.innerHTML = '';
+
+            const myApps = applications.filter(a => a.userId === currentUser?.id);
+
+            if (myApps.length === 0) {
+                container.innerHTML = `
+                  <div class="bg-white rounded-2xl p-12 text-center border border-dashed border-gray-200">
+                    <i data-lucide="file-question" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
+                    <h3 class="text-lg font-bold text-gray-800">لا يوجد لديك أي طلبات مسجلة حتى الآن</h3>
+                    <p class="text-sm text-gray-500 mt-1 mb-6">الرجاء اختيار أحد مسارات التنمية المتاحة للبدء في رفع أوراقك.</p>
+                    <button onclick="switchTab('apply')" class="bg-brandGreen text-white hover:bg-[#6fa337] px-6 py-3 rounded-xl text-sm font-bold transition">
+                      تقديم طلب الآن
+                    </button>
+                  </div>
+                `;
+                return;
+            }
+
+            myApps.forEach(app => {
+                const card = document.createElement('div');
+                card.className = "bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-6";
+
+                let innerHtml = `
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-gray-100">
+                      <div class="space-y-1">
+                        <div class="flex items-center gap-2">
+                          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">رقم الطلب: ${app.id}</span>
+                          <span class="text-xs text-gray-400">بتاريخ: ${app.date}</span>
+                        </div>
+                        <h3 class="text-lg font-black text-gray-900">${getAppTypeName(app.type)}</h3>
+                      </div>
+                      <div class="flex items-center gap-3">
+                        ${getStatusBadgeHtml(app.status)}
+                      </div>
+                    </div>
+                `;
+
+                if (app.adminComments) {
+                    innerHtml += `
+                      <div class="bg-orange-50 border border-orange-200 p-4 rounded-2xl flex gap-3">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-orange-600 shrink-0 mt-0.5"></i>
+                        <div>
+                          <h4 class="text-sm font-bold text-orange-800">توجيه إدارة الجمعية وملاحظات التعديل:</h4>
+                          <p class="text-xs text-orange-700 mt-1 leading-relaxed">${app.adminComments}</p>
+                        </div>
+                      </div>
+                    `;
+                }
+
+                innerHtml += `
+                    <div class="space-y-4">
+                      <h4 class="text-sm font-bold text-gray-800">تدقيق مستندات طلبك الحالي ومرفقاتك:</h4>
+                      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                `;
+
+                requirementsData[app.type].forEach(req => {
+                    const file = app.files[req.id];
+                    innerHtml += `
+                        <div class="p-4 rounded-2xl border transition ${
+                          !file ? 'bg-gray-50 border-gray-100' :
+                          file.status === 'approved' ? 'bg-green-50/50 border-green-100' :
+                          file.status === 'rejected' ? 'bg-red-50 border-red-100' : 'bg-blue-50/50 border-blue-100'
+                        }">
+                          <div class="flex justify-between items-start gap-2">
+                            <span class="text-xs font-bold text-gray-800">${req.title}</span>
+                            ${req.required ? '<span class="text-[10px] text-red-500 bg-red-50 px-1.5 py-0.5 rounded">إلزامي</span>' : ''}
+                          </div>
+
+                          <div class="mt-3">
+                    `;
+
+                    if (file) {
+                        innerHtml += `
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs text-gray-600">
+                                  <span class="truncate max-w-[120px]" title="${file.name}">${file.name}</span>
+                                  <span class="text-[10px] text-gray-400">${file.size}</span>
+                                </div>
+                                
+                                <div class="flex items-center justify-between pt-1 border-t border-dashed border-gray-200">
+                                  <span class="text-[10px] text-gray-500">حالة المستند:</span>
+                                  ${file.status === 'approved' ? '<span class="text-[10px] text-green-700 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> مقبول</span>' : ''}
+                                  ${file.status === 'rejected' ? '<span class="text-[10px] text-red-700 font-bold flex items-center gap-1"><i data-lucide="x" class="w-3 h-3"></i> مرفوض</span>' : ''}
+                                  ${file.status === 'pending' ? '<span class="text-[10px] text-blue-700 font-bold flex items-center gap-1">قيد التدقيق</span>' : ''}
+                                </div>
+
+                                <div class="flex items-center gap-2 pt-1 border-t border-gray-100 justify-end">
+                                  <button type="button" onclick="triggerFilePreview('${req.title}', '${file.name}', '${file.dataUrl}')" class="text-[10px] bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 py-1 rounded flex items-center gap-1">
+                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة
+                                  </button>
+                                  <a href="${file.dataUrl}" download="${file.name}" class="text-[10px] bg-orange-50 hover:bg-orange-100 text-brandOrange px-2 py-1 rounded flex items-center gap-1">
+                                    <i data-lucide="download" class="w-3 h-3"></i> تنزيل
+                                  </a>
+                                </div>
+
+                                ${file.status === 'rejected' && file.feedback ? `<p class="text-[10px] bg-white p-1.5 rounded text-red-600 border border-red-100 leading-normal mt-1">❌ ${file.feedback}</p>` : ''}
+                            </div>
+                        `;
+                    } else {
+                        innerHtml += `
+                            <div class="text-center py-2">
+                                <span class="text-xs text-gray-400 block mb-1">المستند مفقود</span>
+                                <label class="cursor-pointer inline-flex items-center gap-1 text-[10px] bg-brandOrange hover:bg-[#d95f16] text-white px-2 py-1 rounded">
+                                  <i data-lucide="upload" class="w-2.5 h-2.5"></i> رفع الملف الآن
+                                  <input type="file" class="hidden" onchange="uploadDirectFile('${app.id}', '${req.id}', this)">
+                                </label>
+                            </div>
+                        `;
+                    }
+
+                    innerHtml += `</div></div>`;
+                });
+
+                innerHtml += `</div></div>`;
+                card.innerHTML = innerHtml;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function uploadDirectFile(appId, reqId, inputElement) {
+            const file = inputElement.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const app = applications.find(a => a.id === appId);
+                if (app) {
+                    app.files[reqId] = {
+                        name: file.name,
+                        size: (file.size / 1024).toFixed(1) + ' KB',
+                        status: 'pending',
+                        feedback: '',
+                        dataUrl: event.target.result
+                    };
+                    app.status = 'pending'; // Restore app back to pending review
+                    saveApps();
+                    renderMyApplications();
+                    showToast("تم إرفاق المستند الجديد بنجاح لإعادة التدقيق.", "success");
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderAdminPortal() {
+            const tbody = document.getElementById('admin-table-body');
+            tbody.innerHTML = '';
+
+            const typeFilter = document.getElementById('admin-filter-type').value;
+            const statusFilter = document.getElementById('admin-filter-status').value;
+            const searchQuery = document.getElementById('admin-search-input').value.toLowerCase().trim();
+
+            const filtered = applications.filter(app => {
+                if (typeFilter !== 'all' && app.type !== typeFilter) return false;
+                if (statusFilter !== 'all' && app.status !== statusFilter) return false;
+                if (searchQuery) {
+                    return (
+                        app.userName.toLowerCase().includes(searchQuery) ||
+                        app.nationalId.includes(searchQuery)
+                    );
+                }
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                  <tr>
+                    <td colSpan="7" class="p-8 text-center text-gray-400 italic">
+                      لا توجد طلبات مقدمة تطابق خيارات البحث الحالية.
+                    </td>
+                  </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(app => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50/50 transition";
+
+                const totalFilesCount = requirementsData[app.type].length;
+                const uploadedCount = Object.keys(app.files).length;
+
+                tr.innerHTML = `
+                    <td class="p-4 font-bold">
+                      <div class="space-y-0.5">
+                        <p class="text-sm text-gray-900">${app.userName}</p>
+                        <p class="text-[10px] text-gray-400 font-mono">هوية: ${app.nationalId} | جوال: ${app.userPhone}</p>
+                      </div>
+                    </td>
+                    <td class="p-4 font-semibold text-gray-800">${getAppTypeName(app.type)}</td>
+                    <td class="p-4 text-gray-500">${app.date}</td>
+                    <td class="p-4 font-semibold">
+                      <span class="text-orange-600 bg-orange-50 px-2 py-0.5 rounded">
+                        ${uploadedCount} من ${totalFilesCount} مرفوع
+                      </span>
+                    </td>
+                    <td class="p-4 text-gray-800 font-bold">
+                      ${app.houseArea ? `${app.houseArea} م²` : 'غير محدد'}
+                    </td>
+                    <td class="p-4">${getStatusBadgeHtml(app.status)}</td>
+                    <td class="p-4 text-center">
+                      <button onclick="inspectApplicationDetails('${app.id}')" class="bg-orange-50 hover:bg-orange-100 text-[#f37021] border border-orange-100 px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 mx-auto shadow-sm">
+                        <i data-lucide="eye" class="w-3.5 h-3.5"></i> مراجعة وتدقيق المستندات
+                      </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+        }
+
+        function filterAdminTable() {
+            renderAdminPortal();
+        }
+
+        function inspectApplicationDetails(appId) {
+            const app = applications.find(a => a.id === appId);
+            if (!app) return;
+
+            selectedAppDetail = app;
+
+            document.getElementById('inspect-app-id').innerText = `طلب رقم: ${app.id}`;
+            document.getElementById('inspect-app-status').innerHTML = getStatusBadgeHtml(app.status);
+            document.getElementById('inspect-user-name').innerText = `المستفيد: ${app.userName}`;
+            document.getElementById('inspect-user-meta').innerText = `رقم الهوية الوطنية: ${app.nationalId} | جوال المستفيد: ${app.userPhone}`;
+
+            document.getElementById('inspect-meta-type').innerText = getAppTypeName(app.type);
+            document.getElementById('inspect-meta-area').innerText = app.houseArea ? `${app.houseArea} م²` : 'غير مدخلة';
+            document.getElementById('inspect-meta-family').innerText = `${app.personalInfo?.familySize || 0} أفراد | ${app.personalInfo?.monthlyIncome || 0} ريال`;
+
+            document.getElementById('inspect-comments').value = app.adminComments || '';
+
+            // Draw inspect requirements checklist
+            const reqContainer = document.getElementById('inspect-requirements-list');
+            reqContainer.innerHTML = '';
+
+            requirementsData[app.type].forEach((req, index) => {
+                const file = app.files[req.id];
+                const row = document.createElement('div');
+                row.className = "border border-gray-100 rounded-2xl p-4 bg-gray-50/50 flex flex-col lg:flex-row lg:items-center justify-between gap-4";
+
+                let innerHtml = `
+                    <div class="space-y-1 max-w-sm">
+                        <h5 class="text-xs font-bold text-gray-800">
+                          ${index + 1}. ${req.title}
+                          ${req.required ? '<span class="text-[9px] bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded font-bold mr-1.5">مستند إلزامي</span>' : ''}
+                        </h5>
+                        ${req.description ? `<p class="text-[10px] text-gray-500 leading-normal">${req.description}</p>` : ''}
+                    </div>
+                    <div class="flex-1 flex flex-col sm:flex-row sm:items-center justify-end gap-3">
+                `;
+
+                if (file) {
+                    innerHtml += `
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-3 w-full sm:w-auto justify-end">
+                            <button type="button" onclick="triggerFilePreview('${req.title}', '${file.name}', '${file.dataUrl}')" class="bg-white hover:bg-orange-50 border p-2 rounded-xl flex items-center gap-2 text-xs transition text-right group w-full sm:w-auto shadow-sm">
+                              <i data-lucide="file-image" class="w-5 h-5 text-brandOrange shrink-0 group-hover:scale-110 transition-transform"></i>
+                              <div class="truncate max-w-[140px] md:max-w-[200px]">
+                                <span class="font-bold text-gray-800 block truncate leading-none mb-0.5">${file.name}</span>
+                                <span class="text-[10px] text-gray-400 font-mono">الحجم: ${file.size}</span>
+                              </div>
+                              <span class="mr-auto text-[10px] text-brandOrange font-bold border border-orange-200 px-1.5 py-0.5 rounded bg-orange-50">معاينة 👁️</span>
+                            </button>
+
+                            <div class="flex items-center gap-2 shrink-0">
+                              <a href="${file.dataUrl}" download="${file.name}" class="bg-brandGreen hover:bg-[#6fa337] text-white px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1 shadow-sm" title="حفظ الملف مباشرة على جهازك">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i> حفظ الملف
+                              </a>
+                              <button type="button" onclick="verifyIndividualFile('${app.id}', '${req.id}', 'approved')" class="px-3 py-2 rounded-xl text-[11px] font-bold transition flex items-center gap-1 ${file.status === 'approved' ? 'bg-green-600 text-white shadow-sm' : 'bg-green-100 text-green-700 hover:bg-green-200'}">
+                                <i data-lucide="check" class="w-3.5 h-3.5"></i> قبول
+                              </button>
+                              <button type="button" onclick="verifyIndividualFile('${app.id}', '${req.id}', 'rejected')" class="px-3 py-2 rounded-xl text-[11px] font-bold transition flex items-center gap-1 ${file.status === 'rejected' ? 'bg-red-600 text-white shadow-sm' : 'bg-red-100 text-red-700 hover:bg-red-200'}">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i> نقص
+                              </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    innerHtml += `<span class="text-xs text-gray-400 italic">المستند لم يتم رفعه بعد</span>`;
+                }
+
+                innerHtml += `</div>`;
+                row.innerHTML = innerHtml;
+                reqContainer.appendChild(row);
+            });
+
+            document.getElementById('inspect-modal').classList.remove('hidden');
+            document.getElementById('inspect-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closeInspectModal() {
+            document.getElementById('inspect-modal').classList.remove('flex');
+            document.getElementById('inspect-modal').classList.add('hidden');
+            selectedAppDetail = null;
+        }
+
+        function verifyIndividualFile(appId, reqId, status) {
+            let feedback = '';
+            if (status === 'rejected') {
+                feedback = prompt("أدخل سبب رفض المستند أو النقص المكتشف للطلب:");
+                if (feedback === null) return; // cancel click
+            }
+
+            handleAdminVerifyFile(appId, reqId, status, feedback);
+            inspectApplicationDetails(appId); // refresh
+        }
+
+        function updateInspectAppStatus(status) {
+            if (!selectedAppDetail) return;
+            const comments = document.getElementById('inspect-comments').value.trim();
+            handleAdminChangeStatus(selectedAppDetail.id, status, comments);
+            closeInspectModal();
+            renderAdminPortal();
+        }
+
+        // Helpers & Formatting mappings
+        function getAppTypeName(type) {
+            switch (type) {
+              case 'building': return 'بناء مسكن جديد';
+              case 'completion': return 'إكمال بناء قائم';
+              case 'restoration': return 'ترميم مسكن';
+              default: return '';
+            }
+        }
+
+        function getStatusBadgeHtml(status) {
+            switch (status) {
+              case 'pending':
+                return `<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="file-question" class="w-4 h-4"></i> قيد المراجعة</span>`;
+              case 'approved':
+                return `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i> مقبول ومكتمل</span>`;
+              case 'incomplete':
+                return `<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i> غير مكتمل (تعديل)</span>`;
+              case 'rejected':
+                return `<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> مرفوض</span>`;
+              default:
+                return '';
+            }
+        }
+
+        function isAreaLimitExceeded() {
+            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
+            if (isNaN(areaValue)) return false;
+            if (selectedAppType === 'completion' && areaValue > 250) return true;
+            if (selectedAppType === 'restoration' && areaValue > 200) return true;
+            return false;
+        }
+
+        // Preview & Lightbox controls
+        function triggerFilePreview(title, fileName, dataUrl) {
+            document.getElementById('preview-modal-title').innerText = title;
+            document.getElementById('preview-modal-meta').innerText = `اسم الملف: ${fileName}`;
+            
+            const downloadLink = document.getElementById('preview-modal-download');
+            downloadLink.href = dataUrl;
+            downloadLink.setAttribute('download', fileName);
+
+            const body = document.getElementById('preview-modal-body');
+            body.innerHTML = '';
+
+            if (dataUrl && (dataUrl.startsWith('data:image/') || dataUrl.startsWith('data:image/svg+xml'))) {
+                body.innerHTML = `<img src="${dataUrl}" class="max-w-full max-h-[70vh] object-contain rounded-lg border shadow-sm bg-white" alt="${title}">`;
+            } else {
+                body.innerHTML = `
+                  <div class="text-center space-y-3 p-8 bg-white rounded-2xl border max-w-md shadow-sm">
+                    <i data-lucide="file-text" class="w-16 h-16 text-gray-400 mx-auto"></i>
+                    <h5 class="font-bold text-gray-800">مستند رقمي غير صوري</h5>
+                    <p class="text-xs text-gray-500">تم رفع المستند بصيغة لا تدعم العرض المباشر بالمتصفح (مثل PDF أو DOCX).</p>
+                    <a href="${dataUrl}" download="${fileName}" class="inline-flex bg-brandOrange text-white px-5 py-2.5 rounded-xl text-xs font-bold transition hover:bg-[#d95f16] items-center gap-2">
+                      <i data-lucide="download" class="w-4 h-4"></i> تحميل وحفظ الملف لقراءته
+                    </a>
+                  </div>
+                `;
+            }
+
+            document.getElementById('preview-modal').classList.remove('hidden');
+            document.getElementById('preview-modal').classList.add('flex');
+            lucide.createIcons();
+        }
+
+        function closePreviewModal() {
+            document.getElementById('preview-modal').classList.remove('flex');
+            document.getElementById('preview-modal').classList.add('hidden');
+        }
+
+        function checkFloatingAlertBanner() {
+            const banner = document.getElementById('floating-alert-banner');
+            if (currentUser && currentUser.role === 'beneficiary') {
+                const hasIncomplete = applications.some(a => a.userId === currentUser.id && a.status === 'incomplete');
+                if (hasIncomplete) {
+                    banner.classList.remove('hidden');
+                    return;
+                }
+            }
+            banner.classList.add('hidden');
+        }
+
+        // On Load initialization
+        window.onload = function() {
+            updateHeaderProfile();
+            lucide.createIcons();
+        };
+
     </script>
 </body>
 </html>
