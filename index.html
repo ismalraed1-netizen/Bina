@@ -57,7 +57,7 @@
 <body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col selection:bg-brandOrange selection:text-white">
 
     <!-- ================= HEADER BRANDING ================= -->
-    <header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+    <header className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             
             <!-- Logo Brand Frame -->
@@ -108,8 +108,8 @@
                         <i data-lucide="log-in" class="w-4 h-4"></i> تسجيل الدخول
                     </button>
                     <div id="logged-user-info" class="hidden flex items-center gap-2">
-                        <div class="text-left hidden lg:block">
-                          <p class="text-xs text-gray-500 font-bold leading-none">حباً بك،</p>
+                        <div class="text-right hidden lg:block">
+                          <p id="greeting-word" class="text-xs text-gray-500 font-bold leading-none">حباً بك،</p>
                           <p id="logged-user-name" class="text-sm font-black text-gray-800 leading-tight mt-1"></p>
                         </div>
                         <button onclick="logout()" class="bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-xl transition" title="تسجيل الخروج">
@@ -177,7 +177,7 @@
                         <span class="w-5 h-5 rounded-full bg-orange-100 text-brandOrange flex items-center justify-center font-bold shrink-0">٣</span>
                         <div>
                           <p class="font-bold text-gray-800">التدقيق الفني واللجان</p>
-                          <p class="text-[10px] text-gray-400 mt-0.5">متابعة دقيقة مع تحديثات فورية لحالة المستندات</p>
+                          <p class="text-[10px] text-gray-400 mt-0.5">تحديثات فورية لحالة المستندات وقفل الملفات لمنع التكرار</p>
                         </div>
                       </div>
                     </div>
@@ -207,6 +207,11 @@
                       <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">كلمة المرور</label>
                         <input type="password" id="login-password" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center" placeholder="••••••••">
+                      </div>
+
+                      <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-800 leading-normal flex items-start gap-2">
+                        <i data-lucide="info" class="w-4 h-4 shrink-0 mt-0.5"></i>
+                        <span>للدخول كإدارة وتدقيق الملفات، يرجى استخدام الهوية الوطنية: <strong class="font-mono bg-white px-1.5 py-0.5 rounded border">admin</strong> وكلمة المرور: <strong class="font-mono bg-white px-1.5 py-0.5 rounded border">admin</strong> للوصول لحساب المهندس محمد بابعير.</span>
                       </div>
 
                       <button type="submit" class="w-full bg-brandOrange text-white hover:bg-[#d95f16] py-3.5 rounded-xl font-bold shadow-md transition-all flex items-center justify-center gap-2">
@@ -263,7 +268,7 @@
                 <!-- Building -->
                 <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
                   <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
-                    <i data-lucide="building-2" class="w-6 h-6"></i>
+                    <i class="w-6 h-6" data-lucide="building-2"></i>
                   </div>
                   <h4 class="text-lg font-bold text-gray-800 mb-2">1. اشتراطات البناء الكلي</h4>
                   <p class="text-xs text-gray-500 mb-4 leading-relaxed">خاص بالمستفيدين الذين يملكون أرضاً فضاء ويرغبون ببنائها بالكامل من خلال الجمعية.</p>
@@ -278,7 +283,7 @@
                 <!-- Completion -->
                 <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
                   <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
-                    <i data-lucide="home" class="w-6 h-6"></i>
+                    <i class="w-6 h-6" data-lucide="home"></i>
                   </div>
                   <h4 class="text-lg font-bold text-gray-800 mb-2">2. اشتراطات استكمال البناء</h4>
                   <p class="text-xs text-gray-500 mb-4 leading-relaxed">لإكمال المنازل القائمة غير المكتملة بشرط ألا تزيد المساحة عن 250 متر مربع.</p>
@@ -293,7 +298,7 @@
                 <!-- Restoration -->
                 <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:border-orange-200 transition-all">
                   <div class="w-12 h-12 rounded-xl bg-orange-50 text-brandOrange flex items-center justify-center mb-4">
-                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                    <i class="w-6 h-6" data-lucide="wrench"></i>
                   </div>
                   <h4 class="text-lg font-bold text-gray-800 mb-2">3. اشتراطات ترميم المساكن</h4>
                   <p class="text-xs text-gray-500 mb-4 leading-relaxed">للمساكن القائمة التي تحتاج صيانة عاجلة بشرط ألا تزيد المساحة عن 200 متر مربع.</p>
@@ -334,9 +339,9 @@
                 <h2 class="text-2xl font-bold text-gray-900">حالة طلباتك والملف الشخصي</h2>
                 <p class="text-xs text-gray-500 mt-1">تتبع المراجعة الرسمية لملفاتك وملاحظات إدارة الجمعية</p>
               </div>
-              <button onclick="switchTab('apply')" class="bg-brandOrange text-white hover:bg-[#d95f16] px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2 self-start">
-                <i data-lucide="building-2" class="w-4 h-4"></i> تقديم طلب خدمة جديد
-              </button>
+              <div id="dashboard-new-request-action-wrapper">
+                 <!-- JavaScript checks dynamic active applications state -->
+              </div>
             </div>
 
             <div id="applications-list-container" class="grid gap-6">
@@ -347,12 +352,32 @@
         <!-- ================= TAB 3: APPLY SUBMISSION FORM ================= -->
         <section id="tab-apply" class="space-y-6 hidden">
             <div class="border-b pb-4">
-              <h2 class="text-2xl font-bold text-gray-900">طلب خدمة إسكان تنموي جديدة</h2>
+              <h2 class="text-2xl font-bold text-gray-900">تقديم طلب خدمة إسكان تنموي جديدة</h2>
               <p class="text-xs text-gray-500 mt-1">اختر نوع الخدمة لتعبئة استمارة التقديم الرسمية لعام 2026</p>
             </div>
 
-            <!-- Service Selector Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <!-- Block screen container when there is already an active application (Prevents duplicate files like image_240ce7.png) -->
+            <div id="apply-blocked-container" class="hidden bg-white border border-orange-200 rounded-3xl p-8 lg:p-12 text-center max-w-2xl mx-auto space-y-6 shadow-sm">
+                <div class="w-16 h-16 bg-orange-50 text-brandOrange rounded-2xl flex items-center justify-center mx-auto border border-orange-100">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
+                </div>
+                <div class="space-y-2">
+                    <h3 class="text-xl font-black text-gray-900">⚠️ نظام الملف السكني الموحد</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        عذراً، يوجد لديك طلب نشط بالفعل قيد المعالجة بالمنصة حالياً. تماشياً مع اللائحة التنظيمية لجمعية بناء وتنمية مساكن بجازان، يقتصر تقديم كل مستفيد على **ملف موحد واحد فقط** لمنع تكرار المرفقات.
+                    </p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-2xl border text-xs text-gray-600 leading-normal text-right space-y-1">
+                    <p class="font-bold text-gray-800 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brandOrange"></span> حالة طلبك الحالي:</p>
+                    <p id="blocked-current-app-info" class="font-mono text-brandOrange"></p>
+                </div>
+                <button onclick="switchTab('my-applications')" class="bg-brandOrange hover:bg-[#d95f16] text-white px-6 py-3 rounded-xl text-sm font-bold transition flex items-center gap-2 mx-auto">
+                    <i data-lucide="eye" class="w-4 h-4"></i> انتقال إلى ملفاتي الحالية لمتابعة حالة المراجعة
+                </button>
+            </div>
+
+            <!-- Service Selector Cards (Shown only if no duplicate/active app) -->
+            <div id="service-selectors-wrapper" class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <button type="button" onclick="selectAppType('building')" id="btn-select-building" class="p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300">
                 <div class="w-10 h-10 rounded-xl bg-orange-100 text-brandOrange flex items-center justify-center shrink-0">
                   <i data-lucide="building-2" class="w-5 h-5"></i>
@@ -461,12 +486,12 @@
             </div>
         </section>
 
-        <!-- ================= TAB 4: ADMIN PORTAL ================= -->
+        {/* ================= TAB 4: ADMIN PORTAL ================= */}
         <section id="tab-admin" class="space-y-6 hidden">
             <div class="border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h2 class="text-2xl font-bold text-gray-900">بوابة الإدارة والموظفين (تدقيق الطلبات ومعاينة المرفقات)</h2>
-                <p class="text-xs text-gray-500 mt-1">منصة مراجعة ملفات المستفيدين وقبول شروط البناء والترميم لعام 2026</p>
+                <h2 className="text-2xl font-bold text-gray-900">بوابة الإدارة والموظفين (تدقيق الطلبات ومعاينة المرفقات)</h2>
+                <p className="text-xs text-gray-500 mt-1">منصة مراجعة ملفات المستفيدين وقبول شروط البناء والترميم لعام 2026</p>
               </div>
               <div class="flex items-center gap-3 bg-[#81bd41]/10 text-[#699c32] px-4 py-2 rounded-xl text-xs font-bold border border-[#81bd41]/20">
                 <i data-lucide="users" class="w-4 h-4"></i> لوحة التحكم التدقيقية والتحميل
@@ -528,7 +553,7 @@
 
     </main>
 
-    <!-- ================= ADIMN DETAILED INSPECT MODAL ================= -->
+    <!-- ================= ADMIN DETAILED INSPECT MODAL ================= -->
     <div id="inspect-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4 overflow-y-auto">
         <div class="bg-white rounded-3xl w-full max-w-5xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col my-8">
             <div class="bg-gray-50 p-6 border-b flex items-center justify-between">
@@ -646,10 +671,10 @@
       <div>
         <h4 class="text-xs font-bold">تنبيه من لجنة تدقيق المستندات:</h4>
         <p class="text-[11px] text-orange-100 mt-1 leading-relaxed">
-          أحد طلباتك يحتاج لتعديل لعدم اكتمال الشروط المعتمدة. اضغط على "طلباتي الحالية" لمراجعة توجيهات الجمعية وتعديل المرفق المعني.
+          أحد ملفات طلبك غير مكتمل ويحتاج لتعديل لعدم توافق الشروط المعتمدة. اضغط على "طلباتي الحالية" لمراجعة توجيهات الجمعية وتعديل المستندات المطلوبة.
         </p>
         <button onclick="switchTab('my-applications')" class="mt-2 bg-white text-orange-600 px-2.5 py-1 rounded-md text-[10px] font-extrabold shadow-sm hover:bg-orange-50 transition">
-          عرض وتعديل الطلب الآن
+          مراجعة التعديلات المطلوبة وتعديل الملف
         </button>
       </div>
     </div>
@@ -657,206 +682,29 @@
 
     <!-- ================= SYSTEM ENGINE & LOGIC (JAVASCRIPT) ================= -->
     <script>
-        // Database arrays (using LocalStorage or system state)
+        // Database arrays (using LocalStorage for local state persistence)
         let currentUser = null;
         let activeTab = 'home';
         let selectedAppType = null;
         let uploadedFiles = {}; // tracks file details during active upload session
+        let selectedAppDetail = null; // tracking active inspect card inside admin panel
 
-        // Initialize structures from localStorage or seed
+        // Initialize user database
         let users = JSON.parse(localStorage.getItem('bena_users')) || [
             { id: 'admin1', name: 'محمد بابعير (المهندس)', nationalId: 'admin', phone: '00966551056560', password: 'admin', role: 'admin' }
         ];
 
+        // Initialize applications database
         let applications = JSON.parse(localStorage.getItem('bena_applications')) || [];
 
-        // Save Helpers
-        function saveApps() {
-            localStorage.setItem('bena_applications', JSON.stringify(applications));
-        }
-        function saveUsers() {
-            localStorage.setItem('bena_users', JSON.stringify(users));
-        }
-
-        // Custom Notification Engine
-        function showToast(message, type = 'success') {
-            const toast = document.getElementById('toast-notification');
-            toast.className = `fixed bottom-5 left-5 z-50 p-4 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-0 text-white flex items-center gap-2 ${
-                type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-orange-500'
-            }`;
-            toast.innerHTML = `<span class="font-bold">${message}</span>`;
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 4000);
-        }
-
-        // Tab Navigator
-        function switchTab(tabId) {
-            activeTab = tabId;
-            
-            // Hide all tabs
-            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
-            
-            // Show the target tab
-            const targetSec = document.getElementById(`tab-${tabId}`);
-            if (targetSec) {
-                targetSec.classList.remove('hidden');
-            }
-
-            // Style nav buttons
-            document.querySelectorAll('header button[id^="nav-"]').forEach(btn => {
-                btn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50";
-            });
-            const activeNavBtn = document.getElementById(`nav-${tabId}`);
-            if (activeNavBtn) {
-                activeNavBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-orange-50 text-brandOrange";
-            }
-
-            // Sync dynamic lists inside tabs
-            if (tabId === 'my-applications') {
-                renderMyApplications();
-            } else if (tabId === 'admin') {
-                renderAdminPortal();
-            }
-
-            // Refresh icons inside any dynamically updated view
-            lucide.createIcons();
-        }
-
-        function scrollToAuth() {
-            document.getElementById('auth-section').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function handleStartJourney() {
-            if (currentUser) {
-                switchTab('apply');
-            } else {
-                scrollToAuth();
-                showToast("يرجى تسجيل الدخول أو إنشاء حساب جديد للبدء بالتقديم", "warning");
-            }
-        }
-
-        // Auth Logic Controls
-        function toggleAuthTab(tab) {
-            const loginBtn = document.getElementById('auth-btn-login');
-            const registerBtn = document.getElementById('auth-btn-register');
-            const loginForm = document.getElementById('form-login');
-            const registerForm = document.getElementById('form-register');
-
-            if (tab === 'login') {
-                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
-                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
-                loginForm.classList.remove('hidden');
-                registerForm.classList.add('hidden');
-            } else {
-                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
-                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
-                registerForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-            }
-        }
-
-        function updateHeaderProfile() {
-            const loginBtn = document.getElementById('login-trigger-btn');
-            const loggedSection = document.getElementById('logged-user-info');
-            const loggedNameText = document.getElementById('logged-user-name');
-            const navApply = document.getElementById('nav-apply');
-            const navMyApps = document.getElementById('nav-my-applications');
-            const navAdmin = document.getElementById('nav-admin');
-
-            if (currentUser) {
-                loginBtn.classList.add('hidden');
-                loggedSection.classList.remove('hidden');
-                loggedNameText.innerText = currentUser.name;
-
-                if (currentUser.role === 'admin') {
-                    navAdmin.classList.remove('hidden');
-                    navApply.classList.add('hidden');
-                    navMyApps.classList.add('hidden');
-                } else {
-                    navApply.classList.remove('hidden');
-                    navMyApps.classList.remove('hidden');
-                    navAdmin.classList.add('hidden');
-                }
-            } else {
-                loginBtn.classList.remove('hidden');
-                loggedSection.classList.add('hidden');
-                navApply.classList.add('hidden');
-                navMyApps.classList.add('hidden');
-                navAdmin.classList.add('hidden');
-            }
-            checkFloatingAlertBanner();
-            lucide.createIcons();
-        }
-
-        function handleLoginSubmit(e) {
-            e.preventDefault();
-            const natId = document.getElementById('login-nationalId').value.trim();
-            const pass = document.getElementById('login-password').value;
-
-            const user = users.find(u => u.nationalId === natId && u.password === pass);
-            if (user) {
-                currentUser = user;
-                updateHeaderProfile();
-                showToast(`أهلاً بك مجدداً، ${currentUser.name}`, 'success');
-                if (currentUser.role === 'admin') {
-                    switchTab('admin');
-                } else {
-                    switchTab('my-applications');
-                }
-                document.getElementById('form-login').reset();
-            } else {
-                showToast("خطأ في رقم الهوية الوطنية أو كلمة المرور!", 'error');
-            }
-        }
-
-        function handleRegisterSubmit(e) {
-            e.preventDefault();
-            const name = document.getElementById('register-name').value.trim();
-            const natId = document.getElementById('register-nationalId').value.trim();
-            const phone = document.getElementById('register-phone').value.trim();
-            const city = document.getElementById('register-city').value;
-            const pass = document.getElementById('register-password').value;
-
-            if (users.some(u => u.nationalId === natId)) {
-                showToast("رقم الهوية الوطنية مسجل مسبقاً!", "error");
-                return;
-            }
-
-            const newUser = {
-                id: 'u_' + Date.now(),
-                name: name,
-                nationalId: natId,
-                phone: phone,
-                password: pass,
-                role: 'beneficiary',
-                city: city
-            };
-
-            users.push(newUser);
-            saveUsers();
-            currentUser = newUser;
-            updateHeaderProfile();
-            showToast("تم إنشاء حسابك بنجاح! يمكنك الآن التقديم ورفع الملفات.", "success");
-            switchTab('apply');
-            document.getElementById('form-register').reset();
-        }
-
-        function logout() {
-            currentUser = null;
-            updateHeaderProfile();
-            showToast("تم تسجيل الخروج بنجاح", "info");
-            switchTab('home');
-        }
-
+        // Configure Brand Visual Requirements List
         const requirementsData = {
             building: [
               { id: 'req_1', title: 'صورة من الهوية الوطنية', required: true, description: 'يجب أن تكون الهوية سارية المفعول وبصورة واضحة' },
               { id: 'req_2', title: 'صورة من سجل الأسرة', required: true, description: 'صورة واضحة لجميع أفراد الأسرة' },
               { id: 'req_3', title: 'إثبات الدخل', required: true, description: 'مشهد الضمان – مشهد الراتب – مشهد التأمينات – تأهيل شامل – حساب مواطن – مشهد التقاعد' },
               { id: 'req_4', title: 'تقرير بالحالة الصحية', required: false, description: 'تأهيل شامل – أمراض مزمنة – إعاقة دائمة (إن وجد)' },
-              { id: 'req_5', title: 'مشهد من أبشر', required: true, description: 'لوحة المعلومات بالكامل من منصة أبشر' },
+              { id: 'req_5', title: 'مشهد من أبشر', required: true, description: 'يوضح فيها لوحة المعلومات بالكامل من منصة أبشر' },
               { id: 'req_6', title: 'مشهد من التأمينات للزوج والزوجة', required: true },
               { id: 'req_7', title: 'مشهد من التأمينات مع المؤهل العلمي للأبناء', required: false, description: 'للأبناء فوق سن 18 سنة' },
               { id: 'req_8', title: 'صورة من شهادة الوفاة وصك حصر الورثة', required: false, description: 'خاص بالأرامل وأسر الأيتام فقط' },
@@ -913,24 +761,238 @@
             ]
         };
 
-        function selectAppType(type) {
-            selectedAppType = type;
-            uploadedFiles = {}; // reset files session upload
+        // Save Helpers
+        function saveApps() {
+            localStorage.setItem('bena_applications', JSON.stringify(applications));
+        }
+        function saveUsers() {
+            localStorage.setItem('bena_users', JSON.stringify(users));
+        }
 
-            // Highlight choice
+        // Custom Premium Notification Toast (No Alert)
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-notification');
+            toast.className = `fixed bottom-5 left-5 z-50 p-4 rounded-2xl shadow-2xl transition-all duration-300 transform translate-y-0 text-white flex items-center gap-2 ${
+                type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-orange-500'
+            }`;
+            toast.innerHTML = `<span class="font-bold">${message}</span>`;
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 5000);
+        }
+
+        // Tab Navigator with validation checks for duplicate apps (image_240ce7.png)
+        function switchTab(tabId) {
+            activeTab = tabId;
+            
+            // Validate if user has an active application before letting them access the Apply screen
+            if (tabId === 'apply' && currentUser && currentUser.role === 'beneficiary') {
+                const userApps = applications.filter(a => a.userId === currentUser.id);
+                const activeApp = userApps.find(a => a.status === 'pending' || a.status === 'approved' || a.status === 'incomplete' || a.status === 'rejected');
+                
+                if (activeApp) {
+                    // Block screen is active! Prevent starting duplicate entries
+                    document.getElementById('apply-blocked-container').classList.remove('hidden');
+                    document.getElementById('service-selectors-wrapper').classList.add('hidden');
+                    document.getElementById('wizard-form-container').classList.add('hidden');
+                    
+                    const localizedStatus = activeApp.status === 'pending' ? 'قيد المراجعة والتدقيق الفني' :
+                                            activeApp.status === 'approved' ? 'مقبول ومعتمد نهائياً' :
+                                            activeApp.status === 'incomplete' ? 'طلب غير مكتمل (يحتاج تعديل النواقص)' : 'مرفوض';
+                    
+                    document.getElementById('blocked-current-app-info').innerText = `طلب رقم (${activeApp.id}) لمسار [${getAppTypeName(activeApp.type)}] - الحالة: ${localizedStatus}`;
+                } else {
+                    document.getElementById('apply-blocked-container').classList.add('hidden');
+                    document.getElementById('service-selectors-wrapper').classList.remove('hidden');
+                }
+            }
+
+            // Hide all tabs
+            document.querySelectorAll('main > section').forEach(sec => sec.classList.add('hidden'));
+            
+            // Show target
+            const targetSec = document.getElementById(`tab-${tabId}`);
+            if (targetSec) {
+                targetSec.classList.remove('hidden');
+            }
+
+            // Style nav buttons
+            document.querySelectorAll('header button[id^="nav-"]').forEach(btn => {
+                btn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-gray-50";
+            });
+            const activeNavBtn = document.getElementById(`nav-${tabId}`);
+            if (activeNavBtn) {
+                activeNavBtn.className = "px-3 py-1.5 rounded-lg text-sm font-medium transition bg-orange-50 text-brandOrange font-bold";
+            }
+
+            // Synchronize active views
+            if (tabId === 'my-applications') {
+                renderMyApplications();
+            } else if (tabId === 'admin') {
+                renderAdminPortal();
+            }
+
+            // Refresh icons inside updated DOM
+            lucide.createIcons();
+        }
+
+        function scrollToAuth() {
+            document.getElementById('auth-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleStartJourney() {
+            if (currentUser) {
+                switchTab('apply');
+            } else {
+                scrollToAuth();
+                showToast("يرجى تسجيل الدخول أو إنشاء حساب جديد للبدء بالتقديم", "warning");
+            }
+        }
+
+        // Toggle Auth form styles
+        function toggleAuthTab(tab) {
+            const loginBtn = document.getElementById('auth-btn-login');
+            const registerBtn = document.getElementById('auth-btn-register');
+            const loginForm = document.getElementById('form-login');
+            const registerForm = document.getElementById('form-register');
+
+            if (tab === 'login') {
+                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
+                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
+                loginForm.classList.remove('hidden');
+                registerForm.classList.add('hidden');
+            } else {
+                registerBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all bg-white text-brandOrange border-b-2 border-brandOrange";
+                loginBtn.className = "flex-1 py-4 text-center font-bold text-sm transition-all text-gray-500 hover:text-gray-800";
+                registerForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+            }
+        }
+
+        function updateHeaderProfile() {
+            const loginBtn = document.getElementById('login-trigger-btn');
+            const loggedSection = document.getElementById('logged-user-info');
+            const loggedNameText = document.getElementById('logged-user-name');
+            const navApply = document.getElementById('nav-apply');
+            const navMyApps = document.getElementById('nav-my-applications');
+            const navAdmin = document.getElementById('nav-admin');
+
+            if (currentUser) {
+                loginBtn.classList.add('hidden');
+                loggedSection.classList.remove('hidden');
+                loggedNameText.innerText = currentUser.name;
+
+                if (currentUser.role === 'admin') {
+                    navAdmin.classList.remove('hidden');
+                    navApply.classList.add('hidden');
+                    navMyApps.classList.add('hidden');
+                } else {
+                    navApply.classList.remove('hidden');
+                    navMyApps.classList.remove('hidden');
+                    navAdmin.classList.add('hidden');
+                }
+            } else {
+                loginBtn.classList.remove('hidden');
+                loggedSection.classList.add('hidden');
+                navApply.classList.add('hidden');
+                navMyApps.classList.add('hidden');
+                navAdmin.classList.add('hidden');
+            }
+            checkFloatingAlertBanner();
+            renderDashboardActionButton();
+            lucide.createIcons();
+        }
+
+        // Login Logic
+        function handleLoginSubmit(e) {
+            e.preventDefault();
+            const natId = document.getElementById('login-nationalId').value.trim();
+            const pass = document.getElementById('login-password').value;
+
+            const user = users.find(u => u.nationalId === natId && u.password === pass);
+            if (user) {
+                currentUser = user;
+                updateHeaderProfile();
+                showToast(`حباً بك مجدداً يا ${currentUser.name}`, 'success');
+                if (currentUser.role === 'admin') {
+                    switchTab('admin');
+                } else {
+                    switchTab('my-applications');
+                }
+                document.getElementById('form-login').reset();
+            } else {
+                showToast("خطأ في رقم الهوية الوطنية أو كلمة المرور!", 'error');
+            }
+        }
+
+        // Register Logic
+        function handleRegisterSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value.trim();
+            const natId = document.getElementById('register-nationalId').value.trim();
+            const phone = document.getElementById('register-phone').value.trim();
+            const city = document.getElementById('register-city').value;
+            const pass = document.getElementById('register-password').value;
+
+            if (users.some(u => u.nationalId === natId)) {
+                showToast("رقم الهوية الوطنية مسجل مسبقاً!", "error");
+                return;
+            }
+
+            const newUser = {
+                id: 'u_' + Date.now(),
+                name: name,
+                nationalId: natId,
+                phone: phone,
+                password: pass,
+                role: 'beneficiary',
+                city: city
+            };
+
+            users.push(newUser);
+            saveUsers();
+            currentUser = newUser;
+            updateHeaderProfile();
+            showToast("تم إنشاء حسابك السكني الموحد بنجاح!", "success");
+            switchTab('apply');
+            document.getElementById('form-register').reset();
+        }
+
+        function logout() {
+            currentUser = null;
+            updateHeaderProfile();
+            showToast("تم تسجيل الخروج بنجاح", "success");
+            switchTab('home');
+        }
+
+        // Select Service Type for the Wizard (Enforces single active request logic)
+        function selectAppType(type) {
+            // Re-verify before launching form
+            if (currentUser && currentUser.role === 'beneficiary') {
+                const userApps = applications.filter(a => a.userId === currentUser.id);
+                const hasActive = userApps.some(a => a.status === 'pending' || a.status === 'approved' || a.status === 'incomplete' || a.status === 'rejected');
+                if (hasActive) {
+                    showToast("تنبيه: لا يمكن تقديم طلب إضافي بينما لديك طلب نشط بالفعل بالمنصة.", "warning");
+                    switchTab('apply');
+                    return;
+                }
+            }
+
+            selectedAppType = type;
+            uploadedFiles = {}; // Clear active session uploads
+
             ['building', 'completion', 'restoration'].forEach(t => {
                 const btn = document.getElementById(`btn-select-${t}`);
                 if (t === type) {
-                    btn.className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-brandOrange bg-orange-50/50 shadow-sm";
+                    btn.className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-brandOrange bg-orange-50/50 shadow-sm font-bold";
                 } else {
                     btn.className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300";
                 }
             });
 
-            // Show wizard
             document.getElementById('wizard-form-container').classList.remove('hidden');
 
-            // Handle optional input area limits
             const areaWrapper = document.getElementById('area-input-wrapper');
             const costsPledge = document.getElementById('pledge-costs-wrapper');
 
@@ -950,12 +1012,12 @@
                 document.getElementById('pledge-costs').removeAttribute('required');
             }
 
-            // Draw dynamic requirement file upload items
             renderRequirementsUploadGrid();
             validateAreaBoundary();
             lucide.createIcons();
         }
 
+        // Real-time house area checking
         function validateAreaBoundary() {
             const areaValue = parseFloat(document.getElementById('form-houseArea').value);
             const warningBox = document.getElementById('area-warning');
@@ -965,30 +1027,31 @@
             if (isNaN(areaValue)) {
                 warningBox.classList.add('hidden');
                 submitBtn.disabled = false;
-                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md";
+                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md cursor-pointer";
                 return;
             }
 
-            let limitExceeded = false;
+            let exceeded = false;
             if (selectedAppType === 'completion' && areaValue > 250) {
-                warningText.innerText = "تنبيه: يشترط ألا تزيد مساحة المنزل عن 250 متر مربع لاستكمال البناء.";
-                limitExceeded = true;
+                exceeded = true;
+                warningText.innerText = "تنبيه: يجب ألا تتجاوز مساحة المنزل 250 متر مربع لاستكمال البناء.";
             } else if (selectedAppType === 'restoration' && areaValue > 200) {
-                warningText.innerText = "تنبيه: يشترط ألا تزيد مساحة المنزل عن 200 متر مربع للقبول بالترميم.";
-                limitExceeded = true;
+                exceeded = true;
+                warningText.innerText = "تنبيه: يجب ألا تتجاوز مساحة المنزل 200 متر مربع للقبول بالترميم.";
             }
 
-            if (limitExceeded) {
+            if (exceeded) {
                 warningBox.classList.remove('hidden');
                 submitBtn.disabled = true;
                 submitBtn.className = "bg-gray-300 text-gray-500 px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md cursor-not-allowed";
             } else {
                 warningBox.classList.add('hidden');
                 submitBtn.disabled = false;
-                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md";
+                submitBtn.className = "bg-brandOrange text-white hover:bg-[#d95f16] px-8 py-3.5 rounded-xl text-base font-black transition-all shadow-md cursor-pointer";
             }
         }
 
+        // Render Wizard requirements list for uploading (Starting State)
         function renderRequirementsUploadGrid() {
             const container = document.getElementById('requirements-uploads-grid');
             container.innerHTML = '';
@@ -1007,7 +1070,7 @@
                             </h4>
                             ${req.description ? `<p class="text-[11px] text-gray-500">${req.description}</p>` : ''}
                         </div>
-                        ${req.required ? '<span class="text-[10px] text-orange-600 bg-orange-50 font-bold px-2 py-0.5 rounded-full border border-orange-100">مطلوب إلزامي</span>' : '<span class="text-[10px] text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">اختياري (إن وجد)</span>'}
+                        ${req.required ? '<span class="text-[10px] text-orange-600 bg-orange-50 font-bold px-2 py-0.5 rounded-full border border-orange-100 shrink-0">مطلوب إلزامي</span>' : '<span class="text-[10px] text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full shrink-0">اختياري</span>'}
                     </div>
                     <div class="mt-3">
                 `;
@@ -1029,20 +1092,17 @@
                             </div>
                             <div class="flex items-center gap-2 justify-end">
                                 <button type="button" onclick="triggerFilePreview('${req.title}', '${uploadedFiles[req.id].name}', '${uploadedFiles[req.id].dataUrl}')" class="text-[10px] bg-white border text-gray-600 px-2.5 py-1 rounded flex items-center gap-1 hover:bg-gray-50 transition">
-                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة المستند المرفوع
+                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة المستند
                                 </button>
-                                <a href="${uploadedFiles[req.id].dataUrl}" download="${uploadedFiles[req.id].name}" class="text-[10px] bg-orange-50 text-brandOrange px-2.5 py-1 rounded flex items-center gap-1 hover:bg-orange-100 transition">
-                                    <i data-lucide="download" class="w-3 h-3"></i> تحميل المرفق
-                                </a>
-                              </div>
+                            </div>
                         </div>
                     `;
                 } else {
                     innerHtml += `
                         <label class="cursor-pointer flex items-center justify-center gap-2 border-2 border-dashed border-gray-200 hover:border-brandOrange bg-white p-3 rounded-xl text-xs font-bold text-gray-600 hover:text-brandOrange transition-all">
-                            <i data-lucide="upload" class="w-4 h-4 text-gray-400"></i>
-                            اضغط هنا لرفع الملف
-                            <input type="file" ${req.required ? 'required' : ''} class="hidden" onchange="processFileSelection('${req.id}', this)">
+                              <i data-lucide="upload" class="w-4 h-4 text-gray-400"></i>
+                              اضغط هنا لرفع الملف
+                              <input type="file" class="hidden" onchange="processFileSelection('${req.id}', this)">
                         </label>
                     `;
                 }
@@ -1077,6 +1137,7 @@
             renderRequirementsUploadGrid();
         }
 
+        // Main form wizard submit
         function handleApplicationSubmit(e) {
             e.preventDefault();
 
@@ -1085,12 +1146,20 @@
                 return;
             }
 
-            if (isAreaLimitExceeded()) {
-                showToast("عذراً، لا يمكن استكمال الطلب لتجاوز الحد الأقصى للمساحة المعتمدة.", "error");
-                return;
+            // Verify area boundary
+            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
+            if (!isNaN(areaValue)) {
+                if (selectedAppType === 'completion' && areaValue > 250) {
+                    showToast("عذراً، لا يمكن إكمال الطلب لتجاوز الحد الأقصى للمساحة (250م²)", "error");
+                    return;
+                }
+                if (selectedAppType === 'restoration' && areaValue > 200) {
+                    showToast("عذراً، لا يمكن إكمال الطلب لتجاوز الحد الأقصى للمساحة (200م²)", "error");
+                    return;
+                }
             }
 
-            // Ensure required uploads
+            // Enforce missing required slots
             const currentReqs = requirementsData[selectedAppType];
             const missingRequired = currentReqs
                 .filter(r => r.required)
@@ -1101,8 +1170,7 @@
                 return;
             }
 
-            // Submit application
-            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
+            // Save new application
             const newApp = {
                 id: 'app_' + Date.now(),
                 userId: currentUser.id,
@@ -1124,19 +1192,40 @@
             applications.unshift(newApp);
             saveApps();
 
-            // Clear Wizard
+            // Clear active wizard state
             selectedAppType = null;
             uploadedFiles = {};
             document.getElementById('wizard-form').reset();
             document.getElementById('wizard-form-container').classList.add('hidden');
             
-            // Un-highlight selections
+            // Clear selectors highlight
             ['building', 'completion', 'restoration'].forEach(t => {
                 document.getElementById(`btn-select-${t}`).className = "p-5 rounded-2xl border text-right transition-all flex items-start gap-4 border-gray-200 bg-white hover:border-gray-300";
             });
 
+            updateHeaderProfile();
             switchTab('my-applications');
-            showToast("تم إرسال طلبك بنجاح إلى إدارة الجمعية ومراجع المختصين!", "success");
+            showToast("تم إرسال طلبك السكني بنجاح للمراجعة! تم قفل الملف مؤقتاً لحين انتهاء الفحص الفني.", "success");
+        }
+
+        // Render Dashboard new request button only if no active application (No duplicate requests image_240ce7.png)
+        function renderDashboardActionButton() {
+            const wrapper = document.getElementById('dashboard-new-request-action-wrapper');
+            if (!wrapper) return;
+            wrapper.innerHTML = '';
+
+            if (currentUser && currentUser.role === 'beneficiary') {
+                const userApps = applications.filter(a => a.userId === currentUser.id);
+                const hasActive = userApps.some(a => a.status === 'pending' || a.status === 'approved' || a.status === 'incomplete' || a.status === 'rejected');
+                
+                if (!hasActive) {
+                    wrapper.innerHTML = `
+                      <button onclick="switchTab('apply')" class="bg-brandOrange text-white hover:bg-[#d95f16] px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm transition flex items-center gap-2 self-start">
+                        <i data-lucide="building-2" class="w-4 h-4"></i> تقديم طلب خدمة جديد
+                      </button>
+                    `;
+                }
+            }
         }
 
         function renderMyApplications() {
@@ -1150,7 +1239,7 @@
                   <div class="bg-white rounded-2xl p-12 text-center border border-dashed border-gray-200">
                     <i data-lucide="file-question" class="w-16 h-16 text-gray-300 mx-auto mb-4"></i>
                     <h3 class="text-lg font-bold text-gray-800">لا يوجد لديك أي طلبات مسجلة حتى الآن</h3>
-                    <p class="text-sm text-gray-500 mt-1 mb-6">الرجاء اختيار أحد مسارات التنمية المتاحة للبدء في رفع أوراقك.</p>
+                    <p class="text-sm text-gray-500 mt-1 mb-6">الرجاء اختيار أحد مسارات التنمية المتاحة للبدء في رفع أوراقك ثبوتية.</p>
                     <button onclick="switchTab('apply')" class="bg-brandGreen text-white hover:bg-[#6fa337] px-6 py-3 rounded-xl text-sm font-bold transition">
                       تقديم طلب الآن
                     </button>
@@ -1163,11 +1252,13 @@
                 const card = document.createElement('div');
                 card.className = "bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-6";
 
+                const isLocked = app.status === 'pending' || app.status === 'approved';
+
                 let innerHtml = `
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-4 border-b border-gray-100">
                       <div class="space-y-1">
                         <div class="flex items-center gap-2">
-                          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">رقم الطلب: ${app.id}</span>
+                          <span class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded font-mono">رقم الملف السكني الموحد: ${app.id}</span>
                           <span class="text-xs text-gray-400">بتاريخ: ${app.date}</span>
                         </div>
                         <h3 class="text-lg font-black text-gray-900">${getAppTypeName(app.type)}</h3>
@@ -1178,32 +1269,48 @@
                     </div>
                 `;
 
+                // General Admin instructions display
                 if (app.adminComments) {
                     innerHtml += `
                       <div class="bg-orange-50 border border-orange-200 p-4 rounded-2xl flex gap-3">
                         <i data-lucide="alert-circle" class="w-5 h-5 text-orange-600 shrink-0 mt-0.5"></i>
                         <div>
-                          <h4 class="text-sm font-bold text-orange-800">توجيه إدارة الجمعية وملاحظات التعديل:</h4>
+                          <h4 class="text-sm font-bold text-orange-800">ملاحظات وتوجيهات لجنة الجمعية (المهندس محمد بابعير):</h4>
                           <p class="text-xs text-orange-700 mt-1 leading-relaxed">${app.adminComments}</p>
                         </div>
                       </div>
                     `;
                 }
 
+                // File lock status notice
+                if (isLocked) {
+                    innerHtml += `
+                      <div class="bg-blue-50 border border-blue-200 p-4 rounded-2xl flex items-center gap-2.5 text-blue-800">
+                        <i data-lucide="lock" class="w-5 h-5 text-blue-600 shrink-0"></i>
+                        <p class="text-xs font-bold leading-normal">
+                          🔒 ملف المستندات مقفل حالياً طوال فترة التدقيق والمراجعة الإدارية. لا يمكن إضافة أو تعديل الملفات لمنع التعارض.
+                        </p>
+                      </div>
+                    `;
+                }
+
                 innerHtml += `
                     <div class="space-y-4">
-                      <h4 class="text-sm font-bold text-gray-800">تدقيق مستندات طلبك الحالي ومرفقاتك:</h4>
+                      <h4 class="text-sm font-bold text-gray-800">بيان مستندات المعاينة الحالية:</h4>
                       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 `;
 
                 requirementsData[app.type].forEach(req => {
                     const file = app.files[req.id];
+                    let cardClass = "p-4 rounded-2xl border transition bg-gray-50 border-gray-100";
+                    if (file) {
+                        if (file.status === 'approved') cardClass = "p-4 rounded-2xl border transition bg-green-50/50 border-green-100";
+                        else if (file.status === 'rejected') cardClass = "p-4 rounded-2xl border transition bg-red-50 border-red-100";
+                        else cardClass = "p-4 rounded-2xl border transition bg-blue-50/50 border-blue-100";
+                    }
+
                     innerHtml += `
-                        <div class="p-4 rounded-2xl border transition ${
-                          !file ? 'bg-gray-50 border-gray-100' :
-                          file.status === 'approved' ? 'bg-green-50/50 border-green-100' :
-                          file.status === 'rejected' ? 'bg-red-50 border-red-100' : 'bg-blue-50/50 border-blue-100'
-                        }">
+                        <div class="${cardClass}">
                           <div class="flex justify-between items-start gap-2">
                             <span class="text-xs font-bold text-gray-800">${req.title}</span>
                             ${req.required ? '<span class="text-[10px] text-red-500 bg-red-50 px-1.5 py-0.5 rounded">إلزامي</span>' : ''}
@@ -1216,37 +1323,51 @@
                         innerHtml += `
                             <div class="space-y-2">
                                 <div class="flex items-center justify-between text-xs text-gray-600">
-                                  <span class="truncate max-w-[120px]" title="${file.name}">${file.name}</span>
-                                  <span class="text-[10px] text-gray-400">${file.size}</span>
+                                  <span class="truncate max-w-[120px] font-mono text-[11px]" title="${file.name}">${file.name}</span>
+                                  <span class="text-[10px] text-gray-400 shrink-0">${file.size}</span>
                                 </div>
                                 
                                 <div class="flex items-center justify-between pt-1 border-t border-dashed border-gray-200">
                                   <span class="text-[10px] text-gray-500">حالة المستند:</span>
-                                  ${file.status === 'approved' ? '<span class="text-[10px] text-green-700 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> مقبول</span>' : ''}
-                                  ${file.status === 'rejected' ? '<span class="text-[10px] text-red-700 font-bold flex items-center gap-1"><i data-lucide="x" class="w-3 h-3"></i> مرفوض</span>' : ''}
+                                  ${file.status === 'approved' ? '<span class="text-[10px] text-green-700 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> معتمد ومقبول</span>' : ''}
+                                  ${file.status === 'rejected' ? '<span class="text-[10px] text-red-700 font-bold flex items-center gap-1"><i data-lucide="x" class="w-3 h-3"></i> غير مطابق (ناقص)</span>' : ''}
                                   ${file.status === 'pending' ? '<span class="text-[10px] text-blue-700 font-bold flex items-center gap-1">قيد التدقيق</span>' : ''}
                                 </div>
 
                                 <div class="flex items-center gap-2 pt-1 border-t border-gray-100 justify-end">
-                                  <button type="button" onclick="triggerFilePreview('${req.title}', '${file.name}', '${file.dataUrl}')" class="text-[10px] bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 py-1 rounded flex items-center gap-1">
-                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة
+                                  <button type="button" onclick="triggerFilePreview('${req.title}', '${file.name}', '${file.dataUrl}')" class="text-[10px] bg-white border text-gray-700 hover:bg-gray-100 px-2 py-1 rounded flex items-center gap-1 shadow-sm">
+                                    <i data-lucide="eye" class="w-3 h-3"></i> معاينة المستند
                                   </button>
-                                  <a href="${file.dataUrl}" download="${file.name}" class="text-[10px] bg-orange-50 hover:bg-orange-100 text-brandOrange px-2 py-1 rounded flex items-center gap-1">
+                                  <a href="${file.dataUrl}" download="${file.name}" class="text-[10px] bg-orange-50 hover:bg-orange-100 text-brandOrange px-2 py-1 rounded flex items-center gap-1 shadow-sm">
                                     <i data-lucide="download" class="w-3 h-3"></i> تنزيل
                                   </a>
                                 </div>
 
-                                ${file.status === 'rejected' && file.feedback ? `<p class="text-[10px] bg-white p-1.5 rounded text-red-600 border border-red-100 leading-normal mt-1">❌ ${file.feedback}</p>` : ''}
+                                <!-- Let beneficiary edit only rejected files if app is unlocked (incomplete) -->
+                                ${!isLocked && file.status === 'rejected' ? `
+                                   <div class="pt-2 border-t border-dashed border-red-200 text-center">
+                                      <label class="cursor-pointer inline-flex items-center gap-1 text-[10px] bg-brandOrange hover:bg-[#d95f16] text-white px-2 py-1 rounded">
+                                        <i data-lucide="upload" class="w-2.5 h-2.5"></i> إعادة رفع وتعديل المستند
+                                        <input type="file" class="hidden" onchange="uploadDirectFile('${app.id}', '${req.id}', this)">
+                                      </label>
+                                   </div>
+                                ` : ''}
+
+                                ${file.status === 'rejected' && file.feedback ? `<p class="text-[10px] bg-white p-1.5 rounded text-red-600 border border-red-100 leading-normal mt-1 font-bold">⚠️ سبب الرفض: ${file.feedback}</p>` : ''}
                             </div>
                         `;
                     } else {
                         innerHtml += `
                             <div class="text-center py-2">
                                 <span class="text-xs text-gray-400 block mb-1">المستند مفقود</span>
-                                <label class="cursor-pointer inline-flex items-center gap-1 text-[10px] bg-brandOrange hover:bg-[#d95f16] text-white px-2 py-1 rounded">
-                                  <i data-lucide="upload" class="w-2.5 h-2.5"></i> رفع الملف الآن
-                                  <input type="file" class="hidden" onchange="uploadDirectFile('${app.id}', '${req.id}', this)">
-                                </label>
+                                ${!isLocked ? `
+                                    <label class="cursor-pointer inline-flex items-center gap-1 text-[10px] bg-brandOrange hover:bg-[#d95f16] text-white px-2 py-1 rounded">
+                                      <i data-lucide="upload" class="w-2.5 h-2.5"></i> رفع الملف الآن
+                                      <input type="file" class="hidden" onchange="uploadDirectFile('${app.id}', '${req.id}', this)">
+                                    </label>
+                                ` : `
+                                    <span class="text-[10px] text-gray-400 font-semibold block">🔒 مقفل</span>
+                                `}
                             </div>
                         `;
                     }
@@ -1255,12 +1376,28 @@
                 });
 
                 innerHtml += `</div></div>`;
+
+                // Add Submit Modifications Action only if App is unlocked (incomplete)
+                if (!isLocked && (app.status === 'incomplete' || app.status === 'rejected')) {
+                    innerHtml += `
+                      <div class="bg-orange-50/50 p-4 rounded-2xl border border-orange-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-xs text-orange-800 font-semibold leading-relaxed">
+                          💡 بعد معالجة كافة النواقص وإرفاق المستندات المصححة، يرجى تقديم الملف للتدقيق مجدداً لإخطار لجنة المراجعة.
+                        </p>
+                        <button onclick="resubmitIncompleteApplication('${app.id}')" class="bg-brandOrange hover:bg-[#d95f16] text-white px-6 py-2.5 rounded-xl text-xs font-black shadow-md transition-all flex items-center gap-2 shrink-0">
+                          <i data-lucide="check" class="w-4 h-4"></i> إرسال التعديلات وإعادة التقديم للتدقيق الفني
+                        </button>
+                      </div>
+                    `;
+                }
+
                 card.innerHTML = innerHtml;
                 container.appendChild(card);
             });
             lucide.createIcons();
         }
 
+        // Direct re-upload of single corrected files when application is unlocked (Incomplete state)
         function uploadDirectFile(appId, reqId, inputElement) {
             const file = inputElement.files[0];
             if (!file) return;
@@ -1272,19 +1409,32 @@
                     app.files[reqId] = {
                         name: file.name,
                         size: (file.size / 1024).toFixed(1) + ' KB',
-                        status: 'pending',
+                        status: 'pending', // Reset single file status back to pending
                         feedback: '',
                         dataUrl: event.target.result
                     };
-                    app.status = 'pending'; // Restore app back to pending review
                     saveApps();
                     renderMyApplications();
-                    showToast("تم إرفاق المستند الجديد بنجاح لإعادة التدقيق.", "success");
+                    showToast("تم تحديث وحفظ الملف بالمسودة. يرجى الضغط على زر إعادة التقديم أسفل الصفحة عند الانتهاء.", "warning");
                 }
             };
             reader.readAsDataURL(file);
         }
 
+        // Resubmitting corrected incomplete files
+        function resubmitIncompleteApplication(appId) {
+            const app = applications.find(a => a.id === appId);
+            if (app) {
+                app.status = 'pending';
+                app.adminComments = ''; // Clear prior general incompleteness notes
+                saveApps();
+                renderMyApplications();
+                updateHeaderProfile();
+                showToast("تم إرسال الملف المحدث بنجاح! تم قفل الملف مؤقتاً لحين انتهاء التدقيق الجديد.", "success");
+            }
+        }
+
+        // Render Admin Oversight Portal
         function renderAdminPortal() {
             const tbody = document.getElementById('admin-table-body');
             tbody.innerHTML = '';
@@ -1438,59 +1588,48 @@
             selectedAppDetail = null;
         }
 
+        // Verify individual checklist file by Admin (Must prompt reason for rejection)
         function verifyIndividualFile(appId, reqId, status) {
             let feedback = '';
             if (status === 'rejected') {
-                feedback = prompt("أدخل سبب رفض المستند أو النقص المكتشف للطلب:");
-                if (feedback === null) return; // cancel click
+                feedback = prompt("أدخل سبب رفض المستند أو النقص المكتشف لخدمة المستفيد:");
+                if (feedback === null) return; // Cancel exit
             }
 
-            handleAdminVerifyFile(appId, reqId, status, feedback);
-            inspectApplicationDetails(appId); // refresh
+            const app = applications.find(a => a.id === appId);
+            if (app && app.files[reqId]) {
+                app.files[reqId].status = status;
+                app.files[reqId].feedback = feedback;
+
+                // Auto-set application general status to incomplete if there's any file rejected
+                let nextStatus = app.status;
+                const fileValues = Object.values(app.files);
+                const hasRejected = fileValues.some(f => f.status === 'rejected');
+                if (hasRejected) {
+                    nextStatus = 'incomplete';
+                }
+                app.status = nextStatus;
+
+                saveApps();
+                inspectApplicationDetails(appId); // Refresh modal view
+            }
         }
 
+        // Main Admin action submission
         function updateInspectAppStatus(status) {
             if (!selectedAppDetail) return;
             const comments = document.getElementById('inspect-comments').value.trim();
-            handleAdminChangeStatus(selectedAppDetail.id, status, comments);
+            
+            selectedAppDetail.status = status;
+            selectedAppDetail.adminComments = comments;
+
+            saveApps();
             closeInspectModal();
             renderAdminPortal();
+            showToast("تم اعتماد قرار مراجعة الملف بنجاح وإخطار المستفيد.", "success");
         }
 
-        // Helpers & Formatting mappings
-        function getAppTypeName(type) {
-            switch (type) {
-              case 'building': return 'بناء مسكن جديد';
-              case 'completion': return 'إكمال بناء قائم';
-              case 'restoration': return 'ترميم مسكن';
-              default: return '';
-            }
-        }
-
-        function getStatusBadgeHtml(status) {
-            switch (status) {
-              case 'pending':
-                return `<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="file-question" class="w-4 h-4"></i> قيد المراجعة</span>`;
-              case 'approved':
-                return `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i> مقبول ومكتمل</span>`;
-              case 'incomplete':
-                return `<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i> غير مكتمل (تعديل)</span>`;
-              case 'rejected':
-                return `<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> مرفوض</span>`;
-              default:
-                return '';
-            }
-        }
-
-        function isAreaLimitExceeded() {
-            const areaValue = parseFloat(document.getElementById('form-houseArea').value);
-            if (isNaN(areaValue)) return false;
-            if (selectedAppType === 'completion' && areaValue > 250) return true;
-            if (selectedAppType === 'restoration' && areaValue > 200) return true;
-            return false;
-        }
-
-        // Preview & Lightbox controls
+        // Lightbox previews
         function triggerFilePreview(title, fileName, dataUrl) {
             document.getElementById('preview-modal-title').innerText = title;
             document.getElementById('preview-modal-meta').innerText = `اسم الملف: ${fileName}`;
@@ -1527,10 +1666,35 @@
             document.getElementById('preview-modal').classList.add('hidden');
         }
 
+        // Helper string mappings
+        function getAppTypeName(type) {
+            switch (type) {
+              case 'building': return 'بناء مسكن جديد';
+              case 'completion': return 'إكمال بناء قائم';
+              case 'restoration': return 'ترميم مسكن';
+              default: return '';
+            }
+        }
+
+        function getStatusBadgeHtml(status) {
+            switch (status) {
+              case 'pending':
+                return `<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="file-question" class="w-4 h-4"></i> قيد المراجعة</span>`;
+              case 'approved':
+                return `<span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4"></i> مقبول ومكتمل</span>`;
+              case 'incomplete':
+                return `<span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="alert-triangle" class="w-4 h-4"></i> غير مكتمل (تعديل)</span>`;
+              case 'rejected':
+                return `<span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-semibold flex items-center gap-1"><i data-lucide="x-circle" class="w-4 h-4"></i> مرفوض</span>`;
+              default:
+                return '';
+            }
+        }
+
         function checkFloatingAlertBanner() {
             const banner = document.getElementById('floating-alert-banner');
             if (currentUser && currentUser.role === 'beneficiary') {
-                const hasIncomplete = applications.some(a => a.userId === currentUser.id && a.status === 'incomplete');
+                const hasIncomplete = applications.some(a => a.userId === currentUser.id && (a.status === 'incomplete' || a.status === 'rejected'));
                 if (hasIncomplete) {
                     banner.classList.remove('hidden');
                     return;
@@ -1539,7 +1703,7 @@
             banner.classList.add('hidden');
         }
 
-        // On Load initialization
+        // On Load Window initialization
         window.onload = function() {
             updateHeaderProfile();
             lucide.createIcons();
