@@ -57,7 +57,7 @@
 <body class="min-h-screen bg-gray-50 text-gray-800 flex flex-col selection:bg-brandOrange selection:text-white">
 
     <!-- ================= HEADER BRANDING ================= -->
-    <header className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             
             <!-- Logo Brand Frame -->
@@ -207,6 +207,10 @@
                       <div>
                         <label class="block text-xs font-bold text-gray-700 mb-1">كلمة المرور</label>
                         <input type="password" id="login-password" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brandOrange focus:border-transparent outline-none transition text-sm text-center" placeholder="••••••••">
+                      </div>
+
+                      <div class="flex items-center justify-between text-xs">
+                        <button type="button" onclick="openForgotPasswordModal()" class="text-brandOrange hover:underline font-bold">نسيت كلمة المرور؟</button>
                       </div>
 
                       <div class="bg-amber-50 border border-amber-200 rounded-xl p-3 text-[11px] text-amber-800 leading-normal flex items-start gap-2">
@@ -486,69 +490,125 @@
             </div>
         </section>
 
-        {/* ================= TAB 4: ADMIN PORTAL ================= */}
+        <!-- ================= TAB 4: ADMIN PORTAL ================= -->
         <section id="tab-admin" class="space-y-6 hidden">
             <div class="border-b pb-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900">بوابة الإدارة والموظفين (تدقيق الطلبات ومعاينة المرفقات)</h2>
-                <p className="text-xs text-gray-500 mt-1">منصة مراجعة ملفات المستفيدين وقبول شروط البناء والترميم لعام 2026</p>
+                <h2 class="text-2xl font-bold text-gray-900">بوابة الإدارة والموظفين (تدقيق الطلبات ومعاينة المرفقات)</h2>
+                <p class="text-xs text-gray-500 mt-1">منصة مراجعة ملفات المستفيدين وقبول شروط البناء والترميم لعام 2026</p>
               </div>
               <div class="flex items-center gap-3 bg-[#81bd41]/10 text-[#699c32] px-4 py-2 rounded-xl text-xs font-bold border border-[#81bd41]/20">
                 <i data-lucide="users" class="w-4 h-4"></i> لوحة التحكم التدقيقية والتحميل
               </div>
             </div>
 
-            <!-- Search and Filter panel -->
-            <div class="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col md:flex-row gap-4 items-center justify-between shadow-sm">
-              <div class="relative w-full md:w-80">
-                <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-3.5"></i>
-                <input type="text" id="admin-search-input" oninput="filterAdminTable()" placeholder="ابحث برقم الهوية أو اسم المستفيد..." class="w-full pr-9 pl-4 py-2.5 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-brandOrange text-xs">
-              </div>
-
-              <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
-                <div class="flex items-center gap-2">
-                  <i data-lucide="filter" class="w-4 h-4 text-gray-400"></i>
-                  <span class="text-xs text-gray-500">نوع الخدمة:</span>
-                  <select id="admin-filter-type" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-1.5 text-xs text-gray-700 outline-none font-bold">
-                    <option value="all">كل المسارات</option>
-                    <option value="building">بناء جديد</option>
-                    <option value="completion">استكمال بناء</option>
-                    <option value="restoration">ترميم مسكن</option>
-                  </select>
-                </div>
-
-                <div class="flex items-center gap-2">
-                  <span class="text-xs text-gray-500">حالة الملف:</span>
-                  <select id="admin-filter-status" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-1.5 text-xs text-gray-700 outline-none font-bold">
-                    <option value="all">الكل</option>
-                    <option value="pending">قيد المراجعة</option>
-                    <option value="incomplete">غير مكتمل (يحتاج تعديل)</option>
-                    <option value="approved">مقبول</option>
-                    <option value="rejected">مرفوض</option>
-                  </select>
-                </div>
-              </div>
+            <!-- Administrative Secondary Tabs Navigation -->
+            <div class="flex border-b border-gray-200">
+              <button onclick="switchAdminSubTab('applications')" id="admin-subtab-btn-applications" class="py-2.5 px-4 font-bold text-xs text-brandOrange border-b-2 border-brandOrange">
+                تصفح وتدقيق ملفات المستفيدين
+              </button>
+              <button onclick="switchAdminSubTab('accounts')" id="admin-subtab-btn-accounts" class="py-2.5 px-4 font-bold text-xs text-gray-500 hover:text-gray-800">
+                إدارة الحسابات وكلمات المرور
+              </button>
             </div>
 
-            <!-- Table content -->
-            <div class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
-              <table class="w-full text-right border-collapse">
-                <thead>
-                  <tr class="bg-gray-50/50 border-b border-gray-100 text-xs text-gray-500 font-bold">
-                    <th class="p-4">المستفيد</th>
-                    <th class="p-4">نوع الطلب</th>
-                    <th class="p-4">تاريخ التقديم</th>
-                    <th class="p-4">الملفات المرفوعة</th>
-                    <th class="p-4">مساحة المنزل</th>
-                    <th class="p-4">الحالة العامة</th>
-                    <th class="p-4 text-center">الإجراء</th>
-                  </tr>
-                </thead>
-                <tbody id="admin-table-body" class="divide-y divide-gray-100 text-xs text-gray-700">
-                  <!-- Rendered dynamically by JavaScript -->
-                </tbody>
-              </table>
+            <!-- SUB-TAB 1: Applications Listing -->
+            <div id="admin-subtab-applications" class="space-y-6">
+                <!-- Search, Filter & Archiving reporting panel -->
+                <div class="bg-white p-4 rounded-2xl border border-gray-100 flex flex-col xl:flex-row gap-4 items-center justify-between shadow-sm">
+                  
+                  <div class="flex flex-col md:flex-row items-center gap-4 w-full xl:w-auto">
+                    <div class="relative w-full md:w-80">
+                      <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-3.5"></i>
+                      <input type="text" id="admin-search-input" oninput="filterAdminTable()" placeholder="ابحث برقم الهوية أو اسم المستفيد..." class="w-full pr-9 pl-4 py-2.5 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-brandOrange text-xs">
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                      <select id="admin-filter-type" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-xs text-gray-700 outline-none font-bold">
+                        <option value="all">كل المسارات</option>
+                        <option value="building">بناء مسكن جديد</option>
+                        <option value="completion">استكمال بناء</option>
+                        <option value="restoration">ترميم مسكن</option>
+                      </select>
+
+                      <select id="admin-filter-status" onchange="filterAdminTable()" class="bg-gray-50 border border-gray-200 rounded-lg p-2 text-xs text-gray-700 outline-none font-bold">
+                        <option value="all">كل الحالات</option>
+                        <option value="pending">قيد المراجعة</option>
+                        <option value="incomplete">غير مكتمل (نقص مستندات)</option>
+                        <option value="approved">مقبول</option>
+                        <option value="rejected">مرفوض</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- Reporting & Export buttons matching muni requirements -->
+                  <div class="flex flex-wrap items-center gap-2 w-full xl:w-auto justify-end">
+                    <span class="text-xs text-gray-400 font-bold ml-1">تصدير التقارير الرسمية:</span>
+                    <button onclick="exportToExcel()" class="bg-emerald-50 hover:bg-green-100 text-emerald-700 border border-emerald-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                      <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-600"></i> Excel (كشف مقدمين)
+                    </button>
+                    <button onclick="exportToWord()" class="bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                      <i data-lucide="file-text" class="w-4 h-4 text-blue-600"></i> Word (تقرير الإنجاز)
+                    </button>
+                    <button onclick="exportToPowerPoint()" class="bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                      <i data-lucide="presentation" class="w-4 h-4 text-rose-600"></i> PowerPoint (عرض المجلس)
+                    </button>
+                    <button onclick="printApplicantsTable()" class="bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-200 px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                      <i data-lucide="printer" class="w-4 h-4 text-gray-600"></i> طباعة كشوفات ورقية
+                    </button>
+                  </div>
+
+                </div>
+
+                <!-- Table content -->
+                <div class="bg-white border border-gray-100 rounded-3xl overflow-hidden shadow-sm">
+                  <table class="w-full text-right border-collapse">
+                    <thead>
+                      <tr class="bg-gray-50/50 border-b border-gray-100 text-xs text-gray-500 font-bold">
+                        <th class="p-4">المستفيد</th>
+                        <th class="p-4">نوع الطلب</th>
+                        <th class="p-4">تاريخ التقديم</th>
+                        <th class="p-4">الملفات المرفوعة</th>
+                        <th class="p-4">مساحة المنزل</th>
+                        <th class="p-4">الحالة العامة</th>
+                        <th class="p-4 text-center">الإجراء</th>
+                      </tr>
+                    </thead>
+                    <tbody id="admin-table-body" class="divide-y divide-gray-100 text-xs text-gray-700">
+                      <!-- Rendered dynamically by JavaScript -->
+                    </tbody>
+                  </table>
+                </div>
             </div>
+
+            <!-- SUB-TAB 2: Accounts Management -->
+            <div id="admin-subtab-accounts" class="space-y-6 hidden">
+                <div class="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm space-y-4">
+                  <div class="pb-2 border-b">
+                    <h3 class="font-bold text-sm text-gray-900">سجل حسابات المستفيدين وتعديل كلمات المرور</h3>
+                    <p class="text-xs text-gray-500 mt-0.5">يمكنك البحث عن حساب المستفيد المسجل وتغيير كلمة مروره فورياً أو متابعة تفاصيل هويته.</p>
+                  </div>
+
+                  <div class="overflow-hidden border rounded-2xl">
+                    <table class="w-full text-right border-collapse text-xs">
+                      <thead>
+                        <tr class="bg-gray-50 border-b font-bold text-gray-500">
+                          <th class="p-3">اسم المستفيد</th>
+                          <th class="p-3">رقم الهوية الوطنية</th>
+                          <th class="p-3">رقم الجوال</th>
+                          <th class="p-3">المدينة السكنية</th>
+                          <th class="p-3">كلمة المرور الحالية</th>
+                          <th class="p-3 text-center">تحديث البيانات</th>
+                        </tr>
+                      </thead>
+                      <tbody id="admin-accounts-table-body" class="divide-y divide-gray-100">
+                        <!-- Rendered dynamically inside JS -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
         </section>
 
     </main>
@@ -630,6 +690,26 @@
         </div>
     </div>
 
+    <!-- ================= FORGOT PASSWORD MODAL ================= -->
+    <div id="forgot-password-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50 p-4">
+      <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl overflow-hidden p-6 space-y-4">
+         <div class="flex items-center justify-between pb-2 border-b">
+           <h3 class="font-bold text-gray-900 text-sm">استعادة حساب السكني</h3>
+           <button onclick="closeForgotPasswordModal()" class="text-gray-400 hover:text-gray-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+         </div>
+         <p class="text-xs text-gray-600 leading-normal">
+           أدخل رقم الهوية الوطنية الخاص بك، وسيقوم النظام بتوجيه طلبك إلى موظفي الجمعية لعرض أو تغيير الرقم السري فورياً.
+         </p>
+         <div>
+           <label class="block text-[11px] font-bold text-gray-700 mb-1">رقم الهوية الوطنية</label>
+           <input type="text" id="forgot-natid" class="w-full px-4 py-2.5 rounded-xl border text-sm text-center font-mono outline-none" placeholder="1023456789">
+         </div>
+         <button onclick="submitForgotPasswordRequest()" class="w-full bg-brandOrange hover:bg-[#d95f16] text-white py-2.5 rounded-xl font-bold text-xs shadow transition-all">
+           إرسال الطلب لموظف الجمعية
+         </button>
+      </div>
+    </div>
+
     <!-- ================= GLOBAL LIGHTBOX FILE PREVIEW MODAL ================= -->
     <div id="preview-modal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-[100] p-4">
       <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[95vh] flex flex-col overflow-hidden shadow-2xl">
@@ -679,12 +759,12 @@
       </div>
     </div>
 
-
     <!-- ================= SYSTEM ENGINE & LOGIC (JAVASCRIPT) ================= -->
     <script>
         // Database arrays (using LocalStorage for local state persistence)
         let currentUser = null;
         let activeTab = 'home';
+        let activeAdminSubTab = 'applications';
         let selectedAppType = null;
         let uploadedFiles = {}; // tracks file details during active upload session
         let selectedAppDetail = null; // tracking active inspect card inside admin panel
@@ -782,17 +862,42 @@
             }, 5000);
         }
 
-        // Tab Navigator with validation checks for duplicate apps (image_240ce7.png)
+        // Tab Navigator with strict scoping validation (Fixing Issue 1 & Issue 2)
         function switchTab(tabId) {
+            // Role enforcement / safety guardrails:
+            if (currentUser) {
+                if (currentUser.role === 'beneficiary' && tabId === 'admin') {
+                    showToast("تنبيه: لا تمتلك الصلاحية لدخول بوابة الجمعية التدقيقية.", "error");
+                    activeTab = 'my-applications';
+                    switchTab('my-applications');
+                    return;
+                }
+                if (currentUser.role === 'admin' && (tabId === 'apply' || tabId === 'my-applications')) {
+                    showToast("تنبيه: حساب الإدارة غير مخول بتقديم ملفات سكنية.", "warning");
+                    activeTab = 'admin';
+                    switchTab('admin');
+                    return;
+                }
+            } else {
+                // If logged out, only home tab is allowed
+                if (tabId !== 'home') {
+                    showToast("يرجى تسجيل الدخول أو إنشا حساب لمتابعة تقديمك.", "warning");
+                    activeTab = 'home';
+                    switchTab('home');
+                    return;
+                }
+            }
+
             activeTab = tabId;
             
             // Validate if user has an active application before letting them access the Apply screen
             if (tabId === 'apply' && currentUser && currentUser.role === 'beneficiary') {
                 const userApps = applications.filter(a => a.userId === currentUser.id);
+                // Active application means any request that is NOT fully rejected (or even if rejected, they edit it, not make a new one)
                 const activeApp = userApps.find(a => a.status === 'pending' || a.status === 'approved' || a.status === 'incomplete' || a.status === 'rejected');
                 
                 if (activeApp) {
-                    // Block screen is active! Prevent starting duplicate entries
+                    // Block screen is active! Prevent starting duplicate entries (Fixing image_240ce7.png duplicate problem)
                     document.getElementById('apply-blocked-container').classList.remove('hidden');
                     document.getElementById('service-selectors-wrapper').classList.add('hidden');
                     document.getElementById('wizard-form-container').classList.add('hidden');
@@ -804,7 +909,7 @@
                     document.getElementById('blocked-current-app-info').innerText = `طلب رقم (${activeApp.id}) لمسار [${getAppTypeName(activeApp.type)}] - الحالة: ${localizedStatus}`;
                 } else {
                     document.getElementById('apply-blocked-container').classList.add('hidden');
-                    document.getElementById('service-selectors-wrapper').classList.remove('hidden');
+                    document.getElementById('service-selectors-wrapper').removeClass('hidden');
                 }
             }
 
@@ -837,13 +942,41 @@
             lucide.createIcons();
         }
 
+        // Subtabs for Admin panel
+        function switchAdminSubTab(subTabId) {
+            activeAdminSubTab = subTabId;
+            
+            // Toggle visibility
+            document.getElementById('admin-subtab-applications').classList.add('hidden');
+            document.getElementById('admin-subtab-accounts').classList.add('hidden');
+            
+            document.getElementById(`admin-subtab-${subTabId}`).classList.remove('hidden');
+
+            // Style subtab buttons
+            document.getElementById('admin-subtab-btn-applications').className = "py-2.5 px-4 font-bold text-xs text-gray-500 hover:text-gray-800";
+            document.getElementById('admin-subtab-btn-accounts').className = "py-2.5 px-4 font-bold text-xs text-gray-500 hover:text-gray-800";
+            
+            document.getElementById(`admin-subtab-btn-${subTabId}`).className = "py-2.5 px-4 font-bold text-xs text-brandOrange border-b-2 border-brandOrange";
+
+            if (subTabId === 'accounts') {
+                renderAdminAccountsSubTab();
+            } else {
+                renderAdminPortal();
+            }
+            lucide.createIcons();
+        }
+
         function scrollToAuth() {
             document.getElementById('auth-section').scrollIntoView({ behavior: 'smooth' });
         }
 
         function handleStartJourney() {
             if (currentUser) {
-                switchTab('apply');
+                if (currentUser.role === 'admin') {
+                    switchTab('admin');
+                } else {
+                    switchTab('apply');
+                }
             } else {
                 scrollToAuth();
                 showToast("يرجى تسجيل الدخول أو إنشاء حساب جديد للبدء بالتقديم", "warning");
@@ -870,6 +1003,7 @@
             }
         }
 
+        // Strict role hiding based on current logged user (Fixes Issue 1 & Issue 2 navigation visibility)
         function updateHeaderProfile() {
             const loginBtn = document.getElementById('login-trigger-btn');
             const loggedSection = document.getElementById('logged-user-info');
@@ -884,15 +1018,18 @@
                 loggedNameText.innerText = currentUser.name;
 
                 if (currentUser.role === 'admin') {
+                    // Admin can ONLY see Admin tab and Home
                     navAdmin.classList.remove('hidden');
                     navApply.classList.add('hidden');
                     navMyApps.classList.add('hidden');
                 } else {
+                    // Beneficiary can ONLY see Apply, My Applications and Home
                     navApply.classList.remove('hidden');
                     navMyApps.classList.remove('hidden');
                     navAdmin.classList.add('hidden');
                 }
             } else {
+                // Anonymous visitor
                 loginBtn.classList.remove('hidden');
                 loggedSection.classList.add('hidden');
                 navApply.classList.add('hidden');
@@ -966,6 +1103,35 @@
             switchTab('home');
         }
 
+        // Forgot password implementation (Fixing Issue 4)
+        function openForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').classList.remove('hidden');
+            document.getElementById('forgot-password-modal').classList.add('flex');
+        }
+
+        function closeForgotPasswordModal() {
+            document.getElementById('forgot-password-modal').classList.add('hidden');
+            document.getElementById('forgot-password-modal').classList.remove('flex');
+            document.getElementById('forgot-natid').value = '';
+        }
+
+        function submitForgotPasswordRequest() {
+            const natid = document.getElementById('forgot-natid').value.trim();
+            if (!natid) {
+                showToast("يرجى إدخال رقم الهوية أولاً", "warning");
+                return;
+            }
+
+            const targetUser = users.find(u => u.nationalId === natid);
+            if (targetUser) {
+                // Simulate request and display helpful notification
+                showToast(`تم إخطار المهندس محمد بابعير بنجاح. رمز المرور الخاص بك هو: ( ${targetUser.password} ) يرجى حفظه بدقة.`, "success");
+                closeForgotPasswordModal();
+            } else {
+                showToast("رقم الهوية الوطنية هذا غير مسجل لدينا بجمعية جازان.", "error");
+            }
+        }
+
         // Select Service Type for the Wizard (Enforces single active request logic)
         function selectAppType(type) {
             // Re-verify before launching form
@@ -1017,7 +1183,7 @@
             lucide.createIcons();
         }
 
-        // Real-time house area checking
+        // Real-time house area checking (Arabic criteria)
         function validateAreaBoundary() {
             const areaValue = parseFloat(document.getElementById('form-houseArea').value);
             const warningBox = document.getElementById('area-warning');
@@ -1051,7 +1217,7 @@
             }
         }
 
-        // Render Wizard requirements list for uploading (Starting State)
+        // Render Wizard requirements list for uploading
         function renderRequirementsUploadGrid() {
             const container = document.getElementById('requirements-uploads-grid');
             container.innerHTML = '';
@@ -1228,6 +1394,7 @@
             }
         }
 
+        // Render Applications for Beneficiary with Strict Lock Mechanism during Review Mode
         function renderMyApplications() {
             const container = document.getElementById('applications-list-container');
             container.innerHTML = '';
@@ -1252,6 +1419,8 @@
                 const card = document.createElement('div');
                 card.className = "bg-white border border-gray-100 rounded-3xl p-6 shadow-sm space-y-6";
 
+                // Lock files IF the application is actively pending or approved.
+                // It becomes UNLOCKED only if the status is "incomplete" (rejected/modification requested).
                 const isLocked = app.status === 'pending' || app.status === 'approved';
 
                 let innerHtml = `
@@ -1488,7 +1657,7 @@
                       </span>
                     </td>
                     <td class="p-4 text-gray-800 font-bold">
-                      ${app.houseArea ? `${app.houseArea} م²` : 'غير محدد'}
+                      ${app.houseArea ? `${app.houseArea} م²` : 'غير حدد'}
                     </td>
                     <td class="p-4">${getStatusBadgeHtml(app.status)}</td>
                     <td class="p-4 text-center">
@@ -1506,6 +1675,56 @@
             renderAdminPortal();
         }
 
+        // Render Admin Accounts Management Tab (Fixing Issue 4)
+        function renderAdminAccountsSubTab() {
+            const tbody = document.getElementById('admin-accounts-table-body');
+            tbody.innerHTML = '';
+
+            const beneficiaryUsers = users.filter(u => u.role === 'beneficiary');
+
+            if (beneficiaryUsers.length === 0) {
+                tbody.innerHTML = `
+                  <tr>
+                    <td colSpan="6" class="p-6 text-center text-gray-400 italic">لا يوجد مستفيدين مسجلين بالمنصة حالياً.</td>
+                  </tr>
+                `;
+                return;
+            }
+
+            beneficiaryUsers.forEach(user => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-gray-50/50 transition";
+                tr.innerHTML = `
+                  <td class="p-3 font-bold text-gray-900">${user.name}</td>
+                  <td class="p-3 font-mono text-gray-600">${user.nationalId}</td>
+                  <td class="p-3 font-mono text-gray-600">${user.phone}</td>
+                  <td class="p-3 text-gray-700">${user.city || 'جازان'}</td>
+                  <td class="p-3 font-mono text-brandOrange font-bold">${user.password}</td>
+                  <td class="p-3 text-center">
+                    <button onclick="adminEditBeneficiaryPassword('${user.id}')" class="bg-blue-50 hover:bg-blue-100 text-blue-700 px-2.5 py-1.5 rounded-lg font-bold text-xs transition inline-flex items-center gap-1">
+                      <i data-lucide="key" class="w-3.5 h-3.5"></i> تعديل الرقم السري
+                    </button>
+                  </td>
+                `;
+                tbody.appendChild(tr);
+            });
+            lucide.createIcons();
+        }
+
+        function adminEditBeneficiaryPassword(userId) {
+            const targetUser = users.find(u => u.id === userId);
+            if (targetUser) {
+                const newPass = prompt(`أدخل كلمة المرور الجديدة لحساب المستفيد [${targetUser.name}]:`, targetUser.password);
+                if (newPass !== null && newPass.trim() !== '') {
+                    targetUser.password = newPass.trim();
+                    saveUsers();
+                    renderAdminAccountsSubTab();
+                    showToast(`تمت بنجاح إعادة تعيين كلمة مرور المستفيد إلى: ${newPass.trim()}`, "success");
+                }
+            }
+        }
+
+        // Inspect single application in admin modal
         function inspectApplicationDetails(appId) {
             const app = applications.find(a => a.id === appId);
             if (!app) return;
@@ -1583,39 +1802,36 @@
         }
 
         function closeInspectModal() {
-            document.getElementById('inspect-modal').classList.remove('flex');
             document.getElementById('inspect-modal').classList.add('hidden');
+            document.getElementById('inspect-modal').classList.remove('flex');
             selectedAppDetail = null;
         }
 
-        // Verify individual checklist file by Admin (Must prompt reason for rejection)
         function verifyIndividualFile(appId, reqId, status) {
+            const app = applications.find(a => a.id === appId);
+            if (!app) return;
+
             let feedback = '';
             if (status === 'rejected') {
-                feedback = prompt("أدخل سبب رفض المستند أو النقص المكتشف لخدمة المستفيد:");
-                if (feedback === null) return; // Cancel exit
+                feedback = prompt("أدخل سبب رفض المستند وتوجيه الاستبدال للمستفيد:", app.files[reqId].feedback || '');
+                if (feedback === null) return; // cancel
             }
 
-            const app = applications.find(a => a.id === appId);
-            if (app && app.files[reqId]) {
-                app.files[reqId].status = status;
-                app.files[reqId].feedback = feedback;
+            app.files[reqId].status = status;
+            app.files[reqId].feedback = feedback;
 
-                // Auto-set application general status to incomplete if there's any file rejected
-                let nextStatus = app.status;
-                const fileValues = Object.values(app.files);
-                const hasRejected = fileValues.some(f => f.status === 'rejected');
-                if (hasRejected) {
-                    nextStatus = 'incomplete';
-                }
-                app.status = nextStatus;
-
-                saveApps();
-                inspectApplicationDetails(appId); // Refresh modal view
+            // Recalculate status of application based on requirements
+            const fileValues = Object.values(app.files);
+            const hasRejected = fileValues.some(f => f.status === 'rejected');
+            if (hasRejected) {
+                app.status = 'incomplete';
             }
+
+            saveApps();
+            inspectApplicationDetails(appId); // refresh inspector view
+            showToast("تم تحديث حالة المستند وحفظ الملاحظة بنجاح.", "success");
         }
 
-        // Main Admin action submission
         function updateInspectAppStatus(status) {
             if (!selectedAppDetail) return;
             const comments = document.getElementById('inspect-comments').value.trim();
@@ -1643,7 +1859,7 @@
 
             if (dataUrl && (dataUrl.startsWith('data:image/') || dataUrl.startsWith('data:image/svg+xml'))) {
                 body.innerHTML = `<img src="${dataUrl}" class="max-w-full max-h-[70vh] object-contain rounded-lg border shadow-sm bg-white" alt="${title}">`;
-            } else {
+              } else {
                 body.innerHTML = `
                   <div class="text-center space-y-3 p-8 bg-white rounded-2xl border max-w-md shadow-sm">
                     <i data-lucide="file-text" class="w-16 h-16 text-gray-400 mx-auto"></i>
@@ -1666,12 +1882,265 @@
             document.getElementById('preview-modal').classList.add('hidden');
         }
 
+        // Reporting Export Logics (Fixing Issue 5)
+        function exportToExcel() {
+            // Generates an Excel compatible UTF-8 BOM CSV table of current active list
+            let csvContent = "\uFEFF"; // BOM for Excel Arabic layout compatibility
+            csvContent += "رقم الطلب,اسم المستفيد,رقم الهوية,رقم الجوال,مسار الخدمة,تاريخ التقديم,المساحة (م٢),الحالة العامة\n";
+
+            applications.forEach(app => {
+                csvContent += `"${app.id}","${app.userName}","${app.nationalId}","${app.userPhone}","${getAppTypeName(app.type)}","${app.date}","${app.houseArea || 'غير محدد'}","${getAppStatusLabelAr(app.status)}"\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `كشف_مقدمي_الطلبات_السكينة_جازان_2026.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("تم توليد وتنزيل كشف الإكسل بنجاح.", "success");
+        }
+
+        function exportToWord() {
+            // Generates styled HTML dossier downloadable as Word
+            let htmlContent = `
+              <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+              <head>
+                <meta charset="utf-8">
+                <title>تقرير طلبات الإسكان بمنطقة جازان</title>
+                <style>
+                  body { font-family: 'Arial', sans-serif; direction: rtl; text-align: right; }
+                  h1 { color: #f37021; text-align: center; font-size: 24pt; border-bottom: 2px solid #81bd41; padding-bottom: 10px; }
+                  h2 { color: #81bd41; font-size: 18pt; margin-top: 20px; }
+                  table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+                  th, td { border: 1px solid #ddd; padding: 10px; text-align: right; font-size: 11pt; }
+                  th { background-color: #f37021; color: white; }
+                  .footer { font-size: 9pt; text-align: center; color: #9c9c9e; margin-top: 50px; }
+                </style>
+              </head>
+              <body>
+                <h1>تقرير كشوفات الإسكان التنموي لعام 2026</h1>
+                <p>صادر عن: <strong>الجمعية الخيرية لبناء وتنمية المساكن بمنطقة جازان</strong></p>
+                <p>تاريخ استخراج التقرير: ${new Date().toISOString().split('T')[0]}</p>
+                <p>المشرف والمسؤول الفني للتدقيق: <strong>المهندس محمد بابعير</strong></p>
+
+                <h2>سجل المتقدمين الحاليين بالمنصة:</h2>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>اسم المستفيد</th>
+                      <th>رقم الهوية</th>
+                      <th>نوع الخدمة</th>
+                      <th>المساحة</th>
+                      <th>الحالة العامة</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+            `;
+
+            applications.forEach(app => {
+                htmlContent += `
+                  <tr>
+                    <td>${app.userName}</td>
+                    <td>${app.nationalId}</td>
+                    <td>${getAppTypeName(app.type)}</td>
+                    <td>${app.houseArea ? `${app.houseArea} م²` : 'غير محدد'}</td>
+                    <td>${getAppStatusLabelAr(app.status)}</td>
+                  </tr>
+                `;
+            });
+
+            htmlContent += `
+                  </tbody>
+                </table>
+                <p class="footer">الجمعية الخيرية لبناء وتنمية المساكن بجازان - المملكة العربية السعودية - هاتف: 00966551056560</p>
+              </body>
+              </html>
+            `;
+
+            const blob = new Blob(['\ufeff' + htmlContent], { type: 'application/msword' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `تقرير_مساكن_جازان_المعتمد_2026.doc`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("تم توليد وتنزيل كشف وورد المعتمد بنجاح.", "success");
+        }
+
+        function exportToPowerPoint() {
+            // Generates slide summaries styled as PPT outline
+            let pptContent = `
+              <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:p='urn:schemas-microsoft-com:office:powerpoint'>
+              <head>
+                <meta charset="utf-8">
+                <title>عرض مجلس الإدارة 2026</title>
+                <style>
+                  body { font-family: 'Arial', sans-serif; text-align: right; direction: rtl; }
+                  .slide { width: 10in; height: 7.5in; border: 1px solid #ddd; padding: 0.5in; margin: 20px auto; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); page-break-after: always; }
+                  .title { font-size: 28pt; color: #f37021; font-weight: bold; border-bottom: 3px solid #81bd41; margin-bottom: 30px; }
+                  .body { font-size: 18pt; color: #333; line-height: 1.6; }
+                  ul { margin-top: 20px; }
+                  li { margin-bottom: 10px; }
+                </style>
+              </head>
+              <body>
+                <!-- Slide 1 -->
+                <div class="slide">
+                  <div class="title">بوابة الإسكان التنموية بجازان 2026</div>
+                  <div class="body">
+                    <p>الموضوع: كشوفات الإنجاز لتدقيق طلبات المستفيدين</p>
+                    <p>مقدم للجنة مجلس الإشراف والجمعية</p>
+                    <p>المراجع الفني للتقرير: <strong>المهندس محمد بابعير</strong></p>
+                    <p>العدد الكلي للملفات المقيدة: ${applications.length} طلبات</p>
+                  </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="slide">
+                  <div class="title">إحصائيات الملفات المقبولة والمعتمدة</div>
+                  <div class="body">
+                    <ul>
+                      <li>عدد الملفات المقبولة بالكامل: ${applications.filter(a => a.status === 'approved').length}</li>
+                      <li>عدد الملفات غير المكتملة (تحت التعديل حالياً): ${applications.filter(a => a.status === 'incomplete').length}</li>
+                      <li>عدد الملفات قيد التدقيق الجاري: ${applications.filter(a => a.status === 'pending').length}</li>
+                    </ul>
+                  </div>
+                </div>
+              </body>
+              </html>
+            `;
+
+            const blob = new Blob(['\ufeff' + pptContent], { type: 'application/vnd.ms-powerpoint' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `ملخص_عرض_مجلس_الجمعية_2026.ppt`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast("تم توليد وتنزيل عرض PPT للمجلس بنجاح.", "success");
+        }
+
+        function printApplicantsTable() {
+            // Opens elegant print view containing just the data table
+            const typeFilter = document.getElementById('admin-filter-type').value;
+            const statusFilter = document.getElementById('admin-filter-status').value;
+            const searchQuery = document.getElementById('admin-search-input').value.toLowerCase().trim();
+
+            const filtered = applications.filter(app => {
+                if (typeFilter !== 'all' && app.type !== typeFilter) return false;
+                if (statusFilter !== 'all' && app.status !== statusFilter) return false;
+                if (searchQuery) {
+                    return (
+                        app.userName.toLowerCase().includes(searchQuery) ||
+                        app.nationalId.includes(searchQuery)
+                    );
+                }
+                return true;
+            });
+
+            let tableRows = '';
+            filtered.forEach((app, idx) => {
+                tableRows += `
+                  <tr>
+                    <td>${idx + 1}</td>
+                    <td>${app.userName}</td>
+                    <td>${app.nationalId}</td>
+                    <td>${app.userPhone}</td>
+                    <td>${getAppTypeName(app.type)}</td>
+                    <td>${app.date}</td>
+                    <td>${app.houseArea ? `${app.houseArea} م²` : 'غير محدد'}</td>
+                    <td>${getAppStatusLabelAr(app.status)}</td>
+                  </tr>
+                `;
+            });
+
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+              <html lang="ar" dir="rtl">
+              <head>
+                <meta charset="utf-8">
+                <title>كشوفات مستفيدي بناء مساكن جازان المعتمدة</title>
+                <style>
+                  body { font-family: 'Arial', sans-serif; padding: 20px; direction: rtl; text-align: right; }
+                  .header-print { text-align: center; margin-bottom: 30px; border-bottom: 3px double #f37021; padding-bottom: 15px; }
+                  .header-print h2 { margin: 5px 0; color: #f37021; }
+                  .header-print p { margin: 5px 0; font-size: 11pt; color: #555; }
+                  table { width: 100%; border-collapse: collapse; font-size: 10pt; }
+                  th, td { border: 1px solid #333; padding: 8px; text-align: right; }
+                  th { background-color: #f5f5f5; font-weight: bold; }
+                  .signature { margin-top: 60px; display: flex; justify-content: space-between; padding: 0 40px; }
+                  .sig-block { text-align: center; }
+                  @media print {
+                    .no-print { display: none; }
+                  }
+                </style>
+              </head>
+              <body>
+                <div class="header-print">
+                  <h2>الجمعية الخيرية لبناء وتنمية المساكن بمنطقة جازان</h2>
+                  <p>كشف تقرير المستفيدين ومسارات الخدمات المودعة بالمنصة الرقمية 2026</p>
+                  <p>تاريخ الكشف: ${new Date().toLocaleDateString('ar-SA')}</p>
+                </div>
+
+                <table>
+                  <thead>
+                    <tr>
+                      <th>م</th>
+                      <th>اسم المستفيد الكلي</th>
+                      <th>رقم الهوية الوطنية</th>
+                      <th>رقم الجوال</th>
+                      <th>نوع الخدمة</th>
+                      <th>تاريخ الطلب</th>
+                      <th>المساحة</th>
+                      <th>حالة التدقيق الحالية</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${tableRows || '<tr><td colspan="8" style="text-align:center;">لا توجد بيانات مطابقة للخيارات المحددة.</td></tr>'}
+                  </tbody>
+                </table>
+
+                <div class="signature">
+                  <div class="sig-block">
+                    <p><strong>المهندس المسؤول عن التدقيق الفني</strong></p>
+                    <p style="margin-top: 40px;">المهندس محمد بابعير</p>
+                  </div>
+                  <div class="sig-block">
+                    <p><strong>توقيع المدير العام للجمعية</strong></p>
+                    <p style="margin-top: 40px;">الجمعية الخيرية لبناء مساكن بجازان</p>
+                  </div>
+                </div>
+
+                <script>
+                  window.onload = function() { window.print(); }
+                <\/script>
+              </body>
+              </html>
+            `);
+            printWindow.document.close();
+        }
+
         // Helper string mappings
         function getAppTypeName(type) {
             switch (type) {
               case 'building': return 'بناء مسكن جديد';
               case 'completion': return 'إكمال بناء قائم';
               case 'restoration': return 'ترميم مسكن';
+              default: return '';
+            }
+        }
+
+        function getAppStatusLabelAr(status) {
+            switch (status) {
+              case 'pending': return 'قيد التدقيق والمراجعة';
+              case 'approved': return 'مقبول ومعتمد';
+              case 'incomplete': return 'غير مكتمل (بحاجة استكمال)';
+              case 'rejected': return 'مرفوض';
               default: return '';
             }
         }
