@@ -1074,7 +1074,7 @@ function App() {
                     onClick={() => setAuthTab('login')}
                     className={`flex-1 py-4 text-center transition-all ${authTab === 'login' ? 'bg-white text-[#f37021] border-b-2 border-[#f37021]' : 'text-gray-500 hover:text-gray-800'}`}
                   >
-                    تسجيل الدخول الموحد (مستفيد / إدارة)
+                   تسجيل الدخول
                   </button>
                   <button 
                     onClick={() => setAuthTab('register')}
@@ -1100,7 +1100,7 @@ function App() {
                           value={loginForm.nationalId}
                           onChange={(e) => setLoginForm({ ...loginForm, nationalId: e.target.value })}
                           className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#f37021] focus:border-transparent outline-none transition text-sm text-center font-bold"
-                          placeholder="مثال للمستفيد: 1023456789 أو للإدارة: admin"
+                          placeholder=""
                         />
                       </div>
                       <div>
