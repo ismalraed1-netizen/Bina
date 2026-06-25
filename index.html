@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوابة استبيان الأسر - جمعية بناء وتنمية مساكن بجازان</title>
+    <title>استبيان الأسر - جمعية بناء وتنمية مساكن بجازان</title>
     
-    <!-- خط تجوال العربي الرسمي الأنيق للمواقع الحكومية والخيرية بالمملكة -->
+    <!-- خط تجوال المعتمد رسمياً لجمالية المواقع السعودية الحكومية والخيرية -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- مكتبة Tailwind CSS للتنسيق العصري والخلاب -->
+    <!-- مكتبة Tailwind CSS للتصميم المتجاوب والمتميز -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- مكتبة Alpine.js لإدارة تفاعل الاستبيان وحفظ البيانات برمجياً وبسلاسة فائقة -->
+    <!-- مكتبة Alpine.js لتوفير سرعة حركة وتنقل ذكي بدون تعقيد برمجيات -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
+    
     <script>
         tailwind.config = {
             theme: {
@@ -25,11 +25,11 @@
                     },
                     colors: {
                         brand: {
-                            orange: '#f27224',  // البرتقالي الأساسي بهوية بناء وتنمية
+                            orange: '#f27224',  // البرتقالي الأساسي بالهوية
                             orangeHover: '#d95e16',
-                            green: '#81c341',   // الأخضر الحيوي للتنمية المستدامة
+                            green: '#81c341',   // الأخضر التنموي المعتمد
                             greenHover: '#6ca830',
-                            gray: '#949599',    // الرمادي الرسمي للأوراق الرسمية والحدود
+                            gray: '#949599',    // الرمادي المعتمد بالهوية
                             light: '#f9fafb'
                         }
                     }
@@ -39,78 +39,976 @@
     </script>
     
     <style>
-        /* إضافة النقاط المتدرجة المعتمدة بالهوية البصرية بصفحة 4 لمنع الفراغات الجمالية */
+        /* خلفية جرافيكية مستوحاة من الرسومات بنقاط متدرجة خفيفة لمنع تشتت المستفيدين */
         .identity-pattern {
             background-image: radial-gradient(#949599 1.5px, transparent 1.5px);
             background-size: 24px 24px;
             opacity: 0.04;
         }
-        /* منع ظهور شريط التمرير الأفقي بالتصميم المتجاوب */
-        body {
-            overflow-x: hidden;
+        
+        [x-cloak] { display: none !important; }
+
+        /* إخفاء الأزرار وأدوات التنقل عند الطباعة الرسمية للتقرير */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-area {
+                border: none !important;
+                box-shadow: none !important;
+                background: white !important;
+                padding: 0 !important;
+                color: black !important;
+            }
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col relative" x-data="surveyPortal()">
 
-    <!-- الخلفية الجرافيكية المعتمدة بنقاط الهوية البصرية للجمعية -->
+    <!-- الخلفية الجرافيكية المعتمدة في الهوية البصرية -->
     <div class="absolute inset-0 identity-pattern pointer-events-none z-0"></div>
 
-    <header class="bg-white shadow-sm border-b-4 border-brand-green sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- رأس الصفحة (Header) المزين بشعار الهوية البصرية للجمعية وأزرار التبديل للموظف -->
+    <header class="bg-white shadow-sm border-b-4 border-brand-green sticky top-0 z-40 no-print">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             
-            <!-- لوجو الجمعية الرسمي المعاد رسمه برمجياً بالـ SVG لمظهر فائق الدقة والاحترافية -->
+            <!-- الشعار التفاعلي المرسوم بالـ SVG حسب هوية الجمعية الرسمية -->
             <div class="flex items-center gap-3">
-                <div class="w-14 h-14 bg-white rounded-2xl shadow-sm p-1 border border-gray-150 flex items-center justify-center flex-shrink-0">
+                <div class="w-14 h-14 bg-white rounded-2xl shadow-sm p-1.5 border border-gray-150 flex items-center justify-center flex-shrink-0">
                     <svg viewBox="0 0 100 100" class="w-full h-full">
-                        <!-- الخلفية والأشكال الجانبية الرمادية المعبرة عن المباني والبيوت -->
+                        <!-- الأبنية الخلفية بالرمادي المعتمد بالهوية -->
                         <path d="M25,80 L35,25 L50,25 L45,80 Z" fill="#949599" opacity="0.8" />
                         <path d="M75,80 L65,30 L50,30 L55,80 Z" fill="#949599" opacity="0.6" />
-                        <!-- الهيكل البرتقالي الرئيسي بالوسط (البناء والتطوير السكني) -->
+                        <!-- المسكن المركزي باللون البرتقالي التنموي المعتمد -->
                         <path d="M42,80 L42,40 L35,40 L45,15 L58,15 L58,35 L48,40 L48,80 Z" fill="#f27224" />
-                        <!-- القوس السفلي الأخضر (شكل الأرض الخصبة والزراعة والنماء بجازان) -->
+                        <!-- القوس السفلي الأخضر للتنمية والنماء الاجتماعي بجازان -->
                         <path d="M10,45 C20,85 80,85 90,45 C80,65 20,65 10,45" fill="#81c341" />
                     </svg>
                 </div>
                 <div class="text-center sm:text-right">
                     <h1 class="text-lg md:text-xl font-black text-brand-orange leading-none">جمعية بناء وتنمية مساكن</h1>
-                    <p class="text-[11px] md:text-xs font-bold text-brand-green mt-1">بمنطقة جازان | مسكن ملائم وتنمية مستدامة للأسر المستفيدة</p>
+                    <p class="text-xs md:text-sm font-bold text-brand-green mt-1">بمنطقة جازان | لتأمين المسكن الملائم والترميم والتأهيل</p>
                 </div>
             </div>
 
-            <!-- معلومات الترخيص الرسمي تحت مظلة وزارة الشؤون البلدية والقروية والإسكان والمركز الوطني -->
-            <div class="bg-gray-100 px-4 py-1.5 rounded-xl text-center sm:text-left border border-gray-200">
-                <span class="text-[9px] text-gray-500 block font-bold">المركز الوطني لتنمية القطاع غير الربحي</span>
-                <span class="text-xs text-brand-orange font-black">ترخيص رسمي رقم: 834</span>
+            <!-- أزرار التبديل الفوري بين واجهة المستفيد وواجهة الإدارة للحصر -->
+            <div class="flex items-center gap-2 bg-gray-100 p-1.5 rounded-2xl border border-gray-200">
+                <button @click="currentTab = 'survey'" 
+                        :class="currentTab === 'survey' ? 'bg-brand-orange text-white' : 'text-gray-600 hover:text-brand-orange'"
+                        class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                    استبيان الأسر
+                </button>
+                <button @click="currentTab = 'admin'" 
+                        :class="currentTab === 'admin' ? 'bg-brand-green text-white' : 'text-gray-600 hover:text-brand-green'"
+                        class="px-4 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01m-.01 4h.01"></path></svg>
+                    حصر الحالات وتصديرها (<span x-text="submissions.length"></span>)
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- نظام التنبيهات الذكي التفاعلي -->
-    <div x-show="toast.show" 
-         x-transition:enter="transition ease-out duration-300"
-         x-transition:enter-start="opacity-0 translate-y-[-10px]"
-         x-transition:enter-end="opacity-100 translate-y-0"
-         x-transition:leave="transition ease-in duration-200"
-         x-transition:leave-start="opacity-100 translate-y-0"
-         x-transition:leave-end="opacity-0 translate-y-[-10px]"
-         class="fixed top-5 left-5 right-5 md:left-auto md:w-96 z-50 p-4 rounded-2xl shadow-xl flex items-center gap-3 text-white border transition-all duration-300"
-         :class="toast.type === 'success' ? 'bg-green-600 border-green-700' : 'bg-brand-orange border-brand-orange'"
-         style="display: none;">
-        <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span class="text-xs font-bold leading-relaxed" x-text="toast.message"></span>
-    </div>
-
-    <!-- الجسم الرئيسي للموقع -->
+    <!-- الجسم الرئيسي للتطبيق -->
     <main class="flex-grow max-w-5xl w-full mx-auto p-4 md:p-6 z-10 relative">
 
-        <!-- ==================== أولاً: واجهة الاستبيان الموجهة للمستفيدين ==================== -->
-        <div x-show="view === 'survey'" class="space-y-8">
+        <!-- تنبيهات نجاح الإرسال أو الأخطاء -->
+        <div x-show="toast.show" 
+             x-transition 
+             class="mb-6 p-4 rounded-2xl text-white font-bold text-xs flex items-center gap-2"
+             :class="toast.type === 'error' ? 'bg-red-500' : 'bg-brand-green'"
+             style="display: none;">
+            <span x-text="toast.message"></span>
+        </div>
+
+        <!-- ==================== الواجهة الأولى: استبيان الأسرة (لاستخدام الأسر) ==================== -->
+        <div x-show="currentTab === 'survey'" class="space-y-6">
             
-            <!-- بطاقة الترحيب والتعريف المباشر برؤية وأهداف الجمعية -->
-            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+            <!-- ترويسة الاستبيان الترحيبية للأسر -->
+            <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 relative overflow-hidden no-print">
                 <div class="absolute top-0 left-0 w-32 h-32 bg-brand-orange opacity-5 rounded-bl-full pointer-events-none"></div>
                 <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
                     <div class="bg-brand-orange/10 w-12 h-12 rounded-2xl flex items-center justify-center text-brand-orange flex-shrink-0">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H5a2 2 0 00-2 2v16m14
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-lg md:text-xl font-black text-gray-900">بوابة التسجيل وتحديث البيانات للأسر المستحقة</h2>
+                        <p class="text-xs md:text-sm text-gray-500 mt-1 leading-relaxed">
+                            عزيزي عائل الأسرة، نرجو منك تعبئة الحقول المطلوبة بالأسفل بدقة تامة. تُخزن البيانات فوراً في قاعدة بيانات الجمعية المركزية ليقوم الباحث الاجتماعي المعني بجدولة موعد لتفتيش المسكن.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- نموذج تعبئة الاستبيان المباشر والمفصل -->
+            <form @submit.prevent="submitSurvey" id="surveyForm" class="space-y-8 no-print" x-show="!formSubmitted">
+                
+                <!-- القسم الأول: بيانات رب الأسرة والاتصال -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+                    <div class="border-b border-gray-100 pb-4 flex items-center gap-2">
+                        <span class="w-2.5 h-5 bg-brand-orange rounded-full"></span>
+                        <h3 class="text-base md:text-lg font-black text-gray-900">أولاً: معلومات رب الأسرة والاتصال</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">اسم رب الأسرة الكامل (رباعي) *</label>
+                            <input type="text" x-model="form.fullName" placeholder="يحيى بن علي بن محمد حكمي" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">رقم الهوية الوطنية / الإقامة *</label>
+                            <input type="text" x-model="form.nationalId" placeholder="10XXXXXXXX" maxlength="10" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">تاريخ الميلاد *</label>
+                            <input type="date" x-model="form.dob" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">رقم جوال للتواصل المباشر *</label>
+                            <input type="tel" x-model="form.phone" placeholder="05XXXXXXXX" maxlength="10" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold text-left transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">المحافظة التابع لها في جازان *</label>
+                            <select x-model="form.governorate" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <template x-for="gov in governorates">
+                                    <option :value="gov" x-text="gov"></option>
+                                </template>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">القرية / الحي بالتفصيل *</label>
+                            <input type="text" x-model="form.neighborhood" placeholder="قرية بطحان / حي الروضة" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">الحالة الاجتماعية لرب الأسرة *</label>
+                            <select x-model="form.maritalStatus" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="متزوج">متزوج / متزوجة</option>
+                                <option value="أرمل">أرمل / أرملة</option>
+                                <option value="مطلق">مطلق / مطلقة</option>
+                                <option value="أعزب">أعزب مستقل</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">الفئة الاجتماعية المستفيدة *</label>
+                            <select x-model="form.targetGroup" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="مستفيد ضمان اجتماعي مطور">مستفيد ضمان اجتماعي مطور</option>
+                                <option value="أرملة تعول أيتام">أرملة تعول أيتام</option>
+                                <option value="من ذوي الاحتياجات الخاصة">من ذوي الاحتياجات الخاصة والهمم</option>
+                                <option value="أسرة سجين أو غارم">أسرة سجين أو غارم</option>
+                                <option value="محدودي الدخل وبلا دخل ثابت">محدودي الدخل وبلا دخل ثابت</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- القسم الثاني: تفاصيل ومواصفات السكن الحالي للأسرة -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+                    <div class="border-b border-gray-100 pb-4 flex items-center gap-2">
+                        <span class="w-2.5 h-5 bg-brand-orange rounded-full"></span>
+                        <h3 class="text-base md:text-lg font-black text-gray-900">ثانياً: تفاصيل ومواصفات السكن الحالي</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">نوع العقار السكني الحالي *</label>
+                            <select x-model="form.housingType" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="بيت شعبي">بيت شعبي (أسمنتي قديم)</option>
+                                <option value="شقة في عمارة">شقة مستأجرة</option>
+                                <option value="بيت طين">بيت طين / تراثي</option>
+                                <option value="صندقة أو هنجر حديدي">صندقة أو هنجر حديدي</option>
+                                <option value="فيلا مستقلة">فيلا مستقلة</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">طبيعة ملكية العقار الحالي *</label>
+                            <select x-model="form.ownership" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="إيجار">مستأجر</option>
+                                <option value="ملك للأسرة">ملك خاص للأسرة (صك أو وثيقة)</option>
+                                <option value="سكن مشترك مع الأهل">سكن عائلي مشترك مع الأهل</option>
+                                <option value="سكن خيري أو وقف">سكن خيري أو وقف</option>
+                            </select>
+                        </div>
+
+                        <!-- قيمة الإيجار (تظهر وتختفي ديناميكياً) -->
+                        <div x-show="form.ownership === 'إيجار'" x-transition>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">قيمة الإيجار السنوي بالريال *</label>
+                            <input type="number" x-model="form.annualRent" placeholder="مثال: 12000"
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">السلامة الإنشائية وحالة مبنى المسكن *</label>
+                            <select x-model="form.buildingCondition" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="آيل للسقوط وبحاجة لهدم وبناء">آيل للسقوط وبحاجة لهدم وبناء (خطر عاجل)</option>
+                                <option value="متهالك جداً ويحتاج ترميم أساسي وشامل">متهالك جداً ويحتاج ترميم أساسي وشامل</option>
+                                <option value="به عيوب خدمية ويحتاج ترميم بسيط">به عيوب خدمية وكهربائية ويحتاج ترميم بسيط</option>
+                                <option value="ممتاز وسليم إنشائياً">ممتاز وسليم إنشائياً وبحالة مستقرة</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">عدد الغرف في السكن الحالي *</label>
+                            <input type="number" x-model="form.rooms" min="1" max="15" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">هل البيت موصل بالخدمات الأساسية؟ *</label>
+                            <select x-model="form.servicesConnected" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                                <option value="نعم، موصل بالكهرباء والمياه">نعم، موصل بالكهرباء والمياه العامة</option>
+                                <option value="كهرباء فقط دون المياه">كهرباء فقط دون المياه</option>
+                                <option value="لا توجد خدمات حالياً">لا توجد خدمات كهربائية أو مائية حالياً</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- القسم الثالث: بيانات الدخل ونوع الخدمة السكنية المطلوبة من الجمعية -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+                    <div class="border-b border-gray-100 pb-4 flex items-center gap-2">
+                        <span class="w-2.5 h-5 bg-brand-orange rounded-full"></span>
+                        <h3 class="text-base md:text-lg font-black text-gray-900">ثالثاً: الحالة المادية ونوع الدعم المطلوب</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">إجمالي الدخل الشهري الفعلي للأسرة بالريال (يشمل المساعدات) *</label>
+                            <input type="number" x-model="form.monthlyIncome" placeholder="مثال: 3000" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">عدد أفراد الأسرة المقيمين في نفس المنزل *</label>
+                            <input type="number" x-model="form.familyMembers" min="1" max="30" required
+                                   class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold transition-all">
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-extrabold text-gray-700 mb-3">ما هي الخدمة السكنية الأساسية التي تطلبها من الجمعية؟ *</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <template x-for="type in supportTypes">
+                                    <label class="flex items-start gap-3 p-4 rounded-2xl border border-gray-200 hover:bg-gray-50 cursor-pointer transition-all select-none"
+                                           :class="form.requestedSupport === type.id ? 'border-brand-orange bg-brand-orange/5 ring-2 ring-brand-orange/10' : ''">
+                                        <input type="radio" name="supportType" :value="type.id" x-model="form.requestedSupport" class="mt-1 text-brand-orange focus:ring-brand-orange">
+                                        <div>
+                                            <span class="block text-xs font-black text-gray-900" x-text="type.label"></span>
+                                            <span class="block text-[10px] text-gray-500 mt-1 leading-relaxed" x-text="type.desc"></span>
+                                        </div>
+                                    </label>
+                                </template>
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-extrabold text-gray-700 mb-2">اكتب هنا أي تفاصيل أو شرح إضافي تود توضيحه للباحث الاجتماعي</label>
+                            <textarea x-model="form.description" rows="3" placeholder="مثال: حالة صحية لأحد أفراد الأسرة، ميزانية غير كافية، أضرار بالغة في السقف بسبب السيول..."
+                                      class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-brand-orange outline-none text-xs font-bold leading-relaxed"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- القسم الرابع: رفع المستندات الثبوتية -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-gray-100 space-y-6">
+                    <div class="border-b border-gray-100 pb-4 flex items-center gap-2">
+                        <span class="w-2.5 h-5 bg-brand-orange rounded-full"></span>
+                        <h3 class="text-base md:text-lg font-black text-gray-900">رابعاً: إرفاق المستندات والأوراق الرسمية</h3>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- كرت الهوية -->
+                        <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:border-brand-orange transition-all">
+                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span class="text-xs font-extrabold text-gray-900 mb-1">صورة الهوية لرب الأسرة *</span>
+                            <input type="file" id="idPhoto" class="hidden" @change="uploadFile($event, 'idPhoto')">
+                            <button type="button" @click="document.getElementById('idPhoto').click()" 
+                                    :class="form.idPhoto ? 'bg-green-50 text-green-600 border-green-300' : 'bg-white text-gray-700'"
+                                    class="border text-xs font-bold px-4 py-2 rounded-xl mt-3 shadow-sm transition-all" 
+                                    x-text="form.idPhoto ? '✓ ' + form.idPhoto : 'إرفاق ملف'"></button>
+                        </div>
+
+                        <!-- كرت العائلة -->
+                        <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:border-brand-orange transition-all">
+                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span class="text-xs font-extrabold text-gray-900 mb-1">صورة سجل العائلة (الكرت) *</span>
+                            <input type="file" id="familyCardPhoto" class="hidden" @change="uploadFile($event, 'familyCardPhoto')">
+                            <button type="button" @click="document.getElementById('familyCardPhoto').click()" 
+                                    :class="form.familyCardPhoto ? 'bg-green-50 text-green-600 border-green-300' : 'bg-white text-gray-700'"
+                                    class="border text-xs font-bold px-4 py-2 rounded-xl mt-3 shadow-sm transition-all" 
+                                    x-text="form.familyCardPhoto ? '✓ ' + form.familyCardPhoto : 'إرفاق ملف'"></button>
+                        </div>
+
+                        <!-- إثبات الضمان الاجتماعي -->
+                        <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:border-brand-orange transition-all">
+                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span class="text-xs font-extrabold text-gray-900 mb-1">إثبات الضمان الاجتماعي المطور أو الدخل *</span>
+                            <input type="file" id="incomeProofPhoto" class="hidden" @change="uploadFile($event, 'incomeProofPhoto')">
+                            <button type="button" @click="document.getElementById('incomeProofPhoto').click()" 
+                                    :class="form.incomeProofPhoto ? 'bg-green-50 text-green-600 border-green-300' : 'bg-white text-gray-700'"
+                                    class="border text-xs font-bold px-4 py-2 rounded-xl mt-3 shadow-sm transition-all" 
+                                    x-text="form.incomeProofPhoto ? '✓ ' + form.incomeProofPhoto : 'إرفاق ملف'"></button>
+                        </div>
+
+                        <!-- صور المسكن الحالي -->
+                        <div class="border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center text-center bg-gray-50/50 hover:border-brand-orange transition-all">
+                            <svg class="w-8 h-8 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+                            <span class="text-xs font-extrabold text-gray-900 mb-1">صور البيت الحالي التوضيحية (اختياري)</span>
+                            <input type="file" id="housePhotos" class="hidden" @change="uploadFile($event, 'housePhotos')">
+                            <button type="button" @click="document.getElementById('housePhotos').click()" 
+                                    :class="form.housePhotos ? 'bg-green-50 text-green-600 border-green-300' : 'bg-white text-gray-700'"
+                                    class="border text-xs font-bold px-4 py-2 rounded-xl mt-3 shadow-sm transition-all" 
+                                    x-text="form.housePhotos ? '✓ ' + form.housePhotos : 'إرفاق ملف'"></button>
+                        </div>
+                    </div>
+
+                    <!-- الإقرار والمصداقية القانونية -->
+                    <div class="bg-brand-green/10 rounded-2xl p-4 border border-brand-green/20 flex items-start gap-3">
+                        <svg class="w-5 h-5 text-brand-green flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        <p class="text-[11px] md:text-xs text-gray-700 leading-relaxed font-bold">
+                            بتقديمكم لهذا الاستبيان، تقرون بصحة وتطابق البيانات المرفقة مع الواقع الفعلي للأسرة ومقر سكنها، وتمنحون جمعية "بناء وتنمية مساكن بجازان" وباحثيها الحق التام والكامل في تدقيق ومطابقة الملفات والقيام بالزيارة الميدانية للمنزل.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- زر الإرسال المباشر للجمعية -->
+                <div class="flex justify-center pt-4">
+                    <button type="submit" class="w-full sm:w-2/3 bg-brand-orange hover:bg-brand-orangeHover text-white font-black text-sm py-4 px-8 rounded-2xl shadow-lg shadow-brand-orange/20 transition-all flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        إرسال الاستبيان للبحث الاجتماعي بالجمعية
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- شاشة تأكيد النجاح بعد إرسال المستفيد لبياناته -->
+            <div x-show="formSubmitted" class="text-center py-12 px-6 rounded-3xl bg-gradient-to-br from-brand-orange to-[#f69240] text-white space-y-6 relative overflow-hidden shadow-xl" style="display: none;">
+                <div class="absolute top-0 right-0 w-48 h-48 bg-white opacity-5 rounded-bl-full pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-white opacity-5 rounded-tr-full pointer-events-none"></div>
+
+                <div class="max-w-md mx-auto space-y-6 relative z-10">
+                    <div class="bg-white/20 w-20 h-20 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                        <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl font-black">تم إرسال استبيانكم بنجاح!</h2>
+                    <p class="text-sm font-bold text-white/95 leading-relaxed">
+                        نشكركم جزيل الشكر. لقد تم حفظ وتجميع بيانات أسرتكم في النظام المركزي لجمعية **"بناء وتنمية مساكن بجازان"** وجاري مراجعتها حالياً.
+                    </p>
+
+                    <div class="bg-white/10 p-5 rounded-2xl border border-white/20 text-right space-y-2.5 text-xs">
+                        <p class="text-white/80"><strong class="text-white">المستفيد:</strong> <span x-text="form.fullName"></span></p>
+                        <p class="text-white/80"><strong class="text-white">رقم السجل:</strong> <span x-text="form.nationalId"></span></p>
+                        <p class="text-white/80"><strong class="text-white">الخدمة السكنية المطلوبة:</strong> <span x-text="getRequestedSupportLabel(form.requestedSupport)"></span></p>
+                        <p class="text-white/80"><strong class="text-white">المحافظة:</strong> <span x-text="form.governorate"></span></p>
+                    </div>
+
+                    <p class="text-[11px] text-white/90 leading-relaxed pt-2">
+                        سيقوم باحث الجمعية الميداني بمراجعة الاستمارة والتواصل معكم لجدولة الزيارة. يرجى إبقاء جوالكم متاحاً.
+                    </p>
+
+                    <button type="button" @click="resetSurveyForm" 
+                            class="bg-white text-brand-orange hover:bg-gray-100 transition-all font-black text-sm px-8 py-3 rounded-xl shadow-lg w-full">
+                        تعبئة استبيان لأسرة أخرى
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ==================== الواجهة الثانية: حصر الحالات وتصديرها (لوحة الإدارة والفرز للجمعية) ==================== -->
+        <div x-show="currentTab === 'admin'" class="space-y-6" style="display: none;">
+            
+            <!-- قفل الحماية السري لتجربة الإدارة برمز 2030 الخاص بالجمعية ورؤية 2030 -->
+            <div x-show="!adminLoggedIn" class="max-w-md mx-auto bg-white rounded-3xl p-8 shadow-lg border border-gray-100 text-center space-y-6 no-print">
+                <div class="w-16 h-16 bg-brand-green/10 rounded-full flex items-center justify-center mx-auto text-brand-green">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                </div>
+                <div>
+                    <h2 class="text-xl font-black text-gray-950">بوابة الباحثين وإدارة الحصر</h2>
+                    <p class="text-xs text-gray-500 mt-1 leading-relaxed">يرجى تسجيل الدخول برمز المرور الافتراضي لمعاينة الحالات وحصرها وتصديرها.</p>
+                </div>
+
+                <form @submit.prevent="loginAdmin" class="space-y-4">
+                    <div>
+                        <input type="password" x-model="adminPassword" placeholder="أدخل رمز المرور الافتراضي (2030)" 
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 text-center text-sm font-black focus:ring-2 focus:ring-brand-green outline-none">
+                        <p x-show="adminError" class="text-xs text-red-600 font-bold mt-2" x-text="adminError" style="display: none;"></p>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-green hover:bg-brand-greenHover text-white font-extrabold text-sm py-3 rounded-xl transition-all shadow-md">
+                        دخول لنظام الحصر
+                    </button>
+                </form>
+            </div>
+
+            <!-- لوحة التحكم الكاملة والحصر الفوري وتصدير البيانات بعد تسجيل الدخول -->
+            <div x-show="adminLoggedIn" class="space-y-6" style="display: none;">
+                
+                <!-- هيدر الإدارة وعملية الحصر والتصدير -->
+                <div class="bg-white rounded-3xl p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4 border border-gray-100 no-print">
+                    <div>
+                        <span class="bg-brand-orange/10 text-brand-orange text-xs font-black px-3 py-1 rounded-full">التحليل والفرز التلقائي</span>
+                        <h2 class="text-xl md:text-2xl font-black text-gray-950 mt-2">نظام حصر وتجميع الاستبيانات الميدانية</h2>
+                        <p class="text-xs text-gray-500 mt-1">تحديث دوري ومباشر لكافة الاستبيانات التي تعبئها الأسر بمختلف المحافظات بجازان.</p>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <!-- زر تصدير جدول البيانات الفوري بصيغة CSV المتوافقة مع إكسل وحصرها بالكامل -->
+                        <button @click="exportToExcel" class="bg-brand-green hover:bg-brand-greenHover text-white font-black text-xs px-4 py-3 rounded-xl shadow-md transition-all flex items-center gap-1.5">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            تصدير الحالات لملف Excel (CSV)
+                        </button>
+                        <button @click="adminLoggedIn = false; adminPassword = ''" class="bg-gray-100 text-gray-600 hover:bg-gray-200 font-bold text-xs px-4 py-3 rounded-xl transition-all">
+                            خروج
+                        </button>
+                    </div>
+                </div>
+
+                <!-- إحصائيات الحصر السريعة -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 no-print">
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 block">إجمالي المسجلين بالحصر</span>
+                            <span class="text-2xl font-black text-gray-950 block mt-1" x-text="submissions.length + ' أسر'"></span>
+                        </div>
+                        <div class="w-11 h-11 bg-blue-50 text-blue-500 rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 block">طلبات ترميم المنازل</span>
+                            <span class="text-2xl font-black text-brand-orange block mt-1" x-text="submissions.filter(s => s.requestedSupport === 'ترميم مسكن قائم').length + ' حالات'"></span>
+                        </div>
+                        <div class="w-11 h-11 bg-brand-orange/10 text-brand-orange rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 block">طلبات البناء والتملك الجديد</span>
+                            <span class="text-2xl font-black text-brand-green block mt-1" x-text="submissions.filter(s => s.requestedSupport === 'بناء مسكن جديد' || s.requestedSupport === 'تملك وحدة جاهزة').length + ' حالات'"></span>
+                        </div>
+                        <div class="w-11 h-11 bg-brand-green/10 text-brand-green rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-gray-400 block">طلبات سداد الإيجار</span>
+                            <span class="text-2xl font-black text-purple-600 block mt-1" x-text="submissions.filter(s => s.requestedSupport === 'سداد إيجار متعثر').length + ' حالات'"></span>
+                        </div>
+                        <div class="w-11 h-11 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- فلاتر وأدوات فرز الحالات حسب البحث الجغرافي والخدمي -->
+                <div class="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 space-y-4 no-print">
+                    <h3 class="text-xs font-black text-gray-900 flex items-center gap-1.5">
+                        <svg class="w-4 h-4 text-brand-green" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+                        أدوات تصفية وحصر الحالات السكنية المستلمة
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- البحث بالاسم أو السجل -->
+                        <div class="relative">
+                            <input type="text" x-model="searchQuery" placeholder="البحث بالاسم أو السجل المدني..." 
+                                   class="w-full pr-4 pl-3 py-2.5 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-green transition-all">
+                        </div>
+
+                        <!-- الفرز بالمحافظة -->
+                        <div>
+                            <select x-model="selectedGov" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-green">
+                                <option value="">كل محافظات منطقة جازان</option>
+                                <template x-for="gov in governorates">
+                                    <option :value="gov" x-text="gov"></option>
+                                </template>
+                            </select>
+                        </div>
+
+                        <!-- الفرز بالخدمة -->
+                        <div>
+                            <select x-model="selectedSupport" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-green">
+                                <option value="">كل برامج الدعم السكني</option>
+                                <option value="ترميم مسكن قائم">ترميم مسكن قائم وتأهيله</option>
+                                <option value="بناء مسكن جديد">بناء مسكن جديد بالكامل</option>
+                                <option value="تملك وحدة جاهزة">تملك وحدة سكنية جاهزة</option>
+                                <option value="سداد إيجار متعثر">دعم سداد إيجار متعثر</option>
+                            </select>
+                        </div>
+
+                        <!-- الفرز بالحالة الدراسية -->
+                        <div>
+                            <select x-model="selectedStatus" class="w-full px-3 py-2.5 rounded-xl border border-gray-200 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-brand-green">
+                                <option value="">كل الحالات</option>
+                                <option value="قيد المراجعة">قيد المراجعة</option>
+                                <option value="تحت الدراسة">تحت الدراسة والبحث الاجتماعي</option>
+                                <option value="مقبول مبدئياً">مقبول مبدئياً للترشيح</option>
+                                <option value="مرفوض">طلب غير مستحق حالياً</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تقسيم الواجهة (قائمة الحالات + التقرير والدراسة التفصيلية) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    
+                    <!-- قائمة الحالات المكتوبة والمحذوفة/المضافة تلقائياً (7 أعمدة) -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-6 shadow-sm border border-gray-100 space-y-4 no-print">
+                        <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+                            <h4 class="text-sm font-black text-gray-950 flex items-center gap-1.5">
+                                <span class="w-2.5 h-4 bg-brand-orange rounded-full"></span>
+                                الاستبيانات المسجلة بالنظام (<span x-text="filteredSubmissions().length"></span> استمارة)
+                            </h4>
+                        </div>
+
+                        <div x-show="filteredSubmissions().length === 0" class="text-center py-12 text-gray-400 space-y-2" style="display: none;">
+                            <svg class="w-12 h-12 mx-auto stroke-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <p class="text-xs font-bold">لا يوجد بيانات تطابق معايير الحصر الحالية.</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <template x-for="sub in filteredSubmissions()" :key="sub.id">
+                                <div @click="selectedSubmission = sub"
+                                     :class="selectedSubmission && selectedSubmission.id === sub.id ? 'border-brand-orange bg-brand-orange/5 ring-1 ring-brand-orange/10' : 'border-gray-100 hover:bg-gray-50'"
+                                     class="p-4 rounded-2xl border cursor-pointer transition-all">
+                                    <div class="flex items-start justify-between gap-3">
+                                        <div>
+                                            <span class="text-[9px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full font-bold" x-text="sub.id"></span>
+                                            <h5 class="text-sm font-black text-gray-950 mt-1" x-text="sub.fullName"></h5>
+                                            
+                                            <div class="flex flex-wrap gap-x-3 gap-y-1 mt-2 text-xs text-gray-500 font-bold">
+                                                <span class="flex items-center gap-1">
+                                                    <svg class="w-3.5 h-3.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                                    <span x-text="sub.governorate + ' - ' + sub.neighborhood"></span>
+                                                </span>
+                                                <span>•</span>
+                                                <span x-text="getRequestedSupportLabel(sub.requestedSupport)"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="text-left space-y-2 flex-shrink-0">
+                                            <span :class="sub.status === 'قيد المراجعة' ? 'bg-amber-100 text-amber-700' : sub.status === 'تحت الدراسة' ? 'bg-blue-100 text-blue-700' : sub.status === 'مقبول مبدئياً' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'"
+                                                  class="inline-block text-[10px] font-black px-2.5 py-1 rounded-full"
+                                                  x-text="sub.status">
+                                            </span>
+                                            <span class="block text-[10px] text-gray-400" x-text="sub.dateSubmitted"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+
+                    <!-- تفاصيل التقرير الرسمي لرب الأسرة المختار للزيارة الميدانية (5 أعمدة) -->
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-6 shadow-sm border border-gray-100 print-area">
+                        
+                        <div x-show="!selectedSubmission" class="text-center py-16 text-gray-400 space-y-3 no-print">
+                            <svg class="w-12 h-12 mx-auto stroke-1 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            <h4 class="text-sm font-bold text-gray-950">لم يتم اختيار أسرة للفحص</h4>
+                            <p class="text-xs leading-relaxed max-w-xs mx-auto">اضغط على أي استمارة مسجلة في القائمة الجانبية لعرض التقرير الفني والاجتماعي الخاص بها.</p>
+                        </div>
+
+                        <!-- تفاصيل دراسة الحالة عند الاختيار والتحضير للطباعة الرسمية -->
+                        <div x-show="selectedSubmission" class="space-y-6" style="display: none;">
+                            
+                            <!-- شعار رسمي للجمعية يظهر في المطبوعات الورقية فقط -->
+                            <div class="hidden print:flex items-center justify-between border-b-2 border-brand-green pb-4 mb-4">
+                                <div class="text-right">
+                                    <h2 class="text-md font-black text-brand-orange">جمعية بناء وتنمية مساكن بمنطقة جازان</h2>
+                                    <p class="text-[10px] text-gray-500 font-bold">تحت إشراف وزارة الموارد البشرية وتنمية المجتمع - ترخيص 834</p>
+                                </div>
+                                <div class="w-12 h-12">
+                                    <svg viewBox="0 0 100 100" class="w-full h-full">
+                                        <path d="M25,80 L35,25 L50,25 L45,80 Z" fill="#949599" />
+                                        <path d="M75,80 L65,30 L50,30 L55,80 Z" fill="#949599" opacity="0.6" />
+                                        <path d="M42,80 L42,40 L35,40 L45,15 L58,15 L58,35 L48,40 L48,80 Z" fill="#f27224" />
+                                        <path d="M10,45 C20,85 80,85 90,45 C80,65 20,65 10,45" fill="#81c341" />
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="border-b border-gray-100 pb-4">
+                                <span class="text-xs font-black text-brand-green block">التقرير الفني والاجتماعي الموحد للأسرة</span>
+                                <h4 class="text-base md:text-lg font-black text-gray-950 mt-1" x-text="selectedSubmission.fullName"></h4>
+                                <p class="text-xs text-gray-500 mt-1" x-text="'السجل المدني: ' + selectedSubmission.nationalId + ' | هاتف المستفيد: ' + selectedSubmission.phone"></p>
+                            </div>
+
+                            <!-- استعراض الحقول لحصر وتدقيق المستحقين -->
+                            <div class="space-y-4 text-xs">
+                                <div class="p-3 bg-gray-50 rounded-xl space-y-2">
+                                    <span class="font-extrabold text-brand-orange block mb-2 text-[10px] uppercase">1. البيانات الجغرافية والاجتماعية</span>
+                                    <p class="text-gray-700"><strong class="text-gray-950">المحافظة:</strong> <span x-text="selectedSubmission.governorate"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">القرية / الحي السكني:</strong> <span x-text="selectedSubmission.neighborhood"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">الحالة الاجتماعية:</strong> <span x-text="selectedSubmission.maritalStatus"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">الفئة المستفيدة:</strong> <span x-text="selectedSubmission.targetGroup"></span></p>
+                                </div>
+
+                                <div class="p-3 bg-gray-50 rounded-xl space-y-2">
+                                    <span class="font-extrabold text-brand-orange block mb-2 text-[10px] uppercase">2. مواصفات السكن والتهالك الحالي</span>
+                                    <p class="text-gray-700"><strong class="text-gray-950">نوع المسكن الحالي:</strong> <span x-text="selectedSubmission.housingType"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">طبيعة ملكية العقار:</strong> <span x-text="selectedSubmission.ownership"></span></p>
+                                    <p class="text-gray-700" x-show="selectedSubmission.ownership === 'إيجار'"><strong class="text-gray-950">الإيجار السنوي:</strong> <span x-text="selectedSubmission.annualRent + ' ريال'"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">حالة المسكن والإنشاء:</strong> <span class="text-red-600 font-bold" x-text="selectedSubmission.buildingCondition"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">عدد الغرف الإجمالي:</strong> <span x-text="selectedSubmission.rooms"></span></p>
+                                </div>
+
+                                <div class="p-3 bg-gray-50 rounded-xl space-y-2">
+                                    <span class="font-extrabold text-brand-orange block mb-2 text-[10px] uppercase">3. الوضع المالي والتابعون</span>
+                                    <p class="text-gray-700"><strong class="text-gray-950">إجمالي الدخل الشهري:</strong> <span class="text-green-600 font-bold" x-text="selectedSubmission.monthlyIncome + ' ريال'"></span></p>
+                                    <p class="text-gray-700"><strong class="text-gray-950">عدد التابعين والمقيمين بالمنزل:</strong> <span x-text="selectedSubmission.familyMembers"></span></p>
+                                </div>
+
+                                <div class="p-3 bg-gray-50 rounded-xl space-y-2">
+                                    <span class="font-extrabold text-brand-orange block mb-2 text-[10px] uppercase">4. الخدمة المطلوبة وملاحظات عائل الأسرة</span>
+                                    <p class="text-gray-700"><strong class="text-gray-950">البرنامج السكني المطلوب:</strong> <span class="font-black text-brand-orange" x-text="getRequestedSupportLabel(selectedSubmission.requestedSupport)"></span></p>
+                                    <p class="text-gray-700 leading-relaxed"><strong class="text-gray-950">شرح وتوضيح الحالة:</strong> <span x-text="selectedSubmission.description || 'لا توجد ملاحظات إضافية.'"></span></p>
+                                </div>
+                            </div>
+
+                            <!-- تغيير الحالة الدراسية والطباعة للملف السكني -->
+                            <div class="border-t border-gray-100 pt-4 space-y-3 no-print">
+                                <span class="text-xs font-black text-gray-950 block">تحديث حالة الدراسة وحفظ القرار:</span>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button @click="updateStatus(selectedSubmission.id, 'تحت الدراسة')" 
+                                            class="bg-blue-50 text-blue-600 hover:bg-blue-100 text-xs font-bold py-2 rounded-xl transition-all">
+                                        بدء دراسة ميدانية
+                                    </button>
+                                    <button @click="updateStatus(selectedSubmission.id, 'مقبول مبدئياً')" 
+                                            class="bg-green-50 text-green-600 hover:bg-green-100 text-xs font-bold py-2 rounded-xl transition-all">
+                                        ترشيح وقبول مبدئي
+                                    </button>
+                                </div>
+
+                                <button @click="window.print()" class="w-full border border-gray-200 text-gray-700 hover:bg-gray-50 text-xs font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-1.5">
+                                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                                    طباعة استمارة الحالة للباحث الميداني
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- تذييل الصفحة بالمعلومات المسجلة للجمعية -->
+    <footer class="bg-white border-t border-gray-100 py-6 mt-12 no-print">
+        <div class="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-gray-400 text-center md:text-right">
+            <div>
+                <p class="font-extrabold text-gray-500">جمعية بناء وتنمية مساكن بمنطقة جازان</p>
+                <p class="mt-1">مسجلة برقم رسمي (834) بإشراف المركز الوطني لتنمية القطاع غير الربحي</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-bold text-brand-green">
+                <span>الموقع الرسمي للجمعية: www.bena-jazan.sa</span>
+                <span>رقم التواصل: 0551056560</span>
+                <span>الحساب الرسمي: Binaatanmia</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- شفرة الجافا سكريبت الخاصة بمعالجة الحقول والتحقق من المرفقات -->
+    <script>
+        function surveyPortal() {
+            return {
+                currentTab: 'survey', // التبويبات المتاحة: 'survey' للأسرة، 'admin' للإدارة
+                step: 1,
+                adminLoggedIn: false,
+                adminPassword: '',
+                adminError: '',
+                searchQuery: '',
+                selectedGov: '',
+                selectedSupport: '',
+                selectedStatus: '',
+                formSubmitted: false,
+                
+                toast: { show: false, message: '', type: 'info' },
+
+                // قائمة المحافظات الرسمية في منطقة جازان
+                governorates: [
+                    "جازان (المدينة)", "صبيا", "أبو عريش", "صامطة", "أحد المسارحة", 
+                    "العارضة", "بيش", "الدرب", "ضمد", "الحرث", "العيدابي", 
+                    "الداير (بني مالك)", "هروب", "الريث", "فرسان"
+                ],
+
+                // برامج الدعم والتمكين السكني المعتمدة بالجمعية
+                supportTypes: [
+                    { id: "ترميم مسكن قائم", label: "برنامج ترميم مسكن قائم وتأهيله", desc: "لإصلاح المنازل المتضررة والآيلة للسقوط وترقية وتحديث السباكة والكهرباء لضمان بيئة آمنة." },
+                    { id: "بناء مسكن جديد", label: "برنامج بناء مسكن جديد كلياً على أرض المستفيد", desc: "للأسر التي تمتلك أرضاً سكنية خاصة ولكن لا تمتلك الملاءة المادية والمالية الكافية للتشييد." },
+                    { id: "تملك وحدة جاهزة", label: "تملك وحدة سكنية جاهزة (إسكان تنموي)", desc: "لتوفير مساكن جاهزة بالكامل للأسر الأشد حاجة والتي لا تمتلك أراضٍ خاصة أو عقارات." },
+                    { id: "سداد إيجار متعثر", label: "دعم سداد إيجار الأسر المستأجرة المتعثرة", desc: "لدعم سداد إيجار الأسر مؤقتاً لتفادي إخلاء السكن أو الصعوبات الإدارية والمالية." }
+                ],
+
+                // نموذج تعبئة الاستبيان للأسر
+                form: {
+                    fullName: '',
+                    nationalId: '',
+                    dob: '',
+                    phone: '',
+                    governorate: 'جازان (المدينة)',
+                    neighborhood: '',
+                    maritalStatus: 'متزوج',
+                    targetGroup: 'مستفيد ضمان اجتماعي مطور',
+                    housingType: 'بيت شعبي',
+                    ownership: 'إيجار',
+                    annualRent: '',
+                    buildingCondition: 'به عيوب خدمية ويحتاج ترميم بسيط',
+                    rooms: '3',
+                    servicesConnected: 'نعم، موصل بالكهرباء والمياه',
+                    familyMembers: '4',
+                    monthlyIncome: '',
+                    requestedSupport: 'ترميم مسكن قائم',
+                    description: '',
+                    idPhoto: '',
+                    familyCardPhoto: '',
+                    incomeProofPhoto: '',
+                    housePhotos: ''
+                },
+
+                // قاعدة بيانات محاكاة مبدئية مخزنة في localStorage
+                submissions: [],
+
+                selectedSubmission: null,
+
+                // جلب البيانات من localStorage عند تحميل الصفحة مباشرة
+                init() {
+                    const localData = localStorage.getItem('bena_survey_submissions');
+                    if (localData) {
+                        this.submissions = JSON.parse(localData);
+                    } else {
+                        // إدخال بيانات تجريبية في حال كانت قاعدة البيانات فارغة لتسهيل تجربة حصر الحالات من قبل الجمعية
+                        const demoData = [
+                            {
+                                id: "REQ-1001",
+                                fullName: "عبد الله بن يحيى علي خبراني",
+                                nationalId: "1098475834",
+                                dob: "1405-06-12",
+                                phone: "0554839201",
+                                governorate: "العارضة",
+                                neighborhood: "حي الروضة",
+                                maritalStatus: "متزوج",
+                                targetGroup: "مستفيد ضمان اجتماعي مطور",
+                                housingType: "بيت شعبي",
+                                buildingCondition: "متهالك جداً ويحتاج ترميم أساسي وشامل",
+                                ownership: "ملك للأسرة",
+                                annualRent: "",
+                                rooms: 3,
+                                servicesConnected: "نعم، موصل بالكهرباء والمياه",
+                                familyMembers: 7,
+                                monthlyIncome: 3800,
+                                requestedSupport: "ترميم مسكن قائم",
+                                description: "سقف البيت تضرر بسبب مياه الأمطار الغزيرة بجازان والكهرباء متهالكة.",
+                                dateSubmitted: "2026-06-20",
+                                status: "قيد المراجعة"
+                            },
+                            {
+                                id: "REQ-1002",
+                                fullName: "مريم بنت أحمد محمد حريصي",
+                                nationalId: "1028374950",
+                                dob: "1398-02-22",
+                                phone: "0503948576",
+                                governorate: "هروب",
+                                neighborhood: "قرية الجوف",
+                                maritalStatus: "أرمل",
+                                targetGroup: "أرملة تعول أيتام",
+                                housingType: "بيت طين",
+                                buildingCondition: "آيل للسقوط وبحاجة لهدم وبناء",
+                                ownership: "ملك للأسرة",
+                                annualRent: "",
+                                rooms: 2,
+                                servicesConnected: "كهرباء فقط دون المياه",
+                                familyMembers: 5,
+                                monthlyIncome: 2100,
+                                requestedSupport: "بناء مسكن جديد",
+                                description: "الأرض ملك للأيتام والبيت طيني متهدم تماماً ونعيش بغرفة واحدة مجاورة.",
+                                dateSubmitted: "2026-06-22",
+                                status: "مقبول مبدئياً"
+                            }
+                        ];
+                        this.submissions = demoData;
+                        localStorage.setItem('bena_survey_submissions', JSON.stringify(demoData));
+                    }
+                },
+
+                // إطلاق التنبيهات
+                showToast(message, type = 'info') {
+                    this.toast.message = message;
+                    this.toast.type = type;
+                    this.toast.show = true;
+                    setTimeout(() => {
+                        this.toast.show = false;
+                    }, 4000);
+                },
+
+                // رفع المرفقات وحفظ أسمائها
+                uploadFile(event, fieldName) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        this.form[fieldName] = file.name;
+                        this.showToast(`تم إرفاق المستند: ${file.name} بنجاح!`, 'success');
+                    }
+                },
+
+                // التسمية الرسمية لنوع الدعم المختار
+                getRequestedSupportLabel(id) {
+                    const found = this.supportTypes.find(t => t.id === id);
+                    return found ? found.label : id;
+                },
+
+                // إرسال الاستبيان وحفظه فورياً في قاعدة البيانات وحصره بالكامل
+                submitSurvey() {
+                    // التحقق من إرفاق الملفات الأساسية
+                    if (!this.form.idPhoto || !this.form.familyCardPhoto || !this.form.incomeProofPhoto) {
+                        this.showToast("يرجى إرفاق المستندات الثبوتية الإلزامية لضمان قبول الطلب.", "error");
+                        return;
+                    }
+
+                    const newId = `REQ-${Date.now().toString().slice(-4)}`;
+                    const newSubmission = {
+                        id: newId,
+                        ...this.form,
+                        dateSubmitted: new Date().toISOString().split('T')[0],
+                        status: "قيد المراجعة"
+                    };
+
+                    this.submissions.unshift(newSubmission);
+                    localStorage.setItem('bena_survey_submissions', JSON.stringify(this.submissions));
+                    
+                    this.formSubmitted = true;
+                    this.showToast("تم إرسال وحفظ بيانات استبيان الأسرة بنجاح في نظام الحصر!", "success");
+                },
+
+                // تصفية وعرض الاستبيانات للموظف حسب البحث والفلترة
+                filteredSubmissions() {
+                    return this.submissions.filter(sub => {
+                        const matchesText = sub.fullName.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
+                                            sub.nationalId.includes(this.searchQuery) || 
+                                            sub.id.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        const matchesGov = this.selectedGov ? sub.governorate === this.selectedGov : true;
+                        const matchesSupport = this.selectedSupport ? sub.requestedSupport === this.selectedSupport : true;
+                        const matchesStatus = this.selectedStatus ? sub.status === this.selectedStatus : true;
+
+                        return matchesText && matchesGov && matchesSupport && matchesStatus;
+                    });
+                },
+
+                // تحديث حالة الطلب
+                updateStatus(id, newStatus) {
+                    this.submissions = this.submissions.map(sub => {
+                        if (sub.id === id) {
+                            sub.status = newStatus;
+                        }
+                        return sub;
+                    });
+                    localStorage.setItem('bena_survey_submissions', JSON.stringify(this.submissions));
+                    if (this.selectedSubmission && this.selectedSubmission.id === id) {
+                        this.selectedSubmission.status = newStatus;
+                    }
+                    this.showToast(`تم تعديل حالة الطلب ${id} إلى: ${newStatus}`, 'success');
+                },
+
+                // تسجيل الدخول كموظف
+                loginAdmin() {
+                    if (this.adminPassword === '2030') {
+                        this.adminLoggedIn = true;
+                        this.adminError = '';
+                        this.showToast("مرحباً بك في لوحة حصر الحالات السكنية بالجمعية.", "success");
+                    } else {
+                        this.adminError = "رمز المرور غير صحيح! يرجى إدخال (2030) للمعاينة.";
+                    }
+                },
+
+                // إعادة تعبئة استبيان جديد
+                resetSurveyForm() {
+                    this.form = {
+                        fullName: '',
+                        nationalId: '',
+                        dob: '',
+                        phone: '',
+                        governorate: 'جازان (المدينة)',
+                        neighborhood: '',
+                        maritalStatus: 'متزوج',
+                        targetGroup: 'مستفيد ضمان اجتماعي مطور',
+                        housingType: 'بيت شعبي',
+                        ownership: 'إيجار',
+                        annualRent: '',
+                        buildingCondition: 'به عيوب خدمية ويحتاج ترميم بسيط',
+                        rooms: '3',
+                        servicesConnected: 'نعم، موصل بالكهرباء والمياه',
+                        familyMembers: '4',
+                        monthlyIncome: '',
+                        requestedSupport: 'ترميم مسكن قائم',
+                        description: '',
+                        idPhoto: '',
+                        familyCardPhoto: '',
+                        incomeProofPhoto: '',
+                        housePhotos: ''
+                    };
+                    this.formSubmitted = false;
+                },
+
+                // تصدير جدول الحصر بالكامل كملف Excel (CSV)
+                exportToExcel() {
+                    let csvContent = "data:text/csv;charset=utf-8,\uFEFF"; // دعم اللغة العربية بترميز UTF-8 UTF-16 BOM
+                    
+                    // العناوين الرسمية
+                    csvContent += "رقم الطلب,الاسم الكامل,رقم السجل,المحافظة,القرية/الحي,الحالة الاجتماعية,الفئة المستفيدة,نوع السكن الحالي,طبيعة الملكية,حالة مبنى المسكن,عدد الغرف,الدخل الشهري بالريال,الخدمة المطلوبة,تاريخ التقديم,الحالة الدراسية\n";
+                    
+                    this.submissions.forEach(sub => {
+                        const row = [
+                            sub.id,
+                            sub.fullName,
+                            sub.nationalId,
+                            sub.governorate,
+                            sub.neighborhood,
+                            sub.maritalStatus,
+                            sub.targetGroup,
+                            sub.housingType,
+                            sub.ownership,
+                            sub.buildingCondition,
+                            sub.rooms,
+                            sub.monthlyIncome,
+                            this.getRequestedSupportLabel(sub.requestedSupport),
+                            sub.dateSubmitted,
+                            sub.status
+                        ].map(val => `"${val}"`).join(",");
+                        csvContent += row + "\n";
+                    });
+
+                    // تحميل الملف محاكاة وحفظاً رسمياً
+                    const encodedUri = encodeURI(csvContent);
+                    const link = document.createElement("a");
+                    link.setAttribute("href", encodedUri);
+                    link.setAttribute("download", "حصر_حالات_جمعية_بناء_وتنمية_مساكن.csv");
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    this.showToast("تم حصر وتصدير ملف البيانات بنجاح كجدول Excel!", "success");
+                }
+            };
+        }
+    </script>
+</body>
+</html>
