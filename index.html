@@ -1,59 +1,255 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#080b17">
-<title>خلّك رائد | تحدي المعرفة</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{--bg:#070914;--card:#11172c;--purple:#795cff;--cyan:#25d7ea;--gold:#ffd166;--green:#34d17e;--red:#ff5c75;--white:#f8f9ff;--muted:#aab2c9;--line:rgba(255,255,255,.09)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:'Tajawal',sans-serif;color:var(--white);background:radial-gradient(circle at 50% -15%,#25337a 0,#121735 25%,#090c1a 55%,#050710 100%);overflow-x:hidden}button,input,select{font-family:inherit}.hidden{display:none!important}.app{max-width:1450px;margin:auto;padding:18px;position:relative}.app:before,.app:after{content:"";position:fixed;width:360px;height:360px;border-radius:50%;filter:blur(110px);opacity:.15;pointer-events:none;z-index:-1}.app:before{background:var(--purple);right:-140px;top:15%}.app:after{background:var(--cyan);left:-150px;bottom:5%}.glass{background:linear-gradient(160deg,rgba(21,28,54,.94),rgba(10,14,29,.9));border:1px solid var(--line);box-shadow:0 20px 70px rgba(0,0,0,.32);backdrop-filter:blur(16px)}header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 18px}.brand{display:flex;align-items:center;gap:12px}.logo{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;font-size:29px;font-weight:900;background:linear-gradient(135deg,var(--purple),var(--cyan));box-shadow:0 13px 40px rgba(121,92,255,.34);position:relative;overflow:hidden}.logo:after{content:"";position:absolute;inset:-60% 30% auto -40%;height:120%;transform:rotate(35deg);background:rgba(255,255,255,.22)}.brand h1{margin:0;font-size:27px;font-weight:900}.brand small{color:var(--muted);font-weight:700}.header-actions{display:flex;gap:8px}.icon-btn{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.055);color:white;border:1px solid var(--line);cursor:pointer;font-size:18px;transition:.2s}.icon-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.1)}.screen{border-radius:30px;padding:28px}.hero{padding:48px 26px;text-align:center;overflow:hidden;position:relative}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(121,92,255,.08),transparent 80%);pointer-events:none}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border:1px solid rgba(121,92,255,.28);background:rgba(121,92,255,.11);border-radius:999px;color:#d1c9ff;font-size:13px;font-weight:900}.hero h2{font-size:clamp(42px,7vw,82px);line-height:1.03;margin:18px 0 12px;font-weight:900;letter-spacing:-3px}.gradient-text{background:linear-gradient(90deg,var(--gold),#ff9b64,var(--cyan));-webkit-background-clip:text;color:transparent}.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:18px;line-height:1.9}.features{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin:24px auto}.feature{padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.045);border:1px solid var(--line);color:#d7dcf0;font-weight:800;font-size:13px}.setup-grid{max-width:900px;margin:28px auto 18px;display:grid;grid-template-columns:1fr 1fr 180px;gap:12px}.field{text-align:right;background:rgba(255,255,255,.035);border:1px solid var(--line);padding:14px;border-radius:18px}.field label{display:block;font-size:12px;color:var(--muted);font-weight:900;margin:0 0 7px}.field input,.field select{width:100%;background:#0b1124;border:1px solid rgba(255,255,255,.1);border-radius:13px;color:white;padding:13px 14px;outline:none;font-weight:800}.field input:focus,.field select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(121,92,255,.12)}.btn{border:0;border-radius:16px;padding:14px 22px;color:white;font-size:15px;font-weight:900;cursor:pointer;transition:.2s;background:linear-gradient(135deg,var(--purple),#5538df);box-shadow:0 11px 30px rgba(121,92,255,.26)}.btn:hover{transform:translateY(-2px)}.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}.btn.big{font-size:17px;padding:16px 30px}.btn.secondary{background:#232b48;box-shadow:none}.btn.green{background:linear-gradient(135deg,#1cae69,var(--green));box-shadow:none}.btn.red{background:linear-gradient(135deg,#d23e57,var(--red));box-shadow:none}.btn.gold{background:linear-gradient(135deg,#d79e22,#ffca55);color:#14100a;box-shadow:none}.step-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px}.step-head h2{margin:0;font-size:24px}.step-head p{margin:5px 0 0;color:var(--muted);font-size:13px}.counter{padding:10px 15px;border-radius:999px;background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.2);color:var(--gold);font-weight:900}.category-picker{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.pick-card{min-height:135px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,#17203c,#0e1429);color:white;padding:18px;cursor:pointer;position:relative;text-align:right;transition:.22s}.pick-card:hover{transform:translateY(-3px);border-color:rgba(37,215,234,.4)}.pick-card.selected{outline:2px solid var(--cyan);background:linear-gradient(160deg,rgba(37,215,234,.15),rgba(121,92,255,.13));box-shadow:0 12px 32px rgba(37,215,234,.08)}.pick-icon{font-size:31px;margin-bottom:18px}.pick-name{font-size:17px;font-weight:900}.pick-card .check{position:absolute;left:12px;top:12px;width:25px;height:25px;border-radius:50%;display:grid;place-items:center;background:var(--cyan);color:#071016;font-weight:900;opacity:0;transform:scale(.7);transition:.2s}.pick-card.selected .check{opacity:1;transform:scale(1)}.picker-actions{display:flex;justify-content:center;gap:10px;margin-top:22px}.game-toolbar{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-bottom:14px}.team{border-radius:22px;padding:14px 17px;display:flex;align-items:center;justify-content:space-between;gap:12px;min-width:0;transition:.2s}.team.active{outline:2px solid var(--gold);box-shadow:0 0 32px rgba(255,209,102,.13)}.team-info{min-width:0}.team-name{font-size:17px;font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}.team-sub{color:var(--muted);font-size:11px;margin-top:3px}.score{font-size:34px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}.center-status{min-width:170px;display:grid;place-items:center;text-align:center;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--line);padding:10px}.turn-label{font-size:12px;color:var(--muted);font-weight:800}.turn-name{font-weight:900;margin-top:3px}.progress-row{display:flex;align-items:center;gap:12px;margin:0 0 14px}.progress{height:9px;flex:1;background:#161c33;border-radius:999px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--purple),var(--cyan));transition:.35s}.remaining{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.category{background:linear-gradient(180deg,#18213f,#0c1226);border:1px solid var(--line);border-radius:22px;padding:10px;overflow:hidden}.cat-title{height:80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-bottom:1px solid var(--line);gap:5px}.cat-title b{font-size:15px}.cat-title span{font-size:22px}.qbtn{width:100%;height:64px;margin-top:8px;border-radius:15px;border:1px solid var(--line);background:linear-gradient(145deg,#202c51,#131a31);color:var(--gold);font-size:21px;font-weight:900;cursor:pointer;transition:.18s;position:relative;overflow:hidden}.qbtn:hover{transform:scale(1.025);border-color:rgba(37,215,234,.42);box-shadow:0 8px 25px rgba(0,0,0,.2)}.qbtn.used{opacity:.14;filter:grayscale(1);cursor:not-allowed}.qbtn.used:hover{transform:none}.helps{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.help{border:1px solid var(--line);background:#11182e;color:#e9ecfa;border-radius:11px;padding:7px 9px;font-size:11px;font-weight:900;cursor:pointer}.help:hover{border-color:var(--cyan)}.help.used{opacity:.25;text-decoration:line-through;pointer-events:none}.board-footer{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:15px 0 3px}.mini-btn{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);border-radius:12px;padding:9px 12px;font-weight:800;cursor:pointer}.mini-btn:hover{color:white;background:rgba(255,255,255,.08)}.modal{position:fixed;inset:0;z-index:100;background:rgba(2,4,12,.84);display:grid;place-items:center;padding:15px;backdrop-filter:blur(9px)}.modal-card{width:min(880px,100%);border-radius:30px;padding:28px;text-align:center;animation:pop .2s ease}@keyframes pop{from{transform:scale(.96);opacity:.4}to{transform:scale(1);opacity:1}}.question-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.badge{padding:8px 13px;border-radius:999px;background:rgba(121,92,255,.13);color:#d3ccff;border:1px solid rgba(121,92,255,.22);font-size:12px;font-weight:900}.value-badge{color:var(--gold);font-size:16px;font-weight:900}.question{font-size:clamp(25px,4vw,43px);line-height:1.65;font-weight:900;margin:24px 0;min-height:125px;display:grid;place-items:center}.timer-ring{width:78px;height:78px;margin:5px auto 10px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cyan) 360deg,rgba(255,255,255,.08) 0);position:relative}.timer-ring:after{content:"";position:absolute;inset:7px;background:#0f162d;border-radius:50%}.timer-number{position:relative;z-index:2;font-size:22px;font-weight:900}.answer-box{padding:18px;border-radius:18px;background:rgba(52,209,126,.08);border:1px dashed rgba(52,209,126,.4);color:#d9ffeb;font-size:22px;font-weight:900;margin:16px 0}.modal-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.steal-box{margin:13px 0;padding:12px;border-radius:14px;background:rgba(255,209,102,.08);color:var(--gold);font-weight:900;border:1px solid rgba(255,209,102,.2)}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%) translateY(30px);opacity:0;z-index:150;background:#151d35;border:1px solid var(--line);padding:12px 18px;border-radius:15px;box-shadow:0 15px 40px rgba(0,0,0,.35);font-weight:900;transition:.25s;pointer-events:none;white-space:nowrap}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.winner{text-align:center;padding:55px 25px;position:relative;overflow:hidden}.winner .cup{font-size:92px;filter:drop-shadow(0 16px 28px rgba(255,209,102,.25))}.winner h2{font-size:clamp(34px,6vw,62px);margin:8px 0}.winner p{color:var(--muted);font-size:18px}.final-scores{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:24px 0}.final-card{min-width:220px;padding:18px;border-radius:20px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.final-card b{display:block;font-size:20px}.final-card strong{display:block;font-size:37px;color:var(--gold);margin-top:5px}.tie-box{max-width:700px;margin:18px auto;padding:20px;border-radius:20px;background:rgba(255,209,102,.07);border:1px solid rgba(255,209,102,.18)}.footer-note{text-align:center;color:#69728f;font-size:11px;margin-top:16px}@media(max-width:1120px){.category-picker{grid-template-columns:repeat(3,1fr)}.categories{grid-template-columns:repeat(3,1fr)}}@media(max-width:760px){.app{padding:10px}.screen{padding:17px;border-radius:24px}header{margin-bottom:11px}.logo{width:47px;height:47px;border-radius:15px}.brand h1{font-size:21px}.header-actions .icon-btn:first-child{display:none}.hero{padding:33px 15px}.hero h2{letter-spacing:-2px}.hero p{font-size:15px}.setup-grid{grid-template-columns:1fr}.category-picker{grid-template-columns:repeat(2,1fr);gap:8px}.pick-card{min-height:115px;padding:13px}.pick-icon{margin-bottom:12px}.game-toolbar{grid-template-columns:1fr 1fr}.center-status{grid-column:1/-1;grid-row:1;min-height:auto;padding:8px}.team{padding:11px}.score{font-size:27px}.team-name{font-size:14px;max-width:115px}.helps{gap:5px}.help{padding:6px;font-size:9px}.categories{grid-template-columns:repeat(2,1fr);gap:7px}.category{padding:7px;border-radius:16px}.cat-title{height:66px}.cat-title b{font-size:12px}.cat-title span{font-size:19px}.qbtn{height:51px;font-size:18px;margin-top:6px}.modal-card{padding:18px;border-radius:23px}.question{font-size:24px;min-height:110px;margin:17px 0}.question-top{align-items:flex-start}.answer-box{font-size:18px}.toast{max-width:90vw;white-space:normal;text-align:center}.step-head{align-items:flex-start}.counter{font-size:12px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060811">
+  <meta name="description" content="خلّك رائد - لعبة تحدي جماعية لفريقين، 6 فئات و36 سؤالاً">
+  <title>خلّك رائد | تحدي المعرفة</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app">
-<header><div class="brand"><div class="logo">ر</div><div><h1>خلّك رائد</h1><small>تحدي المعرفة والسرعة</small></div></div><div class="header-actions"><button class="icon-btn" onclick="toggleFullscreen()" title="ملء الشاشة">⛶</button><button id="soundBtn" class="icon-btn" onclick="toggleSound()" title="الصوت">🔊</button></div></header>
-<section id="home" class="screen glass hero"><div class="eyebrow">⚡ لعبة جماعية مباشرة</div><h2>التحدي يبدأ<br><span class="gradient-text">من اختيارك</span></h2><p>فريقان، ست فئات، 36 سؤالاً، وأدوات مساعدة قد تقلب النتيجة. جهّزوا الفرق واختبروا مين فيكم يستحق لقب الرائد.</p><div class="features"><div class="feature">🎯 36 سؤالاً</div><div class="feature">🏆 فريقان</div><div class="feature">🧠 10 فئات متاحة</div><div class="feature">⚡ أدوات مساعدة</div></div><div class="setup-grid"><div class="field"><label>اسم الفريق الأول</label><input id="team1Input" value="الصقور" maxlength="18" autocomplete="off"></div><div class="field"><label>اسم الفريق الثاني</label><input id="team2Input" value="الفرسان" maxlength="18" autocomplete="off"></div><div class="field"><label>وقت السؤال</label><select id="timeSelect"><option value="15">15 ثانية</option><option value="20" selected>20 ثانية</option><option value="30">30 ثانية</option><option value="45">45 ثانية</option></select></div></div><button class="btn big" onclick="goToCategories()">اختيار الفئات ←</button></section>
-<section id="picker" class="screen glass hidden"><div class="step-head"><div><h2>اختاروا 6 فئات</h2><p>اختاروا الفئات اللي تناسب جلستكم، وبعدها تبدأ لوحة التحدي.</p></div><div id="pickCounter" class="counter">0 / 6</div></div><div id="categoryPicker" class="category-picker"></div><div class="picker-actions"><button class="btn secondary" onclick="backHome()">رجوع</button><button id="startBtn" class="btn" disabled onclick="startGame()">ابدأ اللعبة 🔥</button></div></section>
-<section id="game" class="hidden"><div class="game-toolbar"><div id="team1Card" class="team glass active"><div class="team-info"><div id="team1Name" class="team-name"></div><div class="team-sub">الفريق الأول</div><div id="helps1" class="helps"></div></div><div id="score1" class="score">0</div></div><div class="center-status"><div><div class="turn-label">الدور الآن</div><div id="turnName" class="turn-name"></div></div></div><div id="team2Card" class="team glass"><div class="team-info"><div id="team2Name" class="team-name"></div><div class="team-sub">الفريق الثاني</div><div id="helps2" class="helps"></div></div><div id="score2" class="score">0</div></div></div><div class="progress-row"><div class="progress"><span id="progressBar"></span></div><div id="remainingText" class="remaining"></div></div><div id="categories" class="categories"></div><div class="board-footer"><button class="mini-btn" onclick="manualSwitch()">⇄ تبديل الدور</button><button class="mini-btn" onclick="confirmRestart()">↻ إعادة اللعبة</button></div><div class="footer-note">خلّك رائد — لعبة مسابقات بهوية مستقلة</div></section>
-<section id="winner" class="screen glass winner hidden"><div class="cup">🏆</div><h2 id="winnerTitle"></h2><p id="winnerText"></p><div id="finalScores" class="final-scores"></div><div id="tieArea"></div><button class="btn big" onclick="location.reload()">لعبة جديدة</button></section>
-</div>
-<div id="questionModal" class="modal hidden"><div class="modal-card glass"><div class="question-top"><div id="qCategory" class="badge"></div><div id="qValue" class="value-badge"></div></div><div id="qText" class="question"></div><div id="timerRing" class="timer-ring"><span id="timerNumber" class="timer-number">20</span></div><div id="stealBox" class="steal-box hidden"></div><div id="answerBox" class="answer-box hidden"></div><div id="revealActions" class="modal-actions"><button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button></div><div id="judgeActions" class="modal-actions hidden"><button class="btn green" onclick="judge(true)">✓ صحيحة</button><button class="btn red" onclick="judge(false)">✕ خاطئة</button></div></div></div><div id="toast" class="toast"></div>
-<script>
-const bank=[
-{name:'السعودية',icon:'🇸🇦',qs:[{v:200,q:'ما عاصمة المملكة العربية السعودية؟',a:'الرياض'},{v:200,q:'ما البحر الذي يحد المملكة من الغرب؟',a:'البحر الأحمر'},{v:400,q:'كم عدد المناطق الإدارية في المملكة؟',a:'13 منطقة'},{v:400,q:'في أي مدينة يقع برج الساعة؟',a:'مكة المكرمة'},{v:600,q:'ما أكبر صحراء رملية متصلة في المملكة؟',a:'الربع الخالي'},{v:600,q:'ما السلسلة الجبلية التي تمتد في غرب المملكة وتشمل جبال عسير؟',a:'جبال السروات'}]},
-{name:'جازان',icon:'🌴',qs:[{v:200,q:'في أي جهة من المملكة تقع منطقة جازان؟',a:'جنوب غرب المملكة'},{v:200,q:'ما البحر الذي تطل عليه جازان؟',a:'البحر الأحمر'},{v:400,q:'ما اسم الأرخبيل الشهير التابع لمنطقة جازان؟',a:'جزر فرسان'},{v:400,q:'ما الجبال الشهيرة في جازان بمدرجاتها الزراعية وطبيعتها الخضراء؟',a:'جبال فيفا'},{v:600,q:'ما اسم السهل الساحلي الذي تمتد فيه أجزاء كبيرة من منطقة جازان؟',a:'سهل تهامة'},{v:600,q:'ما المحمية البحرية والجزرية الأشهر في جازان؟',a:'محمية جزر فرسان'}]},
-{name:'كرة القدم',icon:'⚽',qs:[{v:200,q:'كم لاعباً يبدأ المباراة مع كل فريق داخل الملعب؟',a:'11 لاعباً'},{v:200,q:'ما لون بطاقة الطرد؟',a:'الحمراء'},{v:400,q:'كم دقيقة مدة المباراة الأصلية؟',a:'90 دقيقة'},{v:400,q:'ما اسم البطولة الأوروبية الأشهر للأندية؟',a:'دوري أبطال أوروبا'},{v:600,q:'أي منتخب فاز بكأس العالم 2022؟',a:'الأرجنتين'},{v:600,q:'كم يبعد موضع ركلة الجزاء عن خط المرمى؟',a:'11 متراً'}]},
-{name:'جغرافيا',icon:'🌍',qs:[{v:200,q:'ما أكبر قارة في العالم؟',a:'آسيا'},{v:200,q:'ما عاصمة اليابان؟',a:'طوكيو'},{v:400,q:'ما النهر الذي يمر في مصر والسودان؟',a:'نهر النيل'},{v:400,q:'ما الدولة المعروفة بأرض الألف بحيرة؟',a:'فنلندا'},{v:600,q:'ما أعمق محيط في العالم؟',a:'المحيط الهادئ'},{v:600,q:'ما المضيق الذي يفصل آسيا عن أمريكا الشمالية؟',a:'مضيق بيرينغ'}]},
-{name:'تقنية',icon:'💻',qs:[{v:200,q:'ما الشركة التي تطور نظام أندرويد؟',a:'Google'},{v:200,q:'ما الاختصار الشائع لوحدة المعالجة المركزية؟',a:'CPU'},{v:400,q:'ما البروتوكول الآمن المستخدم غالباً لتصفح المواقع؟',a:'HTTPS'},{v:400,q:'ما نظام إدارة الإصدارات الشهير المستخدم مع GitHub؟',a:'Git'},{v:600,q:'ما المقصود بالمصادقة متعددة العوامل؟',a:'استخدام أكثر من عامل للتحقق من الهوية'},{v:600,q:'ما نوع قاعدة البيانات التي تستخدم جداول وصفوفاً وعلاقات غالباً؟',a:'قاعدة بيانات علائقية / Relational Database'}]},
-{name:'ألغاز',icon:'🧩',qs:[{v:200,q:'شيء له أسنان ولا يعض، ما هو؟',a:'المشط'},{v:200,q:'ما الشيء الذي كلما أخذت منه كبر؟',a:'الحفرة'},{v:400,q:'له وجه ويدان لكن بلا عينين ولا أصابع، ما هو؟',a:'الساعة'},{v:400,q:'يمشي بلا أرجل ويبكي بلا عيون، ما هو؟',a:'السحاب'},{v:600,q:'أخت خالك وليست خالتك، من تكون؟',a:'أمك'},{v:600,q:'ما الشيء الذي إذا نطقت اسمه كسرته؟',a:'الصمت'}]},
-{name:'علوم',icon:'🔬',qs:[{v:200,q:'ما الكوكب المعروف بالكوكب الأحمر؟',a:'المريخ'},{v:200,q:'ما الغاز الذي يحتاجه الإنسان للتنفس؟',a:'الأكسجين'},{v:400,q:'ما العنصر الذي رمزه الكيميائي Au؟',a:'الذهب'},{v:400,q:'كم عدد كواكب المجموعة الشمسية؟',a:'8 كواكب'},{v:600,q:'ما أكبر عضو في جسم الإنسان؟',a:'الجلد'},{v:600,q:'ما اسم العملية التي تصنع فيها النباتات غذاءها باستخدام الضوء؟',a:'البناء الضوئي'}]},
-{name:'تاريخ',icon:'🏺',qs:[{v:200,q:'في أي قارة قامت الحضارة المصرية القديمة؟',a:'أفريقيا'},{v:200,q:'ما اسم الكتابة القديمة الشهيرة في مصر؟',a:'الهيروغليفية'},{v:400,q:'أي حضارة بنت مدينة ماتشو بيتشو؟',a:'الإنكا'},{v:400,q:'ما المدينة الإيطالية التي دفنها ثوران فيزوف سنة 79م؟',a:'بومبي'},{v:600,q:'ما الحضارة التي اشتهرت بحدائق بابل المعلقة؟',a:'الحضارة البابلية'},{v:600,q:'ما الإمبراطورية التي كانت القسطنطينية عاصمتها قبل فتحها العثماني؟',a:'الإمبراطورية البيزنطية'}]},
-{name:'رياضة',icon:'🏅',qs:[{v:200,q:'كم حلقة في شعار الألعاب الأولمبية؟',a:'5 حلقات'},{v:200,q:'كم لاعباً يوجد في فريق كرة السلة داخل الملعب؟',a:'5 لاعبين'},{v:400,q:'في أي رياضة يستخدم مصطلح Ace بكثرة عند الإرسال؟',a:'التنس'},{v:400,q:'كم شوطاً كحد أقصى في مباراة كرة الطائرة الدولية للصالات؟',a:'5 أشواط'},{v:600,q:'ما المسافة الرسمية لسباق الماراثون تقريباً؟',a:'42.195 كيلومتر'},{v:600,q:'في أي رياضة توجد أنماط الحرة والصدر والظهر والفراشة؟',a:'السباحة'}]},
-{name:'منوعات',icon:'🎯',qs:[{v:200,q:'كم يوماً في الأسبوع؟',a:'7 أيام'},{v:200,q:'ما الحيوان الملقب بسفينة الصحراء؟',a:'الجمل'},{v:400,q:'ما الآلة الموسيقية التي تحتوي عادة على مفاتيح بيضاء وسوداء؟',a:'البيانو'},{v:400,q:'ما اللون الناتج من مزج الأزرق مع الأصفر؟',a:'الأخضر'},{v:600,q:'ما أكبر حيوان يعيش على الأرض حالياً؟',a:'الحوت الأزرق'},{v:600,q:'ما اللغة ذات أكبر عدد من المتحدثين الأصليين تقريباً؟',a:'الصينية المندرينية'}]}
-];
-const tieQuestions=[{q:'ما الكوكب الأقرب إلى الشمس؟',a:'عطارد'},{q:'كم ضلعاً للشكل السداسي؟',a:'6 أضلاع'},{q:'ما عاصمة أستراليا؟',a:'كانبرا'},{q:'ما أسرع حيوان بري؟',a:'الفهد'}];
-let setup={t1:'الصقور',t2:'الفرسان',seconds:20},selected=[],teams=[],turn=0,current=null,usedCount=0,totalQuestions=36,timeLeft=20,timerBase=20,timer=null,soundOn=true,doubleActive=false,extraActive=false,stealActive=false,stealStage=false,originalTurn=0;
-const $=id=>document.getElementById(id),show=id=>$(id).classList.remove('hidden'),hide=id=>$(id).classList.add('hidden');
-function esc(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function goToCategories(){setup.t1=$('team1Input').value.trim()||'الفريق الأول';setup.t2=$('team2Input').value.trim()||'الفريق الثاني';setup.seconds=Number($('timeSelect').value)||20;hide('home');show('picker');renderPicker();beep(420,.06)}function backHome(){hide('picker');show('home')}
-function renderPicker(){$('categoryPicker').innerHTML='';bank.forEach((c,i)=>{const el=document.createElement('button');el.className='pick-card'+(selected.includes(i)?' selected':'');el.innerHTML=`<span class="check">✓</span><div class="pick-icon">${c.icon}</div><div class="pick-name">${c.name}</div>`;el.onclick=()=>toggleCategory(i);$('categoryPicker').appendChild(el)});$('pickCounter').textContent=`${selected.length} / 6`;$('startBtn').disabled=selected.length!==6}function toggleCategory(i){if(selected.includes(i))selected=selected.filter(x=>x!==i);else if(selected.length<6)selected.push(i);else toast('اختاروا 6 فئات فقط');renderPicker();beep(520,.04)}
-function startGame(){if(selected.length!==6)return;teams=[{name:setup.t1,score:0,helps:{double:false,extra:false,steal:false}},{name:setup.t2,score:0,helps:{double:false,extra:false,steal:false}}];selected.forEach(i=>bank[i].qs.forEach(q=>q.used=false));usedCount=0;turn=0;hide('picker');show('game');renderGame();beep(650,.08);setTimeout(()=>beep(820,.08),90)}
-function renderGame(){$('team1Name').textContent=teams[0].name;$('team2Name').textContent=teams[1].name;$('score1').textContent=teams[0].score;$('score2').textContent=teams[1].score;$('team1Card').classList.toggle('active',turn===0);$('team2Card').classList.toggle('active',turn===1);$('turnName').textContent=teams[turn].name;$('progressBar').style.width=(usedCount/totalQuestions*100)+'%';$('remainingText').textContent=`متبقي ${totalQuestions-usedCount} سؤال`;renderHelps();renderBoard()}
-function renderHelps(){[0,1].forEach(i=>{$('helps'+(i+1)).innerHTML=`<button class="help ${teams[i].helps.double?'used':''}" onclick="useHelp(${i},'double')">×2 نقاط</button><button class="help ${teams[i].helps.extra?'used':''}" onclick="useHelp(${i},'extra')">+15 ثانية</button><button class="help ${teams[i].helps.steal?'used':''}" onclick="useHelp(${i},'steal')">سرقة</button>`})}
-function renderBoard(){const wrap=$('categories');wrap.innerHTML='';selected.forEach(ci=>{const c=bank[ci],card=document.createElement('div');card.className='category';card.innerHTML=`<div class="cat-title"><span>${c.icon}</span><b>${c.name}</b></div>`;c.qs.forEach((q,qi)=>{const b=document.createElement('button');b.className='qbtn'+(q.used?' used':'');b.disabled=!!q.used;b.textContent=q.used?'—':q.v;b.onclick=()=>openQuestion(ci,qi);card.appendChild(b)});wrap.appendChild(card)})}
-function openQuestion(ci,qi){current={ci,qi,...bank[ci].qs[qi]};originalTurn=turn;stealStage=false;$('qCategory').textContent=bank[ci].icon+' '+bank[ci].name;$('qValue').textContent=current.v+' نقطة';$('qText').textContent=current.q;hide('answerBox');hide('judgeActions');hide('stealBox');show('revealActions');show('questionModal');const seconds=setup.seconds+(extraActive?15:0);if(extraActive){toast('⏱️ تم تفعيل الوقت الإضافي');extraActive=false}startTimer(seconds);beep(480,.06)}
-function startTimer(seconds){clearInterval(timer);timeLeft=seconds;timerBase=seconds;updateTimer();timer=setInterval(()=>{timeLeft--;updateTimer();if(timeLeft<=5&&timeLeft>0)beep(300,.035);if(timeLeft<=0){clearInterval(timer);showAnswer()}},1000)}function updateTimer(){$('timerNumber').textContent=timeLeft;const deg=Math.max(0,timeLeft/timerBase)*360;$('timerRing').style.background=`conic-gradient(${timeLeft<=5?'var(--red)':'var(--cyan)'} ${deg}deg,rgba(255,255,255,.08) 0)`}
-function showAnswer(){clearInterval(timer);$('answerBox').textContent='الإجابة: '+current.a;show('answerBox');hide('revealActions');show('judgeActions');beep(560,.05)}
-function judge(correct){if(stealStage){if(correct){teams[turn].score+=current.v;beepSuccess();toast('سرقة ناجحة! +'+current.v+' نقطة')}else{beepWrong();toast('لم تنجح السرقة')}finishQuestion();return}const points=current.v*(doubleActive?2:1);if(correct){teams[turn].score+=points;beepSuccess();toast(`إجابة صحيحة +${points} نقطة`);finishQuestion()}else{beepWrong();if(stealActive){stealActive=false;stealStage=true;doubleActive=false;turn=1-turn;$('stealBox').textContent='⚡ فرصة سرقة لفريق '+teams[turn].name+' — أمامكم 10 ثوانٍ';show('stealBox');hide('answerBox');hide('judgeActions');$('revealActions').innerHTML='<button class="btn gold" onclick="showAnswer()">إظهار الإجابة بعد محاولة السرقة</button>';show('revealActions');startTimer(10);toast('فرصة سرقة لفريق '+teams[turn].name)}else{toast('إجابة خاطئة');finishQuestion()}}}
-function finishQuestion(){clearInterval(timer);bank[current.ci].qs[current.qi].used=true;usedCount++;doubleActive=false;extraActive=false;stealActive=false;stealStage=false;hide('questionModal');$('revealActions').innerHTML='<button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button>';turn=1-originalTurn;if(usedCount>=totalQuestions)finishGame();else renderGame()}
-function useHelp(teamIndex,type){if(teamIndex!==turn){toast('الأداة تستخدم فقط في دور فريقك');return}if(teams[teamIndex].helps[type])return;teams[teamIndex].helps[type]=true;if(type==='double'){doubleActive=true;toast('🔥 السؤال القادم بنقاط مضاعفة')}if(type==='extra'){extraActive=true;toast('⏱️ السؤال القادم معه 15 ثانية إضافية')}if(type==='steal'){stealActive=true;toast('⚡ عند الخطأ يحصل الفريق الآخر على فرصة سرقة')}renderHelps();beep(700,.05)}
-function manualSwitch(){doubleActive=false;extraActive=false;stealActive=false;turn=1-turn;renderGame();toast('تم تبديل الدور')}
-function finishGame(){hide('game');show('winner');$('finalScores').innerHTML=teams.map(t=>`<div class="final-card"><b>${esc(t.name)}</b><strong>${t.score}</strong><span>نقطة</span></div>`).join('');if(teams[0].score===teams[1].score){$('winnerTitle').textContent='تعادل ناري!';$('winnerText').textContent='النتيجة متساوية… نحتاج سؤالاً فاصلاً.';const tq=tieQuestions[Math.floor(Math.random()*tieQuestions.length)];$('tieArea').innerHTML=`<div class="tie-box"><b>⚡ سؤال كسر التعادل</b><p style="font-size:20px;color:white">${tq.q}</p><details><summary style="cursor:pointer;color:var(--gold);font-weight:900">إظهار الإجابة</summary><p>${tq.a}</p></details></div>`}else{const w=teams[0].score>teams[1].score?teams[0]:teams[1];$('winnerTitle').textContent='الرائد: '+w.name;$('winnerText').textContent=`حقق ${w.score} نقطة واستحق الفوز 👑`;$('tieArea').innerHTML='';beepSuccess();setTimeout(beepSuccess,220)}}
-function confirmRestart(){if(confirm('متأكد تبغى تعيد اللعبة من البداية؟'))location.reload()}function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove('show'),2200)}function toggleSound(){soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇';toast(soundOn?'تم تشغيل الصوت':'تم كتم الصوت')}function toggleFullscreen(){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}
-function beep(freq=500,d=.06){if(!soundOn)return;try{const A=window.AudioContext||window.webkitAudioContext,ctx=new A(),o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=freq;o.type='sine';g.gain.setValueAtTime(.07,ctx.currentTime);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+d);o.connect(g);g.connect(ctx.destination);o.start();o.stop(ctx.currentTime+d)}catch(e){}}function beepSuccess(){beep(660,.07);setTimeout(()=>beep(880,.09),80)}function beepWrong(){beep(190,.12)}
-</script>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">ر</div>
+        <div>
+          <h1>خلّك رائد</h1>
+          <small>تحدي المعرفة والسرعة</small>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button id="fullscreenBtn" class="icon-btn" title="ملء الشاشة">⛶</button>
+        <button id="soundBtn" class="icon-btn" title="الصوت">🔊</button>
+        <button id="settingsBtn" class="icon-btn" title="الإعدادات">⚙️</button>
+      </div>
+    </header>
+
+    <section id="homeScreen" class="panel glass hero">
+      <div class="hero-inner">
+        <div class="eyebrow">🔥 إصدار اللعب الجماعي</div>
+        <h2>مين فيكم <span class="gradient-text">الرائد؟</span></h2>
+        <p class="hero-copy">فريقان، ست فئات، ستة وثلاثون سؤالاً. كل فريق يختار فئاته بنفسه، وكل قرار ممكن يقلب النتيجة في آخر سؤال.</p>
+        <div class="feature-row">
+          <span class="feature">🎯 6 فئات</span>
+          <span class="feature">🧠 36 سؤال</span>
+          <span class="feature">⚡ وسائل مساعدة</span>
+          <span class="feature">⏱️ مؤقت مباشر</span>
+          <span class="feature">💾 حفظ واستكمال</span>
+        </div>
+
+        <div class="setup-grid">
+          <div class="field">
+            <label for="team1Input">اسم الفريق الأول</label>
+            <input id="team1Input" maxlength="22" value="الصقور" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="team2Input">اسم الفريق الثاني</label>
+            <input id="team2Input" maxlength="22" value="الفرسان" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="timerSelect">وقت السؤال</label>
+            <select id="timerSelect">
+              <option value="15">15 ثانية</option>
+              <option value="20" selected>20 ثانية</option>
+              <option value="30">30 ثانية</option>
+              <option value="45">45 ثانية</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="aids-setup">
+          <div class="aid-team">
+            <div class="aid-team-title"><b>وسائل الفريق الأول</b><span id="aidCount1">3/3</span></div>
+            <div class="aid-options">
+              <button class="aid-option selected" data-team="0" data-aid="double">⚡ ×2 نقاط</button>
+              <button class="aid-option selected" data-team="0" data-aid="pit">🕳️ الحفرة</button>
+              <button class="aid-option selected" data-team="0" data-aid="time">⏱️ +15 ثانية</button>
+              <button class="aid-option" data-team="0" data-aid="two">✌️ جوابين</button>
+              <button class="aid-option" data-team="0" data-aid="rest">🛋️ استريح</button>
+            </div>
+          </div>
+          <div class="aid-team">
+            <div class="aid-team-title"><b>وسائل الفريق الثاني</b><span id="aidCount2">3/3</span></div>
+            <div class="aid-options">
+              <button class="aid-option selected" data-team="1" data-aid="double">⚡ ×2 نقاط</button>
+              <button class="aid-option selected" data-team="1" data-aid="pit">🕳️ الحفرة</button>
+              <button class="aid-option selected" data-team="1" data-aid="time">⏱️ +15 ثانية</button>
+              <button class="aid-option" data-team="1" data-aid="two">✌️ جوابين</button>
+              <button class="aid-option" data-team="1" data-aid="rest">🛋️ استريح</button>
+            </div>
+          </div>
+        </div>
+
+        <button id="startBtn" class="btn big">اختيار الفئات ←</button>
+
+        <div id="resumeCard" class="resume-card hidden">
+          <p id="resumeText">لديك لعبة محفوظة.</p>
+          <div style="display:flex;gap:7px;flex-wrap:wrap">
+            <button id="resumeBtn" class="btn small gold">استكمال اللعبة</button>
+            <button id="discardSaveBtn" class="btn small ghost">حذف الحفظ</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="categoryScreen" class="panel glass hidden">
+      <div class="step-head">
+        <div class="step-title">
+          <h2>اختيار الفئات</h2>
+          <p>كل فريق يختار 3 فئات بالتناوب. اختاروا نقاط قوتكم بعناية.</p>
+        </div>
+        <div>
+          <div id="pickStatus" class="pick-status">الدور على الفريق الأول</div>
+          <div id="pickCounter" style="text-align:center;color:var(--muted);font-size:11px;font-weight:800;margin-top:6px">0/6 فئات</div>
+        </div>
+      </div>
+
+      <div class="picker-toolbar">
+        <input id="categorySearch" class="search-input" placeholder="ابحث عن فئة...">
+        <button id="randomCatsBtn" class="btn secondary small">🎲 اختيار عشوائي</button>
+        <button id="clearCatsBtn" class="btn ghost small">إعادة الاختيار</button>
+      </div>
+
+      <div id="categoryPicker" class="category-picker"></div>
+
+      <div class="picker-footer">
+        <button class="btn ghost" onclick="location.reload()">رجوع</button>
+        <button id="startMatchBtn" class="btn big" disabled>ابدأ المباراة 🔥</button>
+      </div>
+    </section>
+
+    <section id="gameScreen" class="hidden">
+      <div class="game-top">
+        <div id="team1Card" class="team-card glass active">
+          <div class="team-meta">
+            <div id="team1Name" class="team-name">الصقور</div>
+            <div class="team-sub">وسائل المساعدة</div>
+            <div id="aids1" class="aids-bar"></div>
+          </div>
+          <div class="score-wrap">
+            <div id="score1" class="score">0</div>
+            <div class="score-actions">
+              <button onclick="adjustScore(0,200)">+200</button>
+              <button onclick="adjustScore(0,-200)">-200</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="center-status">
+          <div>
+            <div class="turn-label">الدور الآن</div>
+            <div id="turnName" class="turn-name">الصقور</div>
+          </div>
+        </div>
+
+        <div id="team2Card" class="team-card glass">
+          <div class="team-meta">
+            <div id="team2Name" class="team-name">الفرسان</div>
+            <div class="team-sub">وسائل المساعدة</div>
+            <div id="aids2" class="aids-bar"></div>
+          </div>
+          <div class="score-wrap">
+            <div id="score2" class="score">0</div>
+            <div class="score-actions">
+              <button onclick="adjustScore(1,200)">+200</button>
+              <button onclick="adjustScore(1,-200)">-200</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-row">
+        <div class="progress"><span id="progressBar"></span></div>
+        <div id="remainingText" class="remaining">36 سؤال متبقي</div>
+      </div>
+
+      <div id="categoriesBoard" class="categories"></div>
+
+      <div class="board-actions">
+        <button id="switchTurnBtn" class="mini-btn">⇄ تبديل الدور</button>
+        <button id="finishNowBtn" class="mini-btn">🏁 إنهاء المباراة</button>
+      </div>
+      <div class="footer-note">خلّك رائد — لعبة جماعية بهوية مستقلة</div>
+    </section>
+
+    <section id="winnerScreen" class="panel glass winner hidden">
+      <div id="winnerIcon" class="winner-icon">🏆</div>
+      <h2 id="winnerTitle">الفائز</h2>
+      <p id="winnerText">مباراة قوية!</p>
+      <div class="final-scores">
+        <div class="final-card"><b id="finalName1">الفريق الأول</b><strong id="finalScore1">0</strong></div>
+        <div class="final-card"><b id="finalName2">الفريق الثاني</b><strong id="finalScore2">0</strong></div>
+      </div>
+      <div style="display:flex;justify-content:center;gap:9px;flex-wrap:wrap">
+        <button id="tieBreakBtn" class="btn gold hidden">⚔️ سؤال حاسم</button>
+        <button id="newGameBtn" class="btn">لعبة جديدة</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="questionModal" class="modal hidden">
+    <div class="modal-card glass">
+      <div class="question-top">
+        <span id="qCategory" class="badge">الفئة</span>
+        <span id="qValue" class="value-badge">200 نقطة</span>
+      </div>
+      <div id="qText" class="question-text">السؤال</div>
+      <div class="timer-wrap">
+        <div id="timerRing" class="timer-ring"><span id="timerNum" class="timer-num">20</span></div>
+        <button id="pauseTimerBtn" class="pause-btn">⏸ إيقاف</button>
+      </div>
+      <div id="activeAids" class="active-aids"></div>
+      <div id="answerBox" class="answer-box hidden">الإجابة</div>
+
+      <div id="primaryActions" class="modal-actions">
+        <button id="correctBtn" class="btn green">✓ صحيحة</button>
+        <button id="wrongBtn" class="btn red">✕ خاطئة</button>
+        <button id="showAnswerBtn" class="btn secondary">👁 إظهار الإجابة</button>
+      </div>
+
+      <div id="stealPanel" class="steal-panel hidden">
+        <b>🔥 فرصة سرقة</b>
+        <p>الفريق الآخر <span id="stealTeamName"></span> لديه 10 ثوانٍ للإجابة.</p>
+      </div>
+      <div id="stealActions" class="modal-actions hidden">
+        <button id="stealCorrectBtn" class="btn green">✓ سرقة صحيحة</button>
+        <button id="stealWrongBtn" class="btn red">✕ سرقة خاطئة</button>
+        <button class="btn secondary" onclick="showAnswer()">👁 إظهار الإجابة</button>
+      </div>
+      <div class="modal-actions">
+        <button id="endAfterRevealBtn" class="btn secondary hidden">إنهاء السؤال</button>
+      </div>
+
+      <div id="tieActions" class="modal-actions hidden">
+        <button id="tieTeam1Btn" class="btn green">الفريق الأول أجاب صح</button>
+        <button id="tieTeam2Btn" class="btn green">الفريق الثاني أجاب صح</button>
+        <button class="btn secondary" onclick="showAnswer()">👁 إظهار الإجابة</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="settingsModal" class="modal hidden">
+    <div class="modal-card glass settings-card">
+      <div class="question-top">
+        <h3>إعدادات اللعبة</h3>
+        <button id="closeSettingsBtn" class="icon-btn">✕</button>
+      </div>
+      <div class="settings-row">
+        <div><b>فرصة السرقة بعد الإجابة الخاطئة</b><div id="stealSettingText" style="color:var(--muted);font-size:11px;margin-top:3px">مفعّلة</div></div>
+        <button id="toggleSteal" class="toggle on"><span></span></button>
+      </div>
+      <div class="settings-row">
+        <div><b>المؤثرات الصوتية</b><div id="soundSettingText" style="color:var(--muted);font-size:11px;margin-top:3px">مفعّل</div></div>
+        <button class="btn ghost small" onclick="toggleSound();syncSettings()">تبديل الصوت</button>
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:18px">
+        <button id="settingsResetBtn" class="btn red small">حذف التقدم وبدء لعبة جديدة</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
 </body>
 </html>
