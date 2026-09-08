@@ -1,0 +1,78 @@
+/* خلّك رائد — Brand & Experience V11 */
+:root{
+  --v11-gold:#ffc64a;
+  --v11-gold2:#ff9c1d;
+  --v11-violet:#9d48ff;
+  --v11-blue:#23b7ff;
+  --v11-deep:#030915;
+  --v11-card:#07162d;
+  --v11-line:rgba(118,167,255,.22);
+}
+
+.official-logo-wrap{
+  width:58px!important;height:58px!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;overflow:visible!important;
+}
+.official-logo{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 8px 18px rgba(104,35,255,.28));}
+.mini-logo-wrap{width:42px!important;height:42px!important;padding:0!important;border:0!important;background:transparent!important;overflow:visible!important}
+.mini-logo{width:100%;height:100%;object-fit:contain;display:block}
+.v11-winner-logo{width:62px;height:62px;object-fit:contain;filter:drop-shadow(0 8px 22px rgba(255,184,50,.3));margin-bottom:-6px}
+
+.brand-visual{display:grid!important;place-items:center;position:relative;min-height:270px;overflow:visible!important}
+.hero-logo-shell{
+  width:min(320px,90%);aspect-ratio:1.15;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;position:relative;z-index:3;
+  border-radius:34px;background:linear-gradient(180deg,rgba(10,24,58,.72),rgba(5,12,30,.34));border:1px solid rgba(140,109,255,.18);box-shadow:0 30px 70px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.05);backdrop-filter:blur(12px)
+}
+.hero-logo{width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 18px 38px rgba(105,49,255,.32));animation:v11LogoFloat 4.6s ease-in-out infinite}
+.hero-logo-copy{display:flex;flex-direction:column;align-items:center;gap:2px}
+.hero-logo-copy b{font-size:22px;color:#fff}.hero-logo-copy span{font-size:11px;color:#aebfd8}
+.brand-orbit{position:absolute;border-radius:50%;border:1px solid rgba(107,192,255,.14);pointer-events:none}
+.orbit-a{width:300px;height:300px;box-shadow:inset 0 0 60px rgba(93,55,255,.05)}
+.orbit-b{width:220px;height:220px;border-style:dashed;border-color:rgba(255,197,70,.2);animation:v11Spin 20s linear infinite}
+.brand-spark{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff;box-shadow:0 0 14px #8c64ff,0 0 30px #397eff}
+.brand-spark.s1{top:18%;left:22%}.brand-spark.s2{right:17%;bottom:23%;width:5px;height:5px}.brand-spark.s3{top:36%;right:8%;width:4px;height:4px;background:#ffc74b;box-shadow:0 0 14px #ffbd3d}
+
+.v11-home-tools{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin:18px 0 0}
+.daily-card,.brand-stats-card{
+  position:relative;overflow:hidden;border-radius:22px;border:1px solid var(--v11-line);background:linear-gradient(145deg,rgba(10,30,67,.94),rgba(4,14,34,.96));box-shadow:0 18px 50px rgba(0,0,0,.24);min-height:150px
+}
+.daily-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px;padding:22px 24px;border-color:rgba(255,188,53,.28);background:radial-gradient(circle at 15% 25%,rgba(255,182,44,.16),transparent 34%),linear-gradient(145deg,rgba(20,31,62,.96),rgba(7,16,36,.98))}
+.daily-card:after{content:"";position:absolute;inset:auto -80px -100px auto;width:240px;height:240px;border:1px solid rgba(255,199,76,.12);border-radius:50%}
+.daily-badge{position:absolute;top:10px;left:12px;font-size:8px;color:#ffe3a2;border:1px solid rgba(255,199,76,.25);background:rgba(255,190,51,.08);padding:4px 8px;border-radius:999px}
+.daily-icon{width:68px;height:68px;border-radius:18px;display:grid;place-items:center;font-size:34px;background:linear-gradient(180deg,rgba(255,193,58,.17),rgba(255,143,0,.06));border:1px solid rgba(255,196,73,.24);box-shadow:inset 0 1px rgba(255,255,255,.06)}
+.daily-copy{min-width:0}.daily-copy>span{font-size:10px;color:#ffc966;font-weight:800}.daily-copy h3{margin:2px 0 5px;font-size:22px;color:#fff}.daily-copy p{margin:0;color:#b9c9df;font-size:11px;line-height:1.75}.daily-copy p strong{color:#ffcf69}.daily-copy p b{color:#fff}
+.daily-start{position:relative;z-index:2;align-self:end;border:0;border-radius:14px;padding:13px 17px;background:linear-gradient(180deg,#ffd86a,#f5a31f);color:#15100a;font-weight:900;cursor:pointer;box-shadow:0 8px 22px rgba(241,158,28,.18);white-space:nowrap}
+.daily-start:hover{transform:translateY(-1px)}
+
+.brand-stats-card{padding:19px 20px;display:flex;flex-direction:column;gap:14px;background:radial-gradient(circle at 88% 10%,rgba(114,60,255,.17),transparent 36%),linear-gradient(145deg,rgba(8,27,59,.96),rgba(5,15,35,.98))}
+.brand-stats-title{display:flex;align-items:center;gap:10px}.brand-stats-title>span{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:rgba(145,71,255,.14);border:1px solid rgba(164,91,255,.24)}.brand-stats-title b{display:block;color:#fff;font-size:13px}.brand-stats-title small{color:#8da3c3;font-size:8px}
+.brand-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.brand-stat-grid>div{padding:10px 5px;border-radius:12px;text-align:center;background:rgba(255,255,255,.025);border:1px solid rgba(118,167,255,.12)}.brand-stat-grid strong{display:block;color:#fff;font-size:18px}.brand-stat-grid span{font-size:7.5px;color:#8fa6c7}
+.home-ach-btn{margin-top:auto;border:1px solid rgba(163,80,255,.3);background:rgba(135,62,255,.09);color:#dcc7ff;border-radius:11px;padding:9px;font-weight:800;font-size:10px;cursor:pointer}
+
+.daily-pick{outline:2px solid rgba(255,197,71,.8)!important;box-shadow:0 0 0 4px rgba(255,193,59,.08),0 0 24px rgba(255,177,30,.14)!important;position:relative}
+.daily-pick-badge{position:absolute;z-index:8;top:7px;right:7px;padding:4px 7px;border-radius:999px;font-size:7px;font-weight:900;color:#1a1205;background:linear-gradient(180deg,#ffe28a,#ffb52d);box-shadow:0 5px 14px rgba(238,152,16,.22)}
+
+.v11-top-btn.active{border-color:rgba(255,171,49,.56)!important;background:rgba(255,151,27,.12)!important;box-shadow:0 0 20px rgba(255,130,28,.12)}
+body.hype-mode .arena-world:after{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 20%,rgba(132,62,255,.08),transparent 35%),linear-gradient(90deg,rgba(95,27,255,.03),transparent 28%,transparent 72%,rgba(20,154,255,.04));animation:v11Pulse 2.4s ease-in-out infinite alternate}
+body.hype-mode .stage-beam{filter:brightness(1.35) saturate(1.25)}
+body.hype-mode .team-card.active{animation:v11ActiveGlow 1.8s ease-in-out infinite alternate}
+
+.brand-v11-card{width:min(760px,94vw)!important;max-height:86vh;overflow:auto;background:linear-gradient(180deg,#091b3b,#051127)!important;border:1px solid rgba(113,162,246,.28)!important;box-shadow:0 30px 90px rgba(0,0,0,.55)!important}
+.brand-v11-modal-head{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid rgba(116,160,225,.16)}
+.brand-v11-modal-logo{width:50px;height:50px}.modal-logo{width:100%;height:100%;object-fit:contain}.brand-v11-modal-head span{font-size:8px;color:#9fb2d0}.brand-v11-modal-head h3{margin:2px 0 0;color:#fff;font-size:18px}.brand-v11-modal-head button{width:38px;height:38px;border-radius:11px;border:1px solid rgba(119,157,214,.2);background:#081832;color:#fff;cursor:pointer}
+.achievement-summary{margin:16px 0;padding:15px 16px;border-radius:15px;background:linear-gradient(90deg,rgba(155,69,255,.11),rgba(31,151,255,.06));border:1px solid rgba(133,106,255,.18);display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center}.achievement-summary>b{grid-row:1/3;font-size:28px;color:#ffd05f}.achievement-summary>span{font-size:10px;color:#c8d5e9}.achievement-summary>div{height:5px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden}.achievement-summary i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#9850ff,#39baff,#ffc04e)}
+.achievement-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.achievement-item{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:13px;border-radius:14px;border:1px solid rgba(111,154,222,.14);background:rgba(255,255,255,.025)}.achievement-item.unlocked{border-color:rgba(255,194,65,.21);background:linear-gradient(90deg,rgba(255,178,35,.06),rgba(125,63,255,.04))}.achievement-item.locked{opacity:.55}.achievement-icon{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:rgba(255,255,255,.04)}.achievement-item b{display:block;color:#fff;font-size:11px}.achievement-item p{margin:3px 0 0;color:#90a6c5;font-size:8px;line-height:1.5}.achievement-item>span{font-size:7px;color:#ffcc64;border:1px solid rgba(255,199,76,.17);padding:4px 6px;border-radius:999px}
+
+.achievement-unlock{position:fixed;z-index:99999;left:18px;bottom:18px;width:min(330px,calc(100vw - 36px));display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:center;padding:13px 15px;border-radius:16px;background:linear-gradient(135deg,rgba(9,29,61,.98),rgba(32,17,68,.98));border:1px solid rgba(255,193,67,.42);box-shadow:0 24px 60px rgba(0,0,0,.45);transform:translateY(140%);opacity:0;transition:.35s ease}.achievement-unlock.show{transform:translateY(0);opacity:1}.achievement-unlock>span{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:rgba(255,192,55,.12);font-size:26px}.achievement-unlock small{color:#ffc754;font-size:8px}.achievement-unlock b{display:block;color:#fff;font-size:12px}.achievement-unlock p{margin:2px 0 0;color:#a9bad2;font-size:8px}
+.share-result-btn{background:linear-gradient(180deg,#173a73,#0b2452)!important;color:#dcecff!important;border:1px solid rgba(82,169,255,.42)!important}
+
+@keyframes v11LogoFloat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes v11Spin{to{transform:rotate(360deg)}}
+@keyframes v11Pulse{from{opacity:.45}to{opacity:1}}
+@keyframes v11ActiveGlow{from{filter:brightness(1)}to{filter:brightness(1.12)}}
+
+@media(max-width:980px){
+  .official-logo-wrap{width:52px!important;height:52px!important}.v11-home-tools{grid-template-columns:1fr}.daily-card{grid-template-columns:auto 1fr}.daily-start{grid-column:1/-1;width:100%}.brand-visual{min-height:220px}.hero-logo-shell{width:240px}.hero-logo{width:122px;height:122px}
+}
+@media(max-width:620px){
+  .official-logo-wrap{width:46px!important;height:46px!important}.brand-title-line .build-badge{font-size:6px!important}.v11-top-btn small{display:none!important}.v11-home-tools{gap:9px;margin-top:12px}.daily-card{padding:18px 14px;gap:10px;border-radius:16px}.daily-icon{width:52px;height:52px;font-size:26px;border-radius:14px}.daily-copy h3{font-size:17px}.daily-copy p{font-size:9px}.daily-badge{font-size:6px}.brand-stats-card{border-radius:16px;padding:15px}.brand-stat-grid strong{font-size:16px}.brand-visual{min-height:185px}.hero-logo-shell{width:205px;border-radius:24px}.hero-logo{width:102px;height:102px}.hero-logo-copy b{font-size:17px}.hero-logo-copy span{font-size:8px}.orbit-a{width:220px;height:220px}.orbit-b{width:160px;height:160px}.achievement-grid{grid-template-columns:1fr}.brand-v11-modal-head h3{font-size:15px}.achievement-summary>b{font-size:24px}.v11-winner-logo{width:50px;height:50px}
+}
