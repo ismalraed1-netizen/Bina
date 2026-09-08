@@ -35,9 +35,13 @@
   });
 
   window.addEventListener('DOMContentLoaded',()=>{
+    const style=document.createElement('style');
+    style.textContent='.question-card{margin:0 auto!important}.modal{align-items:flex-start!important}';
+    document.head.appendChild(style);
     if(document.querySelector('script[data-ui-v8]'))return;
     const s=document.createElement('script');
-    s.src='ui-v8.js?v=20260908-v8';
+    s.src='ui-v8.js?v=20260908-v8b';
+    s.async=false;
     s.dataset.uiV8='true';
     document.body.appendChild(s);
   });
