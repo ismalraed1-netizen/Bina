@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#08090b">
+  <meta name="theme-color" content="#070708">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="description" content="خلّك رائد - تحدي المعرفة الجماعي">
-  <title>خلّك رائد | Premium V7</title>
-  <link rel="stylesheet" href="admin.css">
-  <link rel="stylesheet" href="premium-v7.css?v=20260908-premium7">
+  <title>خلّك رائد | Premium V8</title>
+  <link rel="stylesheet" href="admin.css?v=20260908-v8">
+  <link rel="stylesheet" href="premium-v8.css?v=20260908-v8">
 </head>
 <body>
   <main class="app-shell">
@@ -18,7 +18,7 @@
       <div class="brand">
         <div class="brand-mark">ر</div>
         <div>
-          <div class="brand-title-line"><h1>خلّك رائد</h1><span class="build-badge">PREMIUM V7</span></div>
+          <div class="brand-title-line"><h1>خلّك رائد</h1><span class="build-badge">PREMIUM V8</span></div>
           <small>تحدي المعرفة الجماعي</small>
         </div>
       </div>
@@ -34,23 +34,35 @@
 
     <section id="homeScreen" class="panel hero">
       <div class="hero-inner">
-        <div class="home-intro">
-          <div class="hero-crown">◆</div>
-          <div class="eyebrow">تحدي جماعي • فريقان • 36 سؤال</div>
-          <h2>المعرفة لها<br><span class="gradient-text">رائد واحد.</span></h2>
-          <p class="hero-copy">واجهة لعب جماعية لفريقين. اختاروا الفئات، استخدموا وسائل المساعدة في الوقت المناسب، واجمعوا أكبر عدد من النقاط قبل نهاية التحدي.</p>
-          <div class="feature-row">
-            <span class="feature"><i>01</i> 6 فئات</span>
-            <span class="feature"><i>02</i> 36 سؤال</span>
-            <span class="feature"><i>03</i> 3 وسائل لكل فريق</span>
-            <span class="feature"><i>04</i> صور وصوت وفيديو</span>
+        <div class="home-main">
+          <div class="home-intro">
+            <div class="hero-copy-block">
+              <div class="eyebrow">تحدي جماعي • فريقان • 36 سؤال</div>
+              <h2>اللعبة تبدأ<br><span class="gradient-text">من هنا.</span></h2>
+              <p class="hero-copy">اختاروا الفئات، استخدموا وسائل المساعدة في الوقت المناسب، واجمعوا أكبر عدد من النقاط. كل سؤال يغيّر المباراة.</p>
+              <div class="feature-row">
+                <span class="feature"><i>01</i> 6 فئات</span>
+                <span class="feature"><i>02</i> 36 سؤال</span>
+                <span class="feature"><i>03</i> تحدي الصور</span>
+                <span class="feature"><i>04</i> صوت وفيديو</span>
+              </div>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+              <div class="hero-orbit"></div>
+              <div class="hero-r">ر</div>
+              <span class="float-chip c1">🖼️ تحدي الصور</span>
+              <span class="float-chip c2">⚡ وسائل مساعدة</span>
+              <span class="float-chip c3">🏆 نقاط ومنافسة</span>
+              <span class="float-chip c4">🎯 36 سؤال</span>
+            </div>
           </div>
         </div>
 
-        <div class="setup-panel">
+        <aside class="setup-panel">
           <div class="setup-panel-title">
-            <h3>إعداد المباراة</h3>
-            <span>جهّز الفريقين ثم ابدأ</span>
+            <div><h3>إعداد المباراة</h3><span>جهّز الفريقين ثم ابدأ</span></div>
+            <span>01 / 03</span>
           </div>
 
           <div class="setup-grid">
@@ -84,6 +96,7 @@
                 <button class="aid-option" data-team="0" data-aid="rest">استريح</button>
               </div>
             </div>
+
             <div class="aid-team aid-team-two">
               <div class="aid-team-title"><div><span class="aid-mascot">٢</span><b>وسائل الفريق الثاني</b></div><span id="aidCount2">3/3</span></div>
               <div class="aid-options">
@@ -96,28 +109,23 @@
             </div>
           </div>
 
-          <div class="setup-cta">
-            <button id="startBtn" class="btn big btn-gold">اختيار الفئات ←</button>
-          </div>
+          <div class="setup-cta"><button id="startBtn" class="btn big btn-gold">اختيار الفئات ←</button></div>
 
           <div id="resumeCard" class="resume-card hidden">
             <div class="resume-icon">↺</div>
             <p id="resumeText">لديك مباراة محفوظة.</p>
-            <div class="resume-actions">
-              <button id="resumeBtn" class="btn small gold">استكمال</button>
-              <button id="discardSaveBtn" class="btn small ghost">حذف</button>
-            </div>
+            <div class="resume-actions"><button id="resumeBtn" class="btn small gold">استكمال</button><button id="discardSaveBtn" class="btn small ghost">حذف</button></div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
     <section id="categoryScreen" class="panel category-screen hidden">
       <div class="step-head">
         <div class="step-title">
-          <span class="section-kicker">المرحلة 01</span>
+          <span class="section-kicker">المرحلة 02</span>
           <h2>اختيار <span>الفئات</span></h2>
-          <p>كل فريق يختار 3 فئات بالتناوب. بعد اكتمال الست فئات تبدأ المباراة.</p>
+          <p>كل فريق يختار 3 فئات بالتناوب. اختروا نقاط قوتكم بعناية.</p>
         </div>
         <div class="pick-dashboard">
           <div id="pickStatus" class="pick-status">الدور على الفريق الأول</div>
@@ -143,15 +151,8 @@
       <div class="game-top">
         <div id="team1Card" class="team-card team-card-one active">
           <div class="team-emblem">١</div>
-          <div class="team-meta">
-            <div id="team1Name" class="team-name">الصقور</div>
-            <div class="team-sub">الفريق الأول</div>
-            <div id="aids1" class="aids-bar"></div>
-          </div>
-          <div class="score-wrap">
-            <div id="score1" class="score">0</div><span class="score-label">نقطة</span>
-            <div class="score-actions"><button onclick="adjustScore(0,200)">+200</button><button onclick="adjustScore(0,-200)">-200</button></div>
-          </div>
+          <div class="team-meta"><div id="team1Name" class="team-name">الصقور</div><div class="team-sub">الفريق الأول</div><div id="aids1" class="aids-bar"></div></div>
+          <div class="score-wrap"><div id="score1" class="score">0</div><span class="score-label">نقطة</span><div class="score-actions"><button onclick="adjustScore(0,200)">+200</button><button onclick="adjustScore(0,-200)">-200</button></div></div>
         </div>
 
         <div class="center-status">
@@ -163,29 +164,14 @@
 
         <div id="team2Card" class="team-card team-card-two">
           <div class="team-emblem">٢</div>
-          <div class="team-meta">
-            <div id="team2Name" class="team-name">الفرسان</div>
-            <div class="team-sub">الفريق الثاني</div>
-            <div id="aids2" class="aids-bar"></div>
-          </div>
-          <div class="score-wrap">
-            <div id="score2" class="score">0</div><span class="score-label">نقطة</span>
-            <div class="score-actions"><button onclick="adjustScore(1,200)">+200</button><button onclick="adjustScore(1,-200)">-200</button></div>
-          </div>
+          <div class="team-meta"><div id="team2Name" class="team-name">الفرسان</div><div class="team-sub">الفريق الثاني</div><div id="aids2" class="aids-bar"></div></div>
+          <div class="score-wrap"><div id="score2" class="score">0</div><span class="score-label">نقطة</span><div class="score-actions"><button onclick="adjustScore(1,200)">+200</button><button onclick="adjustScore(1,-200)">-200</button></div></div>
         </div>
       </div>
 
-      <div class="progress-row">
-        <div class="progress-copy"><b>تقدم المباراة</b><div id="remainingText" class="remaining">36 سؤال متبقي</div></div>
-        <div class="progress"><span id="progressBar"></span></div>
-      </div>
-
+      <div class="progress-row"><div class="progress-copy"><b>تقدم المباراة</b><div id="remainingText" class="remaining">36 سؤال متبقي</div></div><div class="progress"><span id="progressBar"></span></div></div>
       <div id="categoriesBoard" class="categories"></div>
-
-      <div class="board-actions">
-        <button id="switchTurnBtn" class="mini-btn">تبديل الدور</button>
-        <button id="finishNowBtn" class="mini-btn finish-btn">إنهاء المباراة</button>
-      </div>
+      <div class="board-actions"><button id="switchTurnBtn" class="mini-btn">تبديل الدور</button><button id="finishNowBtn" class="mini-btn finish-btn">إنهاء المباراة</button></div>
       <div class="footer-note">خلّك رائد • تحدي المعرفة الجماعي</div>
     </section>
 
@@ -202,69 +188,41 @@
         <div class="final-card final-two"><span class="final-emblem">٢</span><b id="finalName2">الفريق الثاني</b><strong id="finalScore2">0</strong><small>نقطة</small></div>
       </div>
 
-      <div class="winner-actions">
-        <button id="tieBreakBtn" class="btn gold hidden">سؤال حاسم</button>
-        <button id="newGameBtn" class="btn btn-gold">لعبة جديدة</button>
-      </div>
+      <div class="winner-actions"><button id="tieBreakBtn" class="btn gold hidden">سؤال حاسم</button><button id="newGameBtn" class="btn btn-gold">لعبة جديدة</button></div>
     </section>
   </main>
 
   <div id="questionModal" class="modal hidden">
     <div class="modal-card question-card">
-      <div class="question-brand">
-        <div class="mini-brand">ر</div>
-        <div><b>خلّك رائد</b><small>السؤال الحالي</small></div>
-      </div>
+      <div class="question-brand"><div class="mini-brand">ر</div><div><b>خلّك رائد</b><small>السؤال الحالي</small></div></div>
+      <div class="question-body">
+        <div class="question-top"><span id="qCategory" class="badge">الفئة</span><span id="qValue" class="value-badge">200 نقطة</span></div>
+        <div id="qText" class="question-text">السؤال</div>
 
-      <div class="question-top">
-        <span id="qCategory" class="badge">الفئة</span>
-        <span id="qValue" class="value-badge">200 نقطة</span>
-      </div>
-
-      <div id="qText" class="question-text">السؤال</div>
-
-      <div class="question-control-row">
-        <div class="timer-wrap">
-          <div id="timerRing" class="timer-ring"><span id="timerNum" class="timer-num">20</span><small>ثانية</small></div>
-          <button id="pauseTimerBtn" class="pause-btn">إيقاف</button>
+        <div class="question-control-row">
+          <div class="timer-wrap"><div id="timerRing" class="timer-ring"><span id="timerNum" class="timer-num">20</span><small>ثانية</small></div><button id="pauseTimerBtn" class="pause-btn">إيقاف</button></div>
+          <div id="activeAids" class="active-aids"></div>
         </div>
-        <div id="activeAids" class="active-aids"></div>
-      </div>
 
-      <div id="answerBox" class="answer-box hidden">الإجابة</div>
+        <div id="answerBox" class="answer-box hidden">الإجابة</div>
 
-      <div id="primaryActions" class="modal-actions">
-        <button id="correctBtn" class="btn green action-answer"><b>✓</b><span>صحيحة<small>إضافة النقاط</small></span></button>
-        <button id="wrongBtn" class="btn red action-answer"><b>✕</b><span>خاطئة<small>بدون نقاط</small></span></button>
-        <button id="showAnswerBtn" class="btn secondary action-answer"><b>◉</b><span>إظهار الإجابة<small>عرض الجواب</small></span></button>
-      </div>
+        <div id="primaryActions" class="modal-actions">
+          <button id="correctBtn" class="btn green action-answer"><b>✓</b><span>صحيحة<small>إضافة النقاط</small></span></button>
+          <button id="wrongBtn" class="btn red action-answer"><b>✕</b><span>خاطئة<small>بدون نقاط</small></span></button>
+          <button id="showAnswerBtn" class="btn secondary action-answer"><b>◉</b><span>إظهار الإجابة<small>عرض الجواب</small></span></button>
+        </div>
 
-      <div id="stealPanel" class="steal-panel hidden">
-        <span>↔</span><div><b>فرصة سرقة للفريق الآخر</b><p>الفريق <span id="stealTeamName"></span> لديه 10 ثوانٍ للإجابة.</p></div>
-      </div>
-
-      <div id="stealActions" class="modal-actions hidden">
-        <button id="stealCorrectBtn" class="btn green">سرقة صحيحة</button>
-        <button id="stealWrongBtn" class="btn red">سرقة خاطئة</button>
-        <button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button>
-      </div>
-
-      <div class="modal-actions"><button id="endAfterRevealBtn" class="btn secondary hidden">إنهاء السؤال</button></div>
-
-      <div id="tieActions" class="modal-actions hidden">
-        <button id="tieTeam1Btn" class="btn green">الفريق الأول أجاب صح</button>
-        <button id="tieTeam2Btn" class="btn green">الفريق الثاني أجاب صح</button>
-        <button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button>
+        <div id="stealPanel" class="steal-panel hidden"><span>↔</span><div><b>فرصة سرقة للفريق الآخر</b><p>الفريق <span id="stealTeamName"></span> لديه 10 ثوانٍ للإجابة.</p></div></div>
+        <div id="stealActions" class="modal-actions hidden"><button id="stealCorrectBtn" class="btn green">سرقة صحيحة</button><button id="stealWrongBtn" class="btn red">سرقة خاطئة</button><button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button></div>
+        <div class="modal-actions"><button id="endAfterRevealBtn" class="btn secondary hidden">إنهاء السؤال</button></div>
+        <div id="tieActions" class="modal-actions hidden"><button id="tieTeam1Btn" class="btn green">الفريق الأول أجاب صح</button><button id="tieTeam2Btn" class="btn green">الفريق الثاني أجاب صح</button><button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button></div>
       </div>
     </div>
   </div>
 
   <div id="settingsModal" class="modal hidden">
     <div class="modal-card settings-card">
-      <div class="question-top">
-        <div><span class="section-kicker">إعدادات</span><h3>تحكم اللعبة</h3></div>
-        <button id="closeSettingsBtn" class="icon-btn close-btn">✕</button>
-      </div>
+      <div class="question-top"><div><span class="section-kicker">إعدادات</span><h3>تحكم اللعبة</h3></div><button id="closeSettingsBtn" class="icon-btn close-btn">✕</button></div>
       <div class="settings-row"><div><b>فرصة السرقة بعد الإجابة الخاطئة</b><div id="stealSettingText">مفعّلة</div></div><button id="toggleSteal" class="toggle on"><span></span></button></div>
       <div class="settings-row"><div><b>المؤثرات الصوتية</b><div id="soundSettingText">مفعّل</div></div><button class="btn ghost small" onclick="toggleSound();syncSettings()">تبديل الصوت</button></div>
       <div class="settings-danger"><button id="settingsResetBtn" class="btn red small">حذف التقدم وبدء لعبة جديدة</button></div>
@@ -272,7 +230,8 @@
   </div>
 
   <div id="toast" class="toast"></div>
-  <script src="app.js?v=20260908-premium7"></script>
-  <script src="admin.js?v=20260908-premium7"></script>
+  <script src="app.js?v=20260908-v8"></script>
+  <script src="image-challenge.js?v=20260908-v8"></script>
+  <script src="admin.js?v=20260908-v8"></script>
 </body>
 </html>
