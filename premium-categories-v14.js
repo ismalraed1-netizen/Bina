@@ -1,9 +1,9 @@
 (function(){
-  const VERSION='ARENA V14.1';
+  const VERSION='ARENA V15';
   const PROFILE_KEY='khallak_raed_profile_v12';
 
   const PREMIUM_CATEGORIES=[
-    {id:'premium-music',name:'موسيقى',icon:'🎵',cost:160,tag:'الأكثر طلباً',desc:'آلات، مصطلحات ومعلومات موسيقية',accent:'music',questions:[
+    {id:'premium-music',name:'موسيقى',icon:'🎵',cost:160,tag:'خمن الصوت',desc:'خمن المغني أو اسم الأغنية من المقطع الصوتي',accent:'music',questions:[
       {v:200,q:'كم عدد أوتار الجيتار القياسي عادةً؟',a:'6 أوتار'},
       {v:200,q:'أي آلة موسيقية تحتوي عادةً على 88 مفتاحاً؟',a:'البيانو'},
       {v:400,q:'ما الاسم الذي يطلق على سرعة الإيقاع في الموسيقى؟',a:'Tempo / تمبو'},
@@ -79,12 +79,10 @@
     const wallet=body.querySelector('.store-wallet b'),coins=readProfile().coins;
     if(wallet&&wallet.textContent!==`${coins} 🪙`)wallet.textContent=`${coins} 🪙`;
     bindStoreButtons(body);
+    if(window.RAED_MUSIC_STUDIO)requestAnimationFrame(()=>window.RAED_MUSIC_STUDIO.readyCount&&document.dispatchEvent(new CustomEvent('raed:music-store')));
   }
 
-  function queueStoreEnhance(){
-    requestAnimationFrame(enhanceStore);
-    setTimeout(enhanceStore,80);
-  }
+  function queueStoreEnhance(){requestAnimationFrame(enhanceStore);setTimeout(enhanceStore,80);}
 
   function buyCategory(id){
     const cat=PREMIUM_CATEGORIES.find(x=>x.id===id);if(!cat)return;
@@ -95,7 +93,6 @@
     if(typeof toast==='function')toast(`🎁 تم فتح فئة ${cat.name}!`);
     const section=document.getElementById('premiumCategoryStore');if(section)section.outerHTML=storeMarkup();
     bindStoreButtons(document);
-    /* إعادة واحدة فقط بعد الشراء لتزامن رصيد V12 داخل الذاكرة، وليست أثناء فتح الموقع. */
     setTimeout(()=>location.reload(),350);
   }
 
@@ -111,30 +108,21 @@
   }
 
   function wrapPicker(){
-    if(typeof window.renderCategoryPicker==='function'&&!window.renderCategoryPicker.__premium141){
+    if(typeof window.renderCategoryPicker==='function'&&!window.renderCategoryPicker.__premium15){
       const old=window.renderCategoryPicker;
       const fn=function(){const r=old.apply(this,arguments);requestAnimationFrame(decoratePicker);return r;};
-      fn.__premium141=true;window.renderCategoryPicker=fn;
+      fn.__premium15=true;window.renderCategoryPicker=fn;
     }
   }
 
-  function setVersion(){
-    const title=`خلّك رائد | ${VERSION}`;if(document.title!==title)document.title=title;
-    const badge=document.querySelector('.build-badge');if(badge&&badge.textContent!==VERSION)badge.textContent=VERSION;
-  }
+  function setVersion(){const title=`خلّك رائد | ${VERSION}`;if(document.title!==title)document.title=title;const badge=document.querySelector('.build-badge');if(badge&&badge.textContent!==VERSION)badge.textContent=VERSION;}
+  function clickRouter(e){const el=e.target.closest?.('#v12StoreHome,#v12StoreOpen,#storeQuick,[data-theme-action]');if(el)queueStoreEnhance();}
+  function loadMusicExtension(){if(document.querySelector('script[data-music-v15]'))return;const s=document.createElement('script');s.src='music-audio-v15.js?v=20260908-v15';s.defer=true;s.dataset.musicV15='1';document.head.appendChild(s);}
 
-  function clickRouter(e){
-    const el=e.target.closest?.('#v12StoreHome,#v12StoreOpen,#storeQuick,[data-theme-action]');
-    if(el)queueStoreEnhance();
-  }
-
-  function init(){
-    syncUnlocked();wrapPicker();setVersion();
-    document.addEventListener('click',clickRouter,false);
-    setTimeout(()=>{syncUnlocked();decoratePicker();wrapPicker();setVersion();},420);
-  }
+  function init(){syncUnlocked();wrapPicker();setVersion();document.addEventListener('click',clickRouter,false);setTimeout(()=>{syncUnlocked();decoratePicker();wrapPicker();setVersion();},420);}
 
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
   window.addEventListener('load',()=>{syncUnlocked();decoratePicker();setVersion();},{once:true});
   window.RAED_PREMIUM_CATEGORIES=PREMIUM_CATEGORIES;
+  loadMusicExtension();
 })();
