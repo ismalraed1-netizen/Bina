@@ -1,4 +1,5 @@
 (function(){
+  document.documentElement.style.setProperty('--cyan','#e83b4e');
   function xml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));}
   function hash(s){let h=0;for(const c of String(s||''))h=(h*31+c.charCodeAt(0))>>>0;return h;}
   function art(icon,title,key='raed'){
