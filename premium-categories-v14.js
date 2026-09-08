@@ -38,7 +38,7 @@
         {v:200,q:'أي دولة يظهر في علمها قرص أحمر في المنتصف على خلفية بيضاء؟',a:'اليابان'},
         {v:200,q:'ما الرمز النباتي الموجود في وسط علم كندا؟',a:'ورقة القيقب'},
         {v:400,q:'ما العبارة البرتغالية المكتوبة على علم البرازيل؟',a:'Ordem e Progresso'},
-        {v:400,q:'ما العنصران الرئيسيان الظاهران في علم المملكة العربية السعودية؟',a:'الشهادتان والسيف'},
+        {v:400,q:'ما العنصران الرئيسيان الظاهران في علم المملكة العربية السعودية؟',a:'الشهادة والسيف'},
         {v:600,q:'ما الدولة صاحبة العلم الوطني الوحيد غير رباعي الأضلاع؟',a:'نيبال'},
         {v:600,q:'إلى جانب سويسرا، ما الدولة الأخرى التي يكون علمها الوطني مربع الشكل؟',a:'الفاتيكان'}
       ]
@@ -64,7 +64,6 @@
     return p;
   }
   function saveProfile(p){localStorage.setItem(PROFILE_KEY,JSON.stringify(p));}
-  function isOwned(id){return readProfile().ownedCategories.includes(id);}
   function cloneCat(cat){return {id:cat.id,name:cat.name,icon:cat.icon,desc:cat.desc,premium:true,questions:cat.questions.map(q=>({...q}))};}
 
   function syncUnlocked(){
@@ -123,9 +122,7 @@
     const title=modal.querySelector('#v12ModalTitle')?.textContent||'';
     if(!title.includes('متجر'))return;
     const body=modal.querySelector('#v12ModalBody');if(!body)return;
-    let section=body.querySelector('#premiumCategoryStore');
-    if(!section){body.insertAdjacentHTML('beforeend',storeMarkup());}
-    else section.outerHTML=storeMarkup();
+    if(!body.querySelector('#premiumCategoryStore'))body.insertAdjacentHTML('beforeend',storeMarkup());
     const wallet=body.querySelector('.store-wallet b');if(wallet)wallet.textContent=`${readProfile().coins} 🪙`;
     bindStoreButtons();
   }
