@@ -81,6 +81,124 @@
   z-index:5!important;
 }
 
+/* V9.2 board hardening — works with both current and legacy renderers */
+#categoriesBoard.categories{
+  display:grid!important;
+  grid-template-columns:repeat(6,minmax(150px,1fr))!important;
+  gap:10px!important;
+  align-items:start!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  padding:2px 2px 12px!important;
+  scrollbar-width:thin;
+  scroll-snap-type:x proximity;
+}
+#categoriesBoard .category{
+  min-width:0!important;
+  height:auto!important;
+  min-height:0!important;
+  padding:7px!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  gap:6px!important;
+  background:linear-gradient(180deg,rgba(6,24,55,.96),rgba(3,14,35,.98))!important;
+  border:1px solid rgba(92,143,231,.38)!important;
+  scroll-snap-align:start;
+}
+#categoriesBoard .category.owner-0{border-color:rgba(190,76,255,.68)!important;box-shadow:inset 0 0 22px rgba(156,49,255,.06)}
+#categoriesBoard .category.owner-1{border-color:rgba(39,177,255,.68)!important;box-shadow:inset 0 0 22px rgba(28,160,255,.06)}
+
+#categoriesBoard .cat-head{
+  width:100%!important;
+  height:104px!important;
+  min-height:104px!important;
+  max-height:104px!important;
+  margin:0!important;
+  padding:10px 8px!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:4px!important;
+  text-align:center!important;
+  position:relative!important;
+  background:linear-gradient(180deg,rgba(10,37,80,.94),rgba(6,22,52,.96))!important;
+  border:1px solid rgba(100,151,235,.26)!important;
+}
+#categoriesBoard .owner-0 .cat-head{background:linear-gradient(180deg,rgba(100,25,159,.84),rgba(37,13,77,.96))!important;border-color:rgba(193,78,255,.52)!important}
+#categoriesBoard .owner-1 .cat-head{background:linear-gradient(180deg,rgba(5,91,166,.86),rgba(4,35,78,.96))!important;border-color:rgba(40,181,255,.54)!important}
+
+/* Legacy V8 header image is the source of the large red blank blocks; never show it on the board */
+#categoriesBoard .cat-head>img,
+#categoriesBoard .cat-head picture,
+#categoriesBoard .cat-head .pick-cover,
+#categoriesBoard .cat-head .fallback-art{display:none!important;width:0!important;height:0!important;max-height:0!important}
+
+#categoriesBoard .cat-head .cat-icon{
+  display:block!important;
+  font-size:30px!important;
+  line-height:1!important;
+  margin:0 0 3px!important;
+  filter:drop-shadow(0 0 8px rgba(255,255,255,.14));
+}
+#categoriesBoard .cat-head>.cat-title{
+  width:100%!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:3px!important;
+}
+#categoriesBoard .cat-head>b,
+#categoriesBoard .cat-head .cat-title>b{
+  display:block!important;
+  position:static!important;
+  margin:0!important;
+  color:#fff!important;
+  font-size:15px!important;
+  line-height:1.2!important;
+  font-weight:900!important;
+  white-space:normal!important;
+  overflow:visible!important;
+  opacity:1!important;
+  transform:none!important;
+}
+#categoriesBoard .cat-head>small,
+#categoriesBoard .cat-head .cat-title>small{
+  display:block!important;
+  position:static!important;
+  margin:0!important;
+  color:#b9cbe6!important;
+  font-size:8px!important;
+  line-height:1.35!important;
+  white-space:normal!important;
+  opacity:1!important;
+  transform:none!important;
+}
+
+#categoriesBoard .qbtn{
+  width:100%!important;
+  height:48px!important;
+  min-height:48px!important;
+  margin:0!important;
+  border-radius:10px!important;
+  font-size:17px!important;
+  font-weight:900!important;
+  color:#fff!important;
+  display:grid!important;
+  place-items:center!important;
+  border:1px solid rgba(94,151,241,.48)!important;
+  background:linear-gradient(180deg,#0c4f98,#082c66)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.07)!important;
+}
+#categoriesBoard .owner-0 .qbtn:not(.used){background:linear-gradient(180deg,#8a24cf,#51108e)!important;border-color:#c44fff!important;box-shadow:0 0 12px rgba(174,64,255,.10),inset 0 1px rgba(255,255,255,.08)!important}
+#categoriesBoard .owner-1 .qbtn:not(.used){background:linear-gradient(180deg,#087ed1,#07509a)!important;border-color:#28b6ff!important;box-shadow:0 0 12px rgba(30,172,255,.10),inset 0 1px rgba(255,255,255,.08)!important}
+#categoriesBoard .qbtn.used{opacity:.34!important;background:#07162f!important;border-color:rgba(95,135,198,.25)!important;color:#7890b5!important;box-shadow:none!important}
+
 @media (max-width:980px){
   .category-screen{padding-top:14px!important}
   .category-picker{
@@ -106,6 +224,17 @@
   .category-picker .pick-name{font-size:14px!important;margin-bottom:4px!important}
   .category-picker .pick-desc{font-size:8px!important;min-height:25px!important}
   .category-picker .pick-owner{margin:8px -9px -11px!important}
+
+  #categoriesBoard.categories{
+    grid-template-columns:repeat(6,200px)!important;
+    gap:9px!important;
+    padding-bottom:14px!important;
+  }
+  #categoriesBoard .category{min-width:200px!important;padding:7px!important}
+  #categoriesBoard .cat-head{height:92px!important;min-height:92px!important;max-height:92px!important}
+  #categoriesBoard .cat-head .cat-icon{font-size:27px!important}
+  #categoriesBoard .cat-head>b,#categoriesBoard .cat-head .cat-title>b{font-size:14px!important}
+  #categoriesBoard .qbtn{height:46px!important;min-height:46px!important;font-size:16px!important}
 }
 
 @media (max-width:520px){
@@ -125,4 +254,12 @@
   .category-picker .pick-name{font-size:13px!important}
   .category-picker .pick-desc{font-size:7.5px!important;line-height:1.45!important;min-height:22px!important}
   .category-picker .pick-owner{margin:7px -7px -10px!important;height:28px!important;min-height:28px!important}
+
+  #categoriesBoard.categories{grid-template-columns:repeat(6,158px)!important;gap:7px!important}
+  #categoriesBoard .category{min-width:158px!important;padding:6px!important;border-radius:13px!important}
+  #categoriesBoard .cat-head{height:84px!important;min-height:84px!important;max-height:84px!important;padding:8px 5px!important}
+  #categoriesBoard .cat-head .cat-icon{font-size:24px!important}
+  #categoriesBoard .cat-head>b,#categoriesBoard .cat-head .cat-title>b{font-size:13px!important}
+  #categoriesBoard .cat-head>small,#categoriesBoard .cat-head .cat-title>small{font-size:7px!important}
+  #categoriesBoard .qbtn{height:43px!important;min-height:43px!important;font-size:15px!important;border-radius:9px!important}
 }
