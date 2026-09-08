@@ -4,157 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#2f8f54">
-  <meta name="description" content="مزرعة رائد - لعبة مزرعة عربية تفاعلية">
-  <title>مزرعة رائد | لعبة المزرعة</title>
-  <link rel="stylesheet" href="farm-game.css?v=20260908-1">
+  <meta name="description" content="مزرعة رائد - لعبة مزرعة عربية تفاعلية بعالم مفتوح">
+  <title>مزرعة رائد | عالم المزرعة</title>
+  <link rel="stylesheet" href="farm-game.css?v=20260908-world2">
 </head>
 <body>
-  <main id="gameShell" class="game-shell">
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand-mark">🌾</div>
-        <div><h1>مزرعة رائد</h1><small>ازرع • اسقِ • احصد • طوّر مزرعتك</small></div>
+<main id="gameShell" class="game-shell">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">🌾</div><div><h1>مزرعة رائد</h1><small>عالم المزرعة • الموسم الثاني</small></div></div>
+    <div class="player-stats">
+      <div class="stat-pill">🪙 <span id="coinCount">1,250</span></div>
+      <div class="stat-pill">💎 <span id="gemCount">18</span></div>
+      <div class="stat-pill level-pill"><span>⭐ مستوى <b id="levelNum">1</b></span><div class="xp-track"><span id="xpFill"></span></div><small id="xpText">32/100</small></div>
+    </div>
+    <div class="top-actions"><button id="soundBtn" class="round-btn">🔊</button><button id="dayToggle" class="round-btn">🌙</button><button id="settingsBtn" class="round-btn">⚙️</button></div>
+  </header>
+
+  <section class="game-area">
+    <aside class="side-panel left-panel">
+      <div class="panel-card day-card">
+        <div class="day-head"><div><b>اليوم <span id="dayNum">3</span></b><div id="clock" class="clock">8:30 ص</div></div><div id="weatherIcon" class="weather-icon">☀️</div></div>
+        <div id="weatherText" class="weather-copy">مشمس</div>
+        <div class="meter"><div class="meter-line"><span>⚡ الطاقة</span><b id="energyValue">92%</b></div><div class="meter-track"><span id="energyFill" class="energy-fill"></span></div></div>
+        <div class="meter"><div class="meter-line"><span>💧 الماء</span><b id="waterValue">76%</b></div><div class="meter-track"><span id="waterFill" class="water-fill"></span></div></div>
+        <button id="sleepBtn" class="sleep-btn">🌙 النوم لليوم التالي</button>
       </div>
 
-      <div class="player-stats">
-        <div class="stat-pill">🪙 <span id="coinCount">1,250</span></div>
-        <div class="stat-pill">💎 <span id="gemCount">18</span></div>
-        <div class="stat-pill level-pill"><span>⭐ مستوى <b id="levelNum">1</b></span><div class="xp-track"><span id="xpFill"></span></div><small id="xpText">32/100</small></div>
+      <div class="panel-card">
+        <h3>الخدمات</h3>
+        <div class="quick-actions">
+          <button id="shopBtn" class="quick-card"><span>🛒</span>المتجر</button>
+          <button id="inventoryBtn" class="quick-card"><span>🧺</span>المخزن</button>
+          <button id="barnBtn" class="quick-card"><span>🐄</span>الحيوانات</button>
+          <button id="storyBtn" class="quick-card"><span>📜</span>القصة</button>
+          <button id="tractorBtn" class="quick-card"><span>🚜</span>الجرار</button>
+          <button id="waterRefill" class="quick-card"><span>🚰</span>تعبئة الماء</button>
+        </div>
       </div>
 
-      <div class="top-actions">
-        <button id="soundBtn" class="round-btn" title="الصوت">🔊</button>
-        <button id="dayToggle" class="round-btn" title="ليل / نهار">🌙</button>
-        <button id="settingsBtn" class="round-btn" title="الإعدادات">⚙️</button>
+      <div class="panel-card controls-card">
+        <h3>🎮 التحكم</h3>
+        <p>حرّك رائد بالأسهم أو WASD، أو اضغط على أرض فارغة داخل الخريطة.</p>
+        <div class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
       </div>
-    </header>
+    </aside>
 
-    <section class="game-area">
-      <aside class="side-panel left-panel">
-        <div class="panel-card day-card">
-          <div class="day-head"><div><b>اليوم <span id="dayNum">3</span></b><div id="clock" class="clock">8:30 ص</div></div><div id="weatherIcon" class="weather-icon">☀️</div></div>
-          <div id="weatherText" class="weather-copy">مشمس</div>
-          <div class="meter"><div class="meter-line"><span>⚡ الطاقة</span><b id="energyValue">92%</b></div><div class="meter-track"><span id="energyFill" class="energy-fill"></span></div></div>
-          <div class="meter"><div class="meter-line"><span>💧 خزان الماء</span><b id="waterValue">76%</b></div><div class="meter-track"><span id="waterFill" class="water-fill"></span></div></div>
-          <button id="sleepBtn" class="sleep-btn">🌙 النوم لليوم التالي</button>
+    <section class="farm-viewport" id="farmViewport" aria-label="عالم المزرعة">
+      <div id="farmWorld" class="farm-world">
+        <div class="sky-layer"><div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div></div>
+        <div class="mountain m1"></div><div class="mountain m2"></div><div class="river"></div>
+        <div class="road road-h"></div><div class="road road-v"></div>
+
+        <button class="poi farmhouse" data-poi="farmhouse"><span>🏡</span><b>بيت رائد</b></button>
+        <button class="poi barn-building" data-poi="barn"><span>🏚️</span><b>الحظيرة</b></button>
+        <button class="poi market-building" data-poi="market"><span>🏪</span><b>سوق القرية</b></button>
+        <button class="poi workshop-building" data-poi="workshop"><span>🛠️</span><b>الورشة</b></button>
+        <button class="poi coop-building" data-poi="coop"><span>🐔</span><b>قن الدجاج</b></button>
+        <button class="poi cow-building" data-poi="cows"><span>🐄</span><b>مرعى الأبقار</b></button>
+        <button class="poi sheep-building" data-poi="sheep"><span>🐑</span><b>مرعى الأغنام</b></button>
+        <div class="windmill-big">🌬️</div><div class="pond-big">🪷</div><div class="trees t1">🌳🌳🌲</div><div class="trees t2">🌲🌳🌳🌲</div>
+
+        <section class="field-zone field-a"><div class="zone-title">🌱 الحقل الأساسي</div><div id="plots" class="plots-wrap"></div></section>
+        <section id="fieldB" class="field-zone field-b locked-zone"><div class="zone-title">🌻 أرض التوسع الشمالية</div><div class="locked-land"><span>🔒</span><b>أرض جديدة</b><small>12 حوض إضافي</small><button data-land="north">فتح بـ 1,800 🪙</button></div><div id="plotsNorth" class="plots-wrap extra-plots"></div></section>
+        <section id="fieldC" class="field-zone field-c locked-zone"><div class="zone-title">🍓 أرض الوادي</div><div class="locked-land"><span>🔒</span><b>أرض الوادي</b><small>12 حوض إضافي</small><button data-land="valley">فتح بـ 3,500 🪙</button></div><div id="plotsValley" class="plots-wrap extra-plots"></div></section>
+
+        <div id="animalLayer" class="animal-layer"></div>
+        <button id="tractorSprite" class="tractor-sprite hidden">🚜</button>
+
+        <button class="npc npc-salem" data-npc="salem"><span>👨🏻‍🌾</span><b>العم سالم</b><i>!</i></button>
+        <button class="npc npc-noura" data-npc="noura"><span>👩🏻‍🌾</span><b>نورة</b><i>!</i></button>
+        <button class="npc npc-fahad" data-npc="fahad"><span>🧑🏻‍🔧</span><b>فهد</b><i>!</i></button>
+
+        <div id="farmer" class="farmer" aria-label="رائد">
+          <div class="farmer-hat"></div><div class="farmer-head"></div><div class="farmer-body"></div><div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div><div class="watering-can">🪣</div><div class="water-drops">💧💧</div><div class="farmer-name">رائد</div>
         </div>
+      </div>
 
-        <div class="panel-card">
-          <h3>الخدمات السريعة</h3>
-          <div class="quick-actions">
-            <button id="shopBtn" class="quick-card"><span>🛒</span>المتجر</button>
-            <button id="inventoryBtn" class="quick-card"><span>🧺</span>المخزن</button>
-            <button id="barnBtn" class="quick-card"><span>🐄</span>الحظيرة</button>
-            <button id="waterRefill" class="quick-card"><span>🚰</span>تعبئة الماء</button>
-          </div>
-        </div>
-
-        <div class="panel-card">
-          <h3>إنجاز اليوم</h3>
-          <div class="achievement"><span>🔥</span><div><b>مزارع نشيط</b><small>استمر بالزراعة والحصاد لرفع مستواك</small></div></div>
-        </div>
-      </aside>
-
-      <section class="farm-viewport" aria-label="المزرعة">
-        <div id="farmWorld" class="farm-world">
-          <div class="sun"></div>
-          <div class="cloud c1"></div><div class="cloud c2"></div>
-          <div class="hill h1"></div><div class="hill h2"></div>
-          <div class="field-lawn"></div>
-          <div class="path main"></div><div class="path cross"></div>
-
-          <div class="building barn"><div class="barn-window"></div></div>
-          <div class="building silo"></div>
-          <div class="windmill"><div class="tower"></div><div class="blades"></div></div>
-          <div class="pond"></div>
-          <div class="coop"></div>
-
-          <div id="plots" class="plots-wrap"></div>
-
-          <div id="farmer" class="farmer" aria-label="شخصية المزارع">
-            <div class="farmer-hat"></div>
-            <div class="farmer-head"></div>
-            <div class="farmer-body"></div>
-            <div class="arm left"></div><div class="arm right"></div>
-            <div class="leg left"></div><div class="leg right"></div>
-            <div class="watering-can">🪣</div><div class="water-drops">💧💧</div>
-          </div>
-
-          <div class="farm-label">🏡 مزرعة رائد • الموسم الأول</div>
-        </div>
-      </section>
-
-      <aside class="side-panel right-panel">
-        <div class="panel-card">
-          <h3>🎯 مهام اليوم</h3>
-          <div id="missions"></div>
-        </div>
-        <div class="panel-card market-card">
-          <h3>📈 أسعار السوق</h3>
-          <div id="marketList"></div>
-        </div>
-        <div class="panel-card">
-          <h3>نصيحة المزارع</h3>
-          <p style="margin:0;color:var(--muted);font-size:13px;line-height:1.8">ري المحصول يقلل وقت نموه. جرّب زراعة عدة أحواض ثم اسقها قبل الانتقال للحصاد.</p>
-        </div>
-      </aside>
+      <div class="world-hud"><span>🗺️ عالم المزرعة</span><small id="areaLabel">منطقة البيت</small></div>
+      <div class="mini-map"><div id="miniDot"></div><span>🏡</span><span>🌾</span><span>🏪</span><span>🐄</span></div>
+      <div class="dpad" aria-label="تحكم الحركة"><button data-move="up">▲</button><div><button data-move="right">▶</button><button data-move="down">▼</button><button data-move="left">◀</button></div></div>
     </section>
 
-    <nav class="toolbar" aria-label="أدوات المزرعة">
-      <button class="tool-btn active" data-tool="plant"><span class="tool-icon">🌱</span><span>زراعة</span></button>
-      <div class="crop-picker" aria-label="اختيار المحصول">
-        <button class="crop-choice active" data-crop="wheat">🌾<small>12 🪙</small></button>
-        <button class="crop-choice" data-crop="carrot">🥕<small>20 🪙</small></button>
-        <button class="crop-choice" data-crop="tomato">🍅<small>35 🪙</small></button>
-        <button class="crop-choice" data-crop="strawberry">🍓<small>55 🪙</small></button>
-      </div>
-      <button class="tool-btn" data-tool="water"><span class="tool-icon">💧</span><span>ري</span></button>
-      <button class="tool-btn" data-tool="harvest"><span class="tool-icon">🧺</span><span>حصاد</span></button>
-      <button class="tool-btn" data-tool="inspect"><span class="tool-icon">👀</span><span>فحص</span></button>
-    </nav>
-  </main>
+    <aside class="side-panel right-panel">
+      <div class="panel-card story-card"><div class="story-tag">📜 الفصل الحالي</div><h3 id="chapterTitle">بداية جديدة</h3><p id="chapterText">ساعد العم سالم في إعادة المزرعة للحياة.</p><div class="story-progress"><span id="storyFill"></span></div><small id="storyProgressText">0 / 3</small></div>
+      <div class="panel-card"><h3>🎯 مهام اليوم</h3><div id="missions"></div></div>
+      <div class="panel-card market-card"><h3>📈 أسعار السوق</h3><div id="marketList"></div></div>
+    </aside>
+  </section>
 
-  <div id="shopModal" class="modal-backdrop hidden">
-    <section class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-head"><div><h2>🛒 متجر المزرعة</h2><small>اختر البذور التي تريد زراعتها</small></div><button class="close-btn">✕</button></div>
-      <div class="shop-grid">
-        <div class="shop-item"><div class="shop-icon">🌾</div><div><h4>بذور القمح</h4><p>سريعة النمو ومناسبة لبداية المزرعة</p></div><button class="buy-btn shop-seed" data-crop="wheat">12 🪙</button></div>
-        <div class="shop-item"><div class="shop-icon">🥕</div><div><h4>بذور الجزر</h4><p>سعر بيع أفضل ونمو متوسط</p></div><button class="buy-btn shop-seed" data-crop="carrot">20 🪙</button></div>
-        <div class="shop-item"><div class="shop-icon">🍅</div><div><h4>بذور الطماطم</h4><p>محصول مربح ويعطي خبرة أكبر</p></div><button class="buy-btn shop-seed" data-crop="tomato">35 🪙</button></div>
-        <div class="shop-item"><div class="shop-icon">🍓</div><div><h4>بذور الفراولة</h4><p>محصول فاخر بأعلى قيمة بيع</p></div><button class="buy-btn shop-seed" data-crop="strawberry">55 🪙</button></div>
-      </div>
-    </section>
-  </div>
+  <nav class="toolbar">
+    <button class="tool-btn active" data-tool="plant"><span class="tool-icon">🌱</span><span>زراعة</span></button>
+    <div class="crop-picker"><button class="crop-choice active" data-crop="wheat">🌾<small>12</small></button><button class="crop-choice" data-crop="carrot">🥕<small>20</small></button><button class="crop-choice" data-crop="tomato">🍅<small>35</small></button><button class="crop-choice" data-crop="strawberry">🍓<small>55</small></button></div>
+    <button class="tool-btn" data-tool="water"><span class="tool-icon">💧</span><span>ري</span></button>
+    <button class="tool-btn" data-tool="harvest"><span class="tool-icon">🧺</span><span>حصاد</span></button>
+    <button class="tool-btn" data-tool="inspect"><span class="tool-icon">👀</span><span>فحص</span></button>
+  </nav>
+</main>
 
-  <div id="inventoryModal" class="modal-backdrop hidden">
-    <section class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-head"><div><h2>🧺 مخزن المحاصيل</h2><small>كل ما حصدته من مزرعتك</small></div><button class="close-btn">✕</button></div>
-      <div id="inventoryGrid" class="inventory-grid"></div>
-      <button id="sellAllBtn" class="buy-btn" style="width:100%;margin-top:16px;padding:13px">💰 بيع جميع المحاصيل في السوق</button>
-    </section>
-  </div>
+<div id="shopModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>🛒 متجر المزرعة</h2><small>بذور ومعدات وتطويرات</small></div><button class="close-btn">✕</button></div><div class="shop-grid">
+  <div class="shop-item"><div class="shop-icon">🌾</div><div><h4>قمح</h4><p>سريع ومناسب للبداية</p></div><button class="buy-btn shop-seed" data-crop="wheat">12 🪙</button></div>
+  <div class="shop-item"><div class="shop-icon">🥕</div><div><h4>جزر</h4><p>ربح متوسط ونمو جيد</p></div><button class="buy-btn shop-seed" data-crop="carrot">20 🪙</button></div>
+  <div class="shop-item"><div class="shop-icon">🍅</div><div><h4>طماطم</h4><p>محصول مربح</p></div><button class="buy-btn shop-seed" data-crop="tomato">35 🪙</button></div>
+  <div class="shop-item"><div class="shop-icon">🍓</div><div><h4>فراولة</h4><p>قيمة بيع عالية</p></div><button class="buy-btn shop-seed" data-crop="strawberry">55 🪙</button></div>
+  <div class="shop-item premium-item"><div class="shop-icon">🚜</div><div><h4>جرار المزرعة</h4><p>يسقي كل المزروعات بضغطة واحدة</p></div><button id="buyTractorBtn" class="buy-btn">2,500 🪙</button></div>
+</div></section></div>
 
-  <div id="barnModal" class="modal-backdrop hidden">
-    <section class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-head"><div><h2>🐄 الحظيرة</h2><small>قسم الحيوانات والتوسعات</small></div><button class="close-btn">✕</button></div>
-      <div class="shop-grid">
-        <div class="shop-item"><div class="shop-icon">🐔</div><div><h4>الدجاج</h4><p>موجود في المزرعة ويستمتع بالجو المفتوح</p></div><button class="buy-btn" onclick="document.querySelector('#toast').textContent='🐔 الدجاج بخير اليوم!';document.querySelector('#toast').classList.add('show');setTimeout(()=>document.querySelector('#toast').classList.remove('show'),1800)">زيارة</button></div>
-        <div class="shop-item"><div class="shop-icon">🐄</div><div><h4>حظيرة الأبقار</h4><p>تفتح في المستوى 3 — إنتاج الحليب يوميًا</p></div><button class="buy-btn" disabled style="opacity:.45">🔒 مستوى 3</button></div>
-        <div class="shop-item"><div class="shop-icon">🐑</div><div><h4>حظيرة الأغنام</h4><p>تفتح في المستوى 5 — إنتاج الصوف</p></div><button class="buy-btn" disabled style="opacity:.45">🔒 مستوى 5</button></div>
-        <div class="shop-item"><div class="shop-icon">🐎</div><div><h4>الإسطبل</h4><p>توسعة مستقبلية لفتح مناطق جديدة</p></div><button class="buy-btn" disabled style="opacity:.45">قريبًا</button></div>
-      </div>
-    </section>
-  </div>
+<div id="inventoryModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>🧺 مخزن المزرعة</h2><small>محاصيل ومنتجات حيوانية</small></div><button class="close-btn">✕</button></div><div id="inventoryGrid" class="inventory-grid"></div><button id="sellAllBtn" class="wide-action">💰 بيع كل محتويات المخزن</button></section></div>
 
-  <div id="settingsModal" class="modal-backdrop hidden">
-    <section class="modal-card" onclick="event.stopPropagation()">
-      <div class="modal-head"><div><h2>⚙️ إعدادات اللعبة</h2><small>الحفظ يتم تلقائيًا على جهازك</small></div><button class="close-btn">✕</button></div>
-      <div class="achievement"><span>💾</span><div><b>الحفظ التلقائي مفعل</b><small>تقدم المزرعة محفوظ محليًا ويعود عند فتح الموقع مرة أخرى.</small></div></div>
-      <button id="resetBtn" style="width:100%;margin-top:16px;padding:13px;border-radius:14px;background:#a9483e;color:white;font-weight:700">🗑️ بدء مزرعة جديدة</button>
-    </section>
-  </div>
+<div id="barnModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>🐄 الحيوانات</h2><small>اشترِ الحيوانات واجمع إنتاجها يوميًا</small></div><button class="close-btn">✕</button></div><div id="animalShop" class="shop-grid"></div></section></div>
 
-  <div id="toast" class="toast"></div>
-  <script src="farm-game.js?v=20260908-1"></script>
+<div id="storyModal" class="modal-backdrop hidden"><section class="modal-card story-modal" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>📜 قصة مزرعة رائد</h2><small>تقدم في الفصول وافتح مناطق ومكافآت</small></div><button class="close-btn">✕</button></div><div id="storyTimeline" class="story-timeline"></div></section></div>
+
+<div id="dialogModal" class="modal-backdrop hidden"><section class="modal-card dialog-card" onclick="event.stopPropagation()"><div id="dialogAvatar" class="dialog-avatar">👨🏻‍🌾</div><div><small id="dialogRole">جار المزرعة</small><h2 id="dialogName">العم سالم</h2><p id="dialogText"></p><button id="dialogAction" class="wide-action">تمام</button></div></section></div>
+
+<div id="tractorModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>🚜 الجرار</h2><small>إدارة أعمال المزرعة بسرعة</small></div><button class="close-btn">✕</button></div><div id="tractorPanel"></div></section></div>
+
+<div id="settingsModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>⚙️ الإعدادات</h2><small>الحفظ تلقائي على جهازك</small></div><button class="close-btn">✕</button></div><div class="setting-line"><span>💾 الحفظ التلقائي</span><b>مفعل</b></div><div class="setting-line"><span>🎮 تحكم لوحة المفاتيح</span><b>WASD + الأسهم</b></div><button id="resetBtn" class="danger-action">🗑️ بدء مزرعة جديدة</button></section></div>
+
+<div id="toast" class="toast"></div>
+<script src="farm-game.js?v=20260908-world2"></script>
 </body>
 </html>
