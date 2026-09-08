@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#070708">
+  <meta name="theme-color" content="#020714">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <meta name="description" content="خلّك رائد - تحدي المعرفة الجماعي">
-  <title>خلّك رائد | Premium V8.1</title>
-  <link rel="stylesheet" href="admin.css?v=20260908-v81">
-  <link rel="stylesheet" href="premium-v8.css?v=20260908-v81">
+  <title>خلّك رائد | Arena V9</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="stylesheet" href="arena-v9.css?v=20260908-arena9">
 </head>
 <body>
   <main class="app-shell">
@@ -18,8 +18,8 @@
       <div class="brand">
         <div class="brand-mark">ر</div>
         <div>
-          <div class="brand-title-line"><h1>خلّك رائد</h1><span class="build-badge">PREMIUM V8.1</span></div>
-          <small>تحدي المعرفة الجماعي</small>
+          <div class="brand-title-line"><h1>خلّك رائد</h1><span class="build-badge">ARENA V9</span></div>
+          <small>تحدي المعرفة والسرعة</small>
         </div>
       </div>
 
@@ -27,7 +27,7 @@
 
       <div class="top-actions">
         <button id="settingsBtn" class="icon-btn" title="الإعدادات"><span>⚙</span><small>الإعدادات</small></button>
-        <button id="soundBtn" class="icon-btn" title="الصوت"><span>◉</span><small>الصوت</small></button>
+        <button id="soundBtn" class="icon-btn" title="الصوت"><span>🔊</span><small>الصوت</small></button>
         <button id="fullscreenBtn" class="icon-btn" title="ملء الشاشة"><span>⛶</span><small>ملء الشاشة</small></button>
       </div>
     </header>
@@ -38,44 +38,33 @@
           <div class="home-intro">
             <div class="hero-copy-block">
               <div class="eyebrow">تحدي جماعي • فريقان • 36 سؤال</div>
-              <h2>اللعبة تبدأ<br><span class="gradient-text">من هنا.</span></h2>
-              <p class="hero-copy">اختاروا الفئات، استخدموا وسائل المساعدة في الوقت المناسب، واجمعوا أكبر عدد من النقاط. كل سؤال يغيّر المباراة.</p>
+              <h2>مين فيكم <span class="gradient-text">الرائد؟</span></h2>
+              <p class="hero-copy">تحدي معرفي جماعي يجمع بين الثقافة والسرعة والتفكير الذكي. اختبروا معلوماتكم، نافسوا أصحابكم، وكونوا أنتم الروّاد!</p>
               <div class="feature-row">
-                <span class="feature"><i>01</i> 6 فئات</span>
-                <span class="feature"><i>02</i> 36 سؤال</span>
-                <span class="feature"><i>03</i> تحدي الصور</span>
-                <span class="feature"><i>04</i> صوت وفيديو</span>
+                <span class="feature"><i>▦</i> 6 فئات</span>
+                <span class="feature"><i>▤</i> 36 سؤال</span>
+                <span class="feature"><i>✦</i> وسائل مساعدة</span>
+                <span class="feature"><i>☁</i> حفظ واستكمال</span>
               </div>
             </div>
-
-            <div class="hero-visual" aria-hidden="true">
-              <div class="hero-orbit"></div>
-              <div class="hero-r">ر</div>
-              <span class="float-chip c1">🖼️ تحدي الصور</span>
-              <span class="float-chip c2">⚡ وسائل مساعدة</span>
-              <span class="float-chip c3">🏆 نقاط ومنافسة</span>
-              <span class="float-chip c4">🎯 36 سؤال</span>
-            </div>
+            <div class="hero-visual" aria-hidden="true"></div>
           </div>
         </div>
 
         <aside class="setup-panel">
-          <div class="setup-panel-title">
-            <div><h3>إعداد المباراة</h3><span>جهّز الفريقين ثم ابدأ</span></div>
-            <span>01 / 03</span>
-          </div>
+          <div class="setup-panel-title"><div><h3>إعداد المباراة</h3><span>جهّز الفريقين ثم ابدأ</span></div></div>
 
           <div class="setup-grid">
             <div class="field team-field team-field-one">
-              <div class="field-head"><label for="team1Input">الفريق الأول</label><span class="mini-mascot">١</span></div>
+              <div class="field-head"><label for="team1Input">اسم الفريق الأول</label><span class="mini-mascot">🦅</span></div>
               <input id="team1Input" maxlength="22" value="الصقور" autocomplete="off">
             </div>
             <div class="field team-field team-field-two">
-              <div class="field-head"><label for="team2Input">الفريق الثاني</label><span class="mini-mascot">٢</span></div>
+              <div class="field-head"><label for="team2Input">اسم الفريق الثاني</label><span class="mini-mascot">🐎</span></div>
               <input id="team2Input" maxlength="22" value="الفرسان" autocomplete="off">
             </div>
             <div class="field timer-field">
-              <div class="field-head"><label for="timerSelect">وقت السؤال</label><span>وقت الإجابة</span></div>
+              <div class="field-head"><label for="timerSelect">وقت السؤال</label><span>⏱</span></div>
               <select id="timerSelect">
                 <option value="15">15 ثانية</option>
                 <option value="20" selected>20 ثانية</option>
@@ -87,24 +76,24 @@
 
           <div class="aids-setup">
             <div class="aid-team aid-team-one">
-              <div class="aid-team-title"><div><span class="aid-mascot">١</span><b>وسائل الفريق الأول</b></div><span id="aidCount1">3/3</span></div>
+              <div class="aid-team-title"><div><span class="aid-mascot">🦅</span><b>وسائل الفريق الأول</b></div><span id="aidCount1">3/3</span></div>
               <div class="aid-options">
-                <button class="aid-option selected" data-team="0" data-aid="double">⚡ ×2</button>
-                <button class="aid-option selected" data-team="0" data-aid="pit">الحفرة</button>
-                <button class="aid-option selected" data-team="0" data-aid="time">+15ث</button>
-                <button class="aid-option" data-team="0" data-aid="two">جوابين</button>
-                <button class="aid-option" data-team="0" data-aid="rest">استريح</button>
+                <button class="aid-option selected" data-team="0" data-aid="double">⚡ ×2 نقاط</button>
+                <button class="aid-option selected" data-team="0" data-aid="pit">🕳 الحفرة</button>
+                <button class="aid-option selected" data-team="0" data-aid="time">⏱ +15 ثانية</button>
+                <button class="aid-option" data-team="0" data-aid="two">✌ جوابين</button>
+                <button class="aid-option" data-team="0" data-aid="rest">🛋 استريح</button>
               </div>
             </div>
 
             <div class="aid-team aid-team-two">
-              <div class="aid-team-title"><div><span class="aid-mascot">٢</span><b>وسائل الفريق الثاني</b></div><span id="aidCount2">3/3</span></div>
+              <div class="aid-team-title"><div><span class="aid-mascot">🐎</span><b>وسائل الفريق الثاني</b></div><span id="aidCount2">3/3</span></div>
               <div class="aid-options">
-                <button class="aid-option selected" data-team="1" data-aid="double">⚡ ×2</button>
-                <button class="aid-option selected" data-team="1" data-aid="pit">الحفرة</button>
-                <button class="aid-option selected" data-team="1" data-aid="time">+15ث</button>
-                <button class="aid-option" data-team="1" data-aid="two">جوابين</button>
-                <button class="aid-option" data-team="1" data-aid="rest">استريح</button>
+                <button class="aid-option selected" data-team="1" data-aid="double">⚡ ×2 نقاط</button>
+                <button class="aid-option selected" data-team="1" data-aid="pit">🕳 الحفرة</button>
+                <button class="aid-option selected" data-team="1" data-aid="time">⏱ +15 ثانية</button>
+                <button class="aid-option" data-team="1" data-aid="two">✌ جوابين</button>
+                <button class="aid-option" data-team="1" data-aid="rest">🛋 استريح</button>
               </div>
             </div>
           </div>
@@ -125,82 +114,82 @@
         <div class="step-title">
           <span class="section-kicker">المرحلة 02</span>
           <h2>اختيار <span>الفئات</span></h2>
-          <p>كل فريق يختار 3 فئات بالتناوب. اختروا نقاط قوتكم بعناية.</p>
+          <p>يختار كل فريق 3 فئات في أدوار متبادلة. اختاروا الفئات التي تتقنونها.</p>
         </div>
         <div class="pick-dashboard">
-          <div id="pickStatus" class="pick-status">الدور على الفريق الأول</div>
+          <div id="pickStatus" class="pick-status">الدور على الصقور</div>
           <div id="pickCounter" class="pick-counter">0/6 فئات</div>
         </div>
       </div>
 
       <div class="picker-toolbar">
-        <div class="search-wrap"><span>⌕</span><input id="categorySearch" class="search-input" placeholder="ابحث عن فئة"></div>
-        <button id="randomCatsBtn" class="btn secondary small">اختيار عشوائي</button>
-        <button id="clearCatsBtn" class="btn ghost small">إعادة الاختيار</button>
+        <div class="search-wrap"><span>⌕</span><input id="categorySearch" class="search-input" placeholder="ابحث عن فئة..."></div>
+        <button id="randomCatsBtn" class="btn secondary small">⤨ اختيار عشوائي</button>
+        <button id="clearCatsBtn" class="btn ghost small">↻ إعادة الاختيار</button>
       </div>
 
       <div id="categoryPicker" class="category-picker"></div>
 
       <div class="picker-footer">
         <button class="btn ghost" onclick="location.reload()">رجوع</button>
-        <button id="startMatchBtn" class="btn big btn-gold" disabled>ابدأ المباراة</button>
+        <button id="startMatchBtn" class="btn big btn-gold" disabled>🔥 ابدأ المباراة</button>
       </div>
     </section>
 
     <section id="gameScreen" class="game-screen hidden">
       <div class="game-top">
         <div id="team1Card" class="team-card team-card-one active">
-          <div class="team-emblem">١</div>
-          <div class="team-meta"><div id="team1Name" class="team-name">الصقور</div><div class="team-sub">الفريق الأول</div><div id="aids1" class="aids-bar"></div></div>
+          <div class="team-emblem">🦅</div>
+          <div class="team-meta"><div id="team1Name" class="team-name">الصقور</div><div class="team-sub">معاً نحو القمة</div><div id="aids1" class="aids-bar"></div></div>
           <div class="score-wrap"><div id="score1" class="score">0</div><span class="score-label">نقطة</span><div class="score-actions"><button onclick="adjustScore(0,200)">+200</button><button onclick="adjustScore(0,-200)">-200</button></div></div>
         </div>
 
         <div class="center-status">
-          <div class="status-crown">●</div>
+          <div class="status-crown">♛</div>
           <div class="turn-label">الدور الآن</div>
           <div id="turnName" class="turn-name">الصقور</div>
-          <small>اختر السؤال التالي</small>
+          <small>حان وقت التألق!</small>
         </div>
 
         <div id="team2Card" class="team-card team-card-two">
-          <div class="team-emblem">٢</div>
-          <div class="team-meta"><div id="team2Name" class="team-name">الفرسان</div><div class="team-sub">الفريق الثاني</div><div id="aids2" class="aids-bar"></div></div>
+          <div class="team-emblem">🐎</div>
+          <div class="team-meta"><div id="team2Name" class="team-name">الفرسان</div><div class="team-sub">قوة المعرفة</div><div id="aids2" class="aids-bar"></div></div>
           <div class="score-wrap"><div id="score2" class="score">0</div><span class="score-label">نقطة</span><div class="score-actions"><button onclick="adjustScore(1,200)">+200</button><button onclick="adjustScore(1,-200)">-200</button></div></div>
         </div>
       </div>
 
       <div class="progress-row"><div class="progress-copy"><b>تقدم المباراة</b><div id="remainingText" class="remaining">36 سؤال متبقي</div></div><div class="progress"><span id="progressBar"></span></div></div>
       <div id="categoriesBoard" class="categories"></div>
-      <div class="board-actions"><button id="switchTurnBtn" class="mini-btn">تبديل الدور</button><button id="finishNowBtn" class="mini-btn finish-btn">إنهاء المباراة</button></div>
-      <div class="footer-note">خلّك رائد • تحدي المعرفة الجماعي</div>
+      <div class="board-actions"><button id="switchTurnBtn" class="mini-btn">⇄ تبديل الدور</button><button id="finishNowBtn" class="mini-btn finish-btn">🏆 إنهاء المباراة</button></div>
+      <div class="footer-note">خلّك رائد • المعرفة تصنع القادة</div>
     </section>
 
     <section id="winnerScreen" class="panel winner hidden">
-      <div class="winner-crown">◆</div>
+      <div class="winner-crown">♛</div>
       <div id="winnerIcon" class="winner-icon">🏆</div>
       <span class="section-kicker">النتيجة النهائية</span>
       <h2 id="winnerTitle">الفائز</h2>
       <p id="winnerText">مباراة قوية!</p>
 
       <div class="final-scores">
-        <div class="final-card final-one"><span class="final-emblem">١</span><b id="finalName1">الفريق الأول</b><strong id="finalScore1">0</strong><small>نقطة</small></div>
+        <div class="final-card final-one"><span class="final-emblem">🦅</span><b id="finalName1">الصقور</b><strong id="finalScore1">0</strong><small>نقطة</small></div>
         <div class="trophy-column"><div class="trophy">🏆</div><b>خلّك رائد</b></div>
-        <div class="final-card final-two"><span class="final-emblem">٢</span><b id="finalName2">الفريق الثاني</b><strong id="finalScore2">0</strong><small>نقطة</small></div>
+        <div class="final-card final-two"><span class="final-emblem">🐎</span><b id="finalName2">الفرسان</b><strong id="finalScore2">0</strong><small>نقطة</small></div>
       </div>
 
-      <div class="winner-actions"><button id="tieBreakBtn" class="btn gold hidden">سؤال حاسم</button><button id="newGameBtn" class="btn btn-gold">لعبة جديدة</button></div>
+      <div class="winner-actions"><button id="tieBreakBtn" class="btn gold hidden">⚡ سؤال حاسم</button><button id="newGameBtn" class="btn btn-gold">↻ لعبة جديدة</button></div>
     </section>
   </main>
 
   <div id="questionModal" class="modal hidden">
     <div class="modal-card question-card">
-      <div class="question-brand"><div class="mini-brand">ر</div><div><b>خلّك رائد</b><small>السؤال الحالي</small></div></div>
+      <div class="question-brand"><div class="mini-brand">ر</div><div><b>خلّك رائد</b><small>المعرفة تصنع القادة</small></div></div>
       <div class="question-body">
         <div class="question-top"><span id="qCategory" class="badge">الفئة</span><span id="qValue" class="value-badge">200 نقطة</span></div>
-        <div id="qText" class="question-text">السؤال</div>
+        <div class="question-content"><div id="qText" class="question-text">السؤال</div></div>
 
         <div class="question-control-row">
-          <div class="timer-wrap"><div id="timerRing" class="timer-ring"><span id="timerNum" class="timer-num">20</span><small>ثانية</small></div><button id="pauseTimerBtn" class="pause-btn">إيقاف</button></div>
+          <div class="timer-wrap"><div id="timerRing" class="timer-ring"><span id="timerNum" class="timer-num">20</span><small>ثانية</small></div><button id="pauseTimerBtn" class="pause-btn">⏸ إيقاف</button></div>
           <div id="activeAids" class="active-aids"></div>
         </div>
 
@@ -209,10 +198,10 @@
         <div id="primaryActions" class="modal-actions">
           <button id="correctBtn" class="btn green action-answer"><b>✓</b><span>صحيحة<small>إضافة النقاط</small></span></button>
           <button id="wrongBtn" class="btn red action-answer"><b>✕</b><span>خاطئة<small>بدون نقاط</small></span></button>
-          <button id="showAnswerBtn" class="btn secondary action-answer"><b>◉</b><span>إظهار الإجابة<small>عرض الجواب</small></span></button>
+          <button id="showAnswerBtn" class="btn secondary action-answer"><b>◉</b><span>إظهار الإجابة<small>عرض الجواب الصحيح</small></span></button>
         </div>
 
-        <div id="stealPanel" class="steal-panel hidden"><span>↔</span><div><b>فرصة سرقة للفريق الآخر</b><p>الفريق <span id="stealTeamName"></span> لديه 10 ثوانٍ للإجابة.</p></div></div>
+        <div id="stealPanel" class="steal-panel hidden"><span>👥</span><div><b>فرصة سرقة للفريق الآخر</b><p>الفريق <span id="stealTeamName"></span> لديه 10 ثوانٍ للإجابة.</p></div></div>
         <div id="stealActions" class="modal-actions hidden"><button id="stealCorrectBtn" class="btn green">سرقة صحيحة</button><button id="stealWrongBtn" class="btn red">سرقة خاطئة</button><button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button></div>
         <div class="modal-actions"><button id="endAfterRevealBtn" class="btn secondary hidden">إنهاء السؤال</button></div>
         <div id="tieActions" class="modal-actions hidden"><button id="tieTeam1Btn" class="btn green">الفريق الأول أجاب صح</button><button id="tieTeam2Btn" class="btn green">الفريق الثاني أجاب صح</button><button class="btn secondary" onclick="showAnswer()">إظهار الإجابة</button></div>
@@ -230,9 +219,9 @@
   </div>
 
   <div id="toast" class="toast"></div>
-  <script src="app.js?v=20260908-v81"></script>
-  <script src="image-challenge.js?v=20260908-v81"></script>
-  <script src="admin-core.js?v=20260908-v81"></script>
-  <script src="ui-v8.js?v=20260908-v81"></script>
+  <script src="app.js?v=20260908-arena9"></script>
+  <script src="image-challenge.js?v=20260908-arena9"></script>
+  <script src="admin-core.js?v=20260908-arena9"></script>
+  <script src="arena-v9.js?v=20260908-arena9"></script>
 </body>
 </html>
