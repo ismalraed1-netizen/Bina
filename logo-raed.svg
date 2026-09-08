@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="t d">
+  <title id="t">خلّك رائد</title>
+  <desc id="d">شعار لعبة خلّك رائد</desc>
+  <defs>
+    <linearGradient id="bg" x1="70" y1="60" x2="440" y2="455" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8b39ff"/>
+      <stop offset=".48" stop-color="#4513a8"/>
+      <stop offset="1" stop-color="#061d49"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="98" y1="60" x2="420" y2="450" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#f8d781"/>
+      <stop offset=".25" stop-color="#fff3c6"/>
+      <stop offset=".53" stop-color="#ffb536"/>
+      <stop offset=".78" stop-color="#5de0ff"/>
+      <stop offset="1" stop-color="#337cff"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="178" y1="76" x2="330" y2="161" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#fff0a8"/>
+      <stop offset=".48" stop-color="#ffbf3f"/>
+      <stop offset="1" stop-color="#e78316"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="55%">
+      <stop stop-color="#b860ff" stop-opacity=".75"/>
+      <stop offset=".55" stop-color="#4b22cd" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#07142c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="13" result="b"/>
+      <feOffset dy="9" result="o"/>
+      <feColorMatrix in="o" values="0 0 0 0 0.01 0 0 0 0 0.02 0 0 0 0 0.08 0 0 0 .75 0"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <circle cx="256" cy="256" r="238" fill="url(#glow)"/>
+  <path d="M256 25 432 86c28 10 48 36 48 66v132c0 83-42 151-116 190L256 500 148 474C74 435 32 367 32 284V152c0-30 20-56 48-66L256 25Z" fill="#040b1d" filter="url(#shadow)"/>
+  <path d="M256 39 423 97c21 7 35 27 35 49v135c0 74-37 134-103 169l-99 24-99-24C91 415 54 355 54 281V146c0-22 14-42 35-49L256 39Z" fill="url(#bg)" stroke="url(#rim)" stroke-width="6"/>
+  <path d="M256 63 402 113c13 5 22 17 22 31v132c0 61-30 111-85 141l-83 20-83-20c-55-30-85-80-85-141V144c0-14 9-26 22-31L256 63Z" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="2"/>
+
+  <g transform="translate(0 2)">
+    <path d="M176 135 196 86l43 35 18-56 18 56 42-35 20 49-24 19H200l-24-19Z" fill="url(#gold)" stroke="#fff3b0" stroke-width="3" stroke-linejoin="round"/>
+    <rect x="199" y="151" width="114" height="14" rx="7" fill="url(#gold)"/>
+  </g>
+
+  <circle cx="256" cy="276" r="116" fill="#050d24" fill-opacity=".34" stroke="#fff" stroke-opacity=".12" stroke-width="2"/>
+  <circle cx="256" cy="276" r="93" fill="none" stroke="#7fe9ff" stroke-opacity=".16" stroke-width="2" stroke-dasharray="7 15"/>
+  <text x="256" y="340" text-anchor="middle" font-family="Tahoma,Arial,sans-serif" font-size="196" font-weight="700" fill="#ffffff" style="paint-order:stroke;stroke:#a95cff;stroke-width:3px">ر</text>
+  <path d="M157 385c51 31 148 31 199 0" fill="none" stroke="url(#gold)" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="147" cy="383" r="6" fill="#6adfff"/>
+  <circle cx="366" cy="383" r="6" fill="#ffbf42"/>
+</svg>
