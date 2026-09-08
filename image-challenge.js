@@ -33,4 +33,12 @@
       {v:600,q:'ما اسم البرج الذي يرمز له الشكل الظاهر؟',a:'برج طوكيو',mediaType:'image',media:visualCard('🗼','#f43f5e','#881337')}
     ]
   });
+
+  window.addEventListener('DOMContentLoaded',()=>{
+    if(document.querySelector('script[data-ui-v8]'))return;
+    const s=document.createElement('script');
+    s.src='ui-v8.js?v=20260908-v8';
+    s.dataset.uiV8='true';
+    document.body.appendChild(s);
+  });
 })();
