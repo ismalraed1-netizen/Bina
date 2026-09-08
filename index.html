@@ -44,7 +44,7 @@
 
       <div class="panel-card controls-card">
         <h3>🎮 التحكم</h3>
-        <p>حرّك رائد بالأسهم أو WASD، أو اضغط على أرض فارغة داخل الخريطة.</p>
+        <p>اضغط باستمرار على الأسهم في الجوال، أو استخدم WASD والأسهم في الكمبيوتر. ويمكنك الضغط على أرض فارغة للمشي إليها.</p>
         <div class="key-row"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></div>
       </div>
     </aside>
@@ -76,13 +76,18 @@
         <button class="npc npc-fahad" data-npc="fahad"><span>🧑🏻‍🔧</span><b>فهد</b><i>!</i></button>
 
         <div id="farmer" class="farmer" aria-label="رائد">
-          <div class="farmer-hat"></div><div class="farmer-head"></div><div class="farmer-body"></div><div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div><div class="watering-can">🪣</div><div class="water-drops">💧💧</div><div class="farmer-name">رائد</div>
+          <div class="farmer-hat"></div><div class="farmer-head"></div><div class="farmer-body"></div>
+          <div class="arm left"></div><div class="arm right"></div><div class="leg left"></div><div class="leg right"></div>
+          <div class="watering-can">🪣</div><div class="water-drops">💧💧</div><div class="farmer-name">رائد</div>
         </div>
       </div>
 
       <div class="world-hud"><span>🗺️ عالم المزرعة</span><small id="areaLabel">منطقة البيت</small></div>
       <div class="mini-map"><div id="miniDot"></div><span>🏡</span><span>🌾</span><span>🏪</span><span>🐄</span></div>
-      <div class="dpad" aria-label="تحكم الحركة"><button data-move="up">▲</button><div><button data-move="right">▶</button><button data-move="down">▼</button><button data-move="left">◀</button></div></div>
+      <div class="dpad" aria-label="تحكم الحركة">
+        <button data-move="up" aria-label="أعلى">▲</button>
+        <div><button data-move="right" aria-label="يمين">▶</button><button data-move="down" aria-label="أسفل">▼</button><button data-move="left" aria-label="يسار">◀</button></div>
+      </div>
     </section>
 
     <aside class="side-panel right-panel">
@@ -94,7 +99,12 @@
 
   <nav class="toolbar">
     <button class="tool-btn active" data-tool="plant"><span class="tool-icon">🌱</span><span>زراعة</span></button>
-    <div class="crop-picker"><button class="crop-choice active" data-crop="wheat">🌾<small>12</small></button><button class="crop-choice" data-crop="carrot">🥕<small>20</small></button><button class="crop-choice" data-crop="tomato">🍅<small>35</small></button><button class="crop-choice" data-crop="strawberry">🍓<small>55</small></button></div>
+    <div class="crop-picker">
+      <button class="crop-choice active" data-crop="wheat">🌾<small>12</small></button>
+      <button class="crop-choice" data-crop="carrot">🥕<small>20</small></button>
+      <button class="crop-choice" data-crop="tomato">🍅<small>35</small></button>
+      <button class="crop-choice" data-crop="strawberry">🍓<small>55</small></button>
+    </div>
     <button class="tool-btn" data-tool="water"><span class="tool-icon">💧</span><span>ري</span></button>
     <button class="tool-btn" data-tool="harvest"><span class="tool-icon">🧺</span><span>حصاد</span></button>
     <button class="tool-btn" data-tool="inspect"><span class="tool-icon">👀</span><span>فحص</span></button>
@@ -119,9 +129,9 @@
 
 <div id="tractorModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>🚜 الجرار</h2><small>إدارة أعمال المزرعة بسرعة</small></div><button class="close-btn">✕</button></div><div id="tractorPanel"></div></section></div>
 
-<div id="settingsModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>⚙️ الإعدادات</h2><small>الحفظ تلقائي على جهازك</small></div><button class="close-btn">✕</button></div><div class="setting-line"><span>💾 الحفظ التلقائي</span><b>مفعل</b></div><div class="setting-line"><span>🎮 تحكم لوحة المفاتيح</span><b>WASD + الأسهم</b></div><button id="resetBtn" class="danger-action">🗑️ بدء مزرعة جديدة</button></section></div>
+<div id="settingsModal" class="modal-backdrop hidden"><section class="modal-card" onclick="event.stopPropagation()"><div class="modal-head"><div><h2>⚙️ الإعدادات</h2><small>الحفظ تلقائي على جهازك</small></div><button class="close-btn">✕</button></div><div class="setting-line"><span>💾 الحفظ التلقائي</span><b>مفعل</b></div><div class="setting-line"><span>🎮 التحكم</span><b>ضغط مستمر + WASD</b></div><button id="resetBtn" class="danger-action">🗑️ بدء مزرعة جديدة</button></section></div>
 
 <div id="toast" class="toast"></div>
-<script src="farm-game.js?v=20260908-world2"></script>
+<script src="farm-game.js?v=20260908-movement-v21"></script>
 </body>
 </html>
