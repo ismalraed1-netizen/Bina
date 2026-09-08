@@ -1,8 +1,8 @@
 (function(){
-  const VERSION='ARENA V13';
+  const VERSION='ARENA V14';
   function apply(){
     document.body.classList.add('arena-layout-v13');
-    document.body.dataset.layoutVersion='13';
+    document.body.dataset.layoutVersion='14';
     document.title=`خلّك رائد | ${VERSION}`;
     const badge=document.querySelector('.build-badge');
     if(badge&&badge.textContent!==VERSION)badge.textContent=VERSION;
