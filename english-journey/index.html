@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#101a2f" />
+  <meta name="description" content="English Journey - منصة عربية لتعلم الإنجليزية من الصفر" />
+  <title>English Journey | تعلّم الإنجليزية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">E<span>J</span></div>
+        <div>
+          <strong>English Journey</strong>
+          <small>ابدأ من الصفر</small>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="التنقل الرئيسي">
+        <button class="nav-item active" data-section="home"><span>⌂</span> الرئيسية</button>
+        <button class="nav-item" data-section="lessons"><span>▣</span> الدروس</button>
+        <button class="nav-item" data-section="words"><span>✦</span> الكلمات</button>
+        <button class="nav-item" data-section="speaking"><span>◉</span> المحادثة والنطق</button>
+        <button class="nav-item" data-section="quiz"><span>✓</span> الاختبارات</button>
+        <button class="nav-item" data-section="progress"><span>↗</span> تقدمي</button>
+      </nav>
+
+      <div class="sidebar-card">
+        <div class="mini-icon">🔥</div>
+        <div><b><span id="streakSide">1</span> يوم</b><small>حافظ على استمراريتك</small></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+        <div class="welcome">
+          <span class="eyebrow">مرحبًا 👋</span>
+          <h1>جاهز تتعلم إنجليزي اليوم؟</h1>
+        </div>
+        <div class="top-actions">
+          <div class="pill">🔥 <b id="streakTop">1</b> يوم</div>
+          <div class="profile">R</div>
+        </div>
+      </header>
+
+      <section class="page-section active" id="home">
+        <article class="hero-card">
+          <div class="hero-copy">
+            <span class="badge">درس اليوم • المستوى A1</span>
+            <h2>عرّف بنفسك بثقة</h2>
+            <p>اليوم بنتعلم كيف تقول اسمك، تسأل عن الاسم، وتستخدم جمل بسيطة في أول محادثة.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-go="lessons">ابدأ الدرس <span>←</span></button>
+              <button class="ghost-btn" id="playIntro">🔊 اسمع مثال</button>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orb orb-1"></div><div class="orb orb-2"></div>
+            <div class="speech-card speech-a"><b>Hello!</b><small>مرحبًا</small></div>
+            <div class="speech-card speech-b"><b>My name is Raed.</b><small>اسمي رائد</small></div>
+            <div class="character">Aa</div>
+          </div>
+        </article>
+
+        <div class="stats-grid">
+          <article class="stat"><div class="stat-icon purple">✓</div><div><span>الدروس المكتملة</span><b id="completedLessons">0</b></div></article>
+          <article class="stat"><div class="stat-icon cyan">Aa</div><div><span>كلمات تعلّمتها</span><b id="learnedWords">0</b></div></article>
+          <article class="stat"><div class="stat-icon orange">🔥</div><div><span>أيام متواصلة</span><b id="streakStat">1</b></div></article>
+          <article class="stat"><div class="stat-icon green">★</div><div><span>نقاطك</span><b id="xpStat">0 XP</b></div></article>
+        </div>
+
+        <div class="content-grid">
+          <article class="panel lesson-path">
+            <div class="panel-head"><div><span class="eyebrow">مسارك الحالي</span><h3>أساسيات البداية</h3></div><span class="level-chip">A1 مبتدئ</span></div>
+            <div class="progress-line"><div id="homeProgressBar"></div></div>
+            <div class="path-list" id="homeLessonList"></div>
+          </article>
+
+          <aside class="panel daily-card">
+            <div class="panel-head"><div><span class="eyebrow">كلمة اليوم</span><h3 id="dailyWord">Confident</h3></div><button class="round-btn" id="dailySpeak">🔊</button></div>
+            <div class="phonetic" id="dailyPhonetic">/ˈkɒn.fɪ.dənt/</div>
+            <p class="meaning" id="dailyMeaning">واثق</p>
+            <div class="example-box"><span>Example</span><b id="dailyExample">I feel confident today.</b><small id="dailyExampleAr">أشعر بالثقة اليوم.</small></div>
+            <button class="secondary-btn full" data-go="words">تعلّم كلمات أكثر</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page-section" id="lessons">
+        <div class="section-head"><div><span class="eyebrow">منهج مرتب خطوة بخطوة</span><h2>الدروس</h2><p>كل درس قصير، عملي، وفيه أمثلة بالعربي والإنجليزي.</p></div><div class="level-switch"><button class="active">A1</button><button disabled>A2</button><button disabled>B1</button></div></div>
+        <div class="lesson-grid" id="lessonGrid"></div>
+        <div class="lesson-modal" id="lessonModal" aria-hidden="true">
+          <div class="lesson-modal-card">
+            <button class="close-btn" id="closeLesson">×</button>
+            <div id="lessonContent"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="page-section" id="words">
+        <div class="section-head"><div><span class="eyebrow">بطاقات ذكية</span><h2>تعلّم الكلمات</h2><p>اضغط على البطاقة لقلبها، واسمع النطق أكثر من مرة.</p></div><div class="pill"><span id="wordCounter">1</span> / <span id="wordTotal">0</span></div></div>
+        <div class="flash-area">
+          <button class="arrow-btn" id="prevWord">→</button>
+          <div class="flashcard" id="flashcard" tabindex="0">
+            <div class="flash-inner" id="flashInner">
+              <div class="flash-face front"><span class="word-category" id="wordCategory">أساسيات</span><h2 id="wordEn">Hello</h2><p id="wordPhonetic">/həˈləʊ/</p><button class="listen-word" id="speakWord">🔊 اسمع النطق</button><small>اضغط على البطاقة لرؤية المعنى</small></div>
+              <div class="flash-face back"><span>المعنى</span><h2 id="wordAr">مرحبًا</h2><div class="example-box"><b id="wordExample">Hello, how are you?</b><small id="wordExampleAr">مرحبًا، كيف حالك؟</small></div><small>اضغط للرجوع للكلمة</small></div>
+            </div>
+          </div>
+          <button class="arrow-btn" id="nextWord">←</button>
+        </div>
+        <div class="word-actions"><button class="danger-soft" id="reviewWord">أحتاج أراجعها</button><button class="success-btn" id="knowWord">عرفتها ✓</button></div>
+      </section>
+
+      <section class="page-section" id="speaking">
+        <div class="section-head"><div><span class="eyebrow">تعلّم بالممارسة</span><h2>المحادثة والنطق</h2><p>اسمع الجملة، كررها بصوتك، ثم قارنها بالنص.</p></div></div>
+        <div class="speaking-layout">
+          <article class="panel scenario-card"><span class="badge">موقف يومي</span><h3>التعارف لأول مرة</h3><div class="chat-box" id="chatBox"></div><button class="primary-btn full" id="nextDialogue">الجملة التالية</button></article>
+          <article class="panel pronunciation-card"><div class="mic-orb" id="micOrb">🎙️</div><span class="eyebrow">تدرّب الآن</span><h3 id="practiceSentence">My name is Raed.</h3><p id="practiceMeaning">اسمي رائد.</p><div class="pronounce-actions"><button class="ghost-btn" id="listenPractice">🔊 اسمع</button><button class="primary-btn" id="startListening">🎙️ انطق الجملة</button></div><div class="speech-result" id="speechResult">اضغط «انطق الجملة» وابدأ الكلام.</div><small class="compat-note">ميزة التعرّف على الصوت تعتمد على دعم المتصفح. النطق الصوتي يعمل في أغلب المتصفحات الحديثة.</small></article>
+        </div>
+      </section>
+
+      <section class="page-section" id="quiz">
+        <div class="section-head"><div><span class="eyebrow">اختبار سريع</span><h2>اختبر نفسك</h2><p>10 أسئلة عشوائية من دروس المستوى الأول.</p></div><button class="secondary-btn" id="restartQuiz">اختبار جديد</button></div>
+        <article class="quiz-card panel">
+          <div class="quiz-meta"><span>السؤال <b id="quizCurrent">1</b> من <b>10</b></span><span>النتيجة: <b id="quizScore">0</b></span></div>
+          <div class="progress-line"><div id="quizProgress"></div></div>
+          <h3 id="quizQuestion"></h3>
+          <div class="answers" id="quizAnswers"></div>
+          <div class="quiz-feedback" id="quizFeedback"></div>
+          <button class="primary-btn quiz-next" id="nextQuestion" disabled>التالي ←</button>
+        </article>
+      </section>
+
+      <section class="page-section" id="progress">
+        <div class="section-head"><div><span class="eyebrow">لوحة الإنجاز</span><h2>تقدمي</h2><p>كل خطوة صغيرة تحسب. استمر يوميًا ولو عشر دقائق.</p></div></div>
+        <div class="progress-dashboard">
+          <article class="panel progress-main"><div class="ring" id="progressRing"><div><b id="progressPercent">0%</b><span>من A1</span></div></div><div><span class="eyebrow">مستواك الحالي</span><h3>A1 • مبتدئ</h3><p>أكمل الدروس والكلمات والاختبارات حتى تفتح المستوى التالي.</p><button class="primary-btn" data-go="lessons">كمّل التعلّم</button></div></article>
+          <article class="panel"><span class="eyebrow">إنجازاتك</span><div class="achievement-list" id="achievements"></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
