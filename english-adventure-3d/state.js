@@ -42,3 +42,5 @@ export function canStand(x,z,obstacles=[]) {
   for(const o of obstacles){if(o.kind==='circle'){if(Math.hypot(x-o.x,z-o.z)<o.r+.36)return false;}else if(x>o.x1-.35&&x<o.x2+.35&&z>o.z1-.35&&z<o.z2+.35)return false;}
   return true;
 }
+
+export function canStep(x,z,fromX,fromZ,obstacles=[]) { return canStand(x,z,obstacles)&&Math.abs(floorHeight(x,z)-floorHeight(fromX,fromZ))<.85; }
