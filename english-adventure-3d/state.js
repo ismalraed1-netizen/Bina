@@ -9,7 +9,7 @@ export const WORDS = [
   {id:'campfire',word:'Campfire',ar:'نار المخيم',choices:['Campfire','River','Flower','Road'],sentence:'The campfire is warm.',x:-15,z:-17,r:3},
   {id:'flower',word:'Flower',ar:'زهرة',choices:['Flower','Tree','Grass','Rock'],sentence:'This flower is yellow.',x:7,z:42,r:3},
   {id:'bench',word:'Bench',ar:'مقعد',choices:['Bench','Bridge','Door','Table'],sentence:'I sit on the bench.',x:-7,z:-37,r:3},
-  {id:'sign',word:'Sign',ar:'لافتة',choices:['Sign','Window','Door','Road'],sentence:'Read the sign.',x:3,z:37,r:3},
+  {id:'sign',word:'Sign',ar:'لافتة',choices:['Sign','Window','Door','Road'],sentence:'Read the sign.',x:2,z:32,r:3},
   {id:'chair',word:'Chair',ar:'كرسي',choices:['Chair','Table','Door','Window'],sentence:'This chair is comfortable.',x:16,z:-22,r:3,indoor:true},
   {id:'table',word:'Table',ar:'طاولة',choices:['Table','Chair','Spoon','Window'],sentence:'The cup is on the table.',x:22,z:-23,r:3,indoor:true},
   {id:'spoon',word:'Spoon',ar:'ملعقة',choices:['Spoon','Fork','Plate','Knife'],sentence:'I need a spoon, please.',x:22,z:-24,r:2.8,indoor:true},
