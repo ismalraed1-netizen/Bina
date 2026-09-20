@@ -1,77 +1,38 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>English Adventure 3D</title>
-  <meta name="theme-color" content="#0b1722">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#192e2c"><meta name="description" content="وادي الكلمات — لعبة تجول ثلاثية الأبعاد لتعلم الإنجليزية. استكشف الجبال والغابة والمطعم بشخصيتك.">
+<title>وادي الكلمات | English Adventure 3D</title>
+<link rel="stylesheet" href="styles.css?v=2">
 </head>
 <body>
-  <div id="game"></div>
-
-  <section id="startScreen" class="overlay">
-    <div class="panel intro">
-      <div class="logo">EA<span>3D</span></div>
-      <span class="eyebrow">نسخة تجريبية</span>
-      <h1>English Adventure</h1>
-      <p>تحرك داخل الوادي، اكتشف الأشياء، تعلّم أسماءها بالإنجليزية، ثم ادخل المطعم.</p>
-      <div class="chips">
-        <span>⛰️ جبال</span><span>🌊 نهر</span><span>🍽️ مطعم</span><span>🔊 نطق</span>
-      </div>
-      <button id="startBtn" class="primary">ابدأ المغامرة</button>
-      <small>كمبيوتر: WASD أو الأسهم • اسحب بالماوس لتغيير الكاميرا • E للتفاعل</small>
-    </div>
-  </section>
-
-  <header id="hud" class="hud hidden">
-    <div class="brand"><b>English Adventure</b><small>Mountain Valley</small></div>
-    <div class="stats"><span><b id="xp">0</b> XP</span><span><b id="found">0</b> كلمات</span></div>
-  </header>
-
-  <aside id="mission" class="mission hidden">
-    <small>المهمة الحالية</small>
-    <b id="missionTitle">استكشف الوادي</b>
-    <p id="missionText">اكتشف 3 أشياء ثم ابحث عن المطعم.</p>
-    <div class="bar"><i id="missionBar"></i></div>
-  </aside>
-
-  <div id="zone" class="zone hidden">⛰️ Mountain Valley</div>
-
-  <div id="prompt" class="prompt hidden">
-    <span>E</span>
-    <div><small>تفاعل</small><b id="promptText">اكتشف</b></div>
-  </div>
-
-  <div id="joystick" class="joystick hidden"><div id="knob" class="knob"></div></div>
-  <button id="interactBtn" class="interact hidden">اكتشف</button>
-
-  <section id="quiz" class="overlay hidden">
-    <div class="panel quiz">
-      <button id="closeQuiz" class="close">×</button>
-      <span class="eyebrow">اكتشاف جديد</span>
-      <h2>What is this?</h2>
-      <div id="emoji" class="emoji">🪨</div>
-      <button id="listen" class="secondary">🔊 اسمع النطق</button>
-      <div id="answers" class="answers"></div>
-      <div id="feedback" class="feedback"></div>
-    </div>
-  </section>
-
-  <section id="dialogue" class="overlay hidden">
-    <div class="panel dialogue">
-      <button id="closeDialogue" class="close">×</button>
-      <div class="avatar">👨‍🍳</div>
-      <span class="eyebrow">Restaurant NPC</span>
-      <h2 id="dialogueEn">Hello! Welcome to the restaurant.</h2>
-      <p id="dialogueAr">مرحبًا! أهلًا بك في المطعم.</p>
-      <button id="dialogueListen" class="secondary">🔊 اسمع</button>
-      <button id="dialogueNext" class="primary">متابعة</button>
-    </div>
-  </section>
-
-  <div id="toast" class="toast"></div>
-
-  <script type="module" src="game.js"></script>
-</body>
-</html>
+<main id="game" aria-label="عالم اللعبة ثلاثي الأبعاد"></main>
+<div class="vignette"></div>
+<section id="startScreen" class="intro-screen">
+  <div class="intro-top"><a class="wordmark" href="../english-journey/" title="منصة تعلم الإنجليزية"><span class="brand-icon">W</span><span>WANDER<small>ENGLISH ADVENTURE</small></span></a><span class="edition">الفصل الأول <i></i> وادي الجبال</span></div>
+  <div class="intro-copy"><span class="eyebrow">كل خطوة… كلمة جديدة</span><h1>العالم ينتظرك.<br><em>اكتشفه بالإنجليزي.</em></h1><p>رحلة داخل عالم ثلاثي الأبعاد. امشِ بين الجبال، اعبر النهر، وتعلّم من كل شيء حولك.</p><button id="startBtn" class="primary" disabled>جاري تجهيز الوادي…</button><p id="loadStatus" class="status" role="status">نجهّز عالمك ثلاثي الأبعاد</p><button id="retryBtn" class="secondary hidden">إعادة المحاولة</button><div class="intro-facts"><span><b>14</b> كلمة لاكتشافها</span><span><b>3</b> مناطق للاستكشاف</span><span><b>∞</b> فضول ومغامرة</span></div></div>
+  <div class="intro-bottom"><span>تحرك. اكتشف. تكلّم.</span><span>تجربة فردية • يُحفظ تقدمك على جهازك</span></div>
+</section>
+<div id="playUI" class="hidden">
+<header class="hud"><div class="wordmark"><span class="brand-icon">W</span><span>وادي الكلمات<small>ENGLISH ADVENTURE</small></span></div><div class="top-actions"><span class="xp"><b id="xp">0</b> XP</span><button id="journalBtn" class="icon-button" title="كلماتي" aria-label="كلماتي">▤</button><button id="settingsBtn" class="icon-button" title="إيقاف وإعدادات" aria-label="إيقاف وإعدادات">Ⅱ</button></div></header>
+<div class="compass" dir="ltr"><span>W</span><span>·</span><b id="heading">N</b><span>·</span><span>E</span></div>
+<aside class="mission"><span class="eyebrow">رحلتك اليوم <span id="found">0 / 14</span></span><h2 id="missionTitle">خذ أول خطوة</h2><p id="missionText">اقترب من العلامات الذهبية واكتشف الكلمات.</p><div class="progress"><i id="missionBar"></i></div><button id="hintBtn" class="text-button">أين أذهب؟ <span>↗</span></button></aside>
+<aside class="map-panel"><canvas id="minimap" width="200" height="200" aria-label="خريطة الوادي"></canvas><span id="zone">وادي الجبال</span><small id="coordinates" dir="ltr">0 · 34</small></aside>
+<div id="targetLabel" class="target-label hidden"></div>
+<button id="prompt" class="prompt hidden"><kbd>E</kbd><span><small>اكتشف العالم</small><b id="promptText">تفاعل</b></span><span>↗</span></button>
+<div class="desktop-help" dir="rtl"><span><kbd>W A S D</kbd> حركة</span><span><kbd>Shift</kbd> ركض</span><span><kbd>Space</kbd> قفز</span><span>اسحب لتدوير الكاميرا</span></div>
+<div id="mobileControls"><div id="joystick" aria-label="عصا الحركة"><div id="knob"></div></div><div class="mobile-actions"><button id="jumpBtn" aria-label="قفز">↑</button><button id="runBtn" aria-label="ركض" aria-pressed="false">ركض</button></div></div>
+</div>
+<section id="quiz" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="questionTitle"><div class="panel quiz-panel"><button id="closeQuiz" class="close" aria-label="إغلاق السؤال">×</button><span class="eyebrow">لحظة اكتشاف</span><div class="small-line"></div><h2 id="questionTitle" dir="ltr">What's this?</h2><p id="objectHint">ما اسم هذا الشيء بالإنجليزية؟</p><button id="listen" class="secondary">اسمع الكلمة <span>♪</span></button><div id="answers" class="answers" dir="ltr"></div><div id="feedback" class="feedback" role="status"></div><button id="continueBtn" class="primary hidden">واصل الاستكشاف ←</button></div></section>
+<section id="dialogue" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="dialogueTitle"><div class="panel"><button id="closeDialogue" class="close" aria-label="إغلاق المحادثة">×</button><span class="eyebrow">محادثة في مطعم الوادي</span><h2 id="dialogueTitle">أهلًا بالمسافر!</h2><p id="dialogueEn" class="english-line" dir="ltr"></p><p id="dialogueAr"></p><button id="dialogueListen" class="secondary">اسمع النطق ♪</button><div id="dialogueOptions" class="dialogue-options" dir="ltr"></div></div></section>
+<section id="journal" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="journalTitle"><div class="panel wide"><button id="closeJournal" class="close" aria-label="إغلاق الكلمات">×</button><span class="eyebrow">تذكار من رحلتك</span><h2 id="journalTitle">كلماتي</h2><p>اضغط على أي كلمة اكتشفتها لسماع نطقها.</p><div id="wordList" class="word-list"></div></div></section>
+<section id="settings" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="panel"><span class="eyebrow">خذ نفسًا</span><h2 id="settingsTitle">المغامرة بانتظارك</h2><label class="setting">تفاصيل الرسومات<select id="quality"><option value="high">عالية</option><option value="low">خفيفة</option></select></label><label class="setting">وقت الرحلة<select id="timeOfDay"><option value="day">صباح هادئ</option><option value="sunset">غروب ذهبي</option></select></label><button id="homeBtn" class="secondary">ارجع لبداية الوادي</button><button id="resumeBtn" class="primary">أكمل الرحلة ←</button><p class="controls-note">الحركة: WASD أو الأسهم · التفاعل: E<br>قفز: Space · ركض: Shift · الكاميرا: اسحب بالماوس<br>على الجوال: عصا الحركة يسارًا، واسحب المشهد لتدوير الكاميرا.</p></div></section>
+<div id="toast" class="toast" role="status"></div>
+<noscript><p class="no-script">تحتاج اللعبة تفعيل JavaScript في المتصفح.</p></noscript>
+<script type="module">
+try { await import('./game.js?v=2'); }
+catch(error) { console.error(error); document.getElementById('loadStatus').textContent='تعذّر تحميل اللعبة. تأكد من اتصال الإنترنت ثم أعد المحاولة.'; document.getElementById('retryBtn').classList.remove('hidden'); }
+document.getElementById('retryBtn').onclick=()=>location.reload();
+</script>
+</body></html>
