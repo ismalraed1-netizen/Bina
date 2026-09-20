@@ -1,5 +1,5 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import {terrainHeight,floorHeight,WORDS} from './state.js';
+import {terrainHeight,floorHeight,WORDS} from './state.js?v=3';
 const palette={grass:0x6c8651,dark:0x294c36,wood:0x694c36,trunk:0x6d5841,rock:0x92958b,cream:0xd8cba8,roof:0x465a4c,gold:0xefc36a};
 let seed=72;function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;}
 export function createWorld(scene,{low=false}={}){

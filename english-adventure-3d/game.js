@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
-import {createWorld} from './world.js';
-import {WORDS,readSave,writeSave,points,shuffle,terrainHeight,floorHeight,canStand} from './state.js';
+import {createWorld} from './world.js?v=3';
+import {WORDS,readSave,writeSave,points,shuffle,terrainHeight,floorHeight,canStand} from './state.js?v=3';
 const el=id=>document.getElementById(id);
 let storage;try{storage=window.localStorage;}catch{storage={getItem:()=>null,setItem:()=>{throw new Error('Unavailable storage');}};}
 const saved=readSave(storage),found=new Set(saved.found);let visited=saved.restaurant;
@@ -13,7 +13,7 @@ const camera=new THREE.PerspectiveCamera(57,innerWidth/innerHeight,.1,320);
 const sunlight=new THREE.DirectionalLight(0xffe7ba,2.6);sunlight.position.set(-32,65,28);sunlight.castShadow=true;sunlight.shadow.mapSize.set(2048,2048);Object.assign(sunlight.shadow.camera,{left:-50,right:50,top:50,bottom:-50,near:.5,far:170});sunlight.shadow.bias=-.0004;sunlight.shadow.normalBias=.08;scene.add(sunlight);scene.add(sunlight.target);
 const ambient=new THREE.HemisphereLight(0xcbe6e6,0x566542,1.8);scene.add(ambient);
 try{renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.03;}
-catch{const {SoftwareRenderer}=await import('./software-renderer.js');renderer=new SoftwareRenderer();document.body.dataset.software='true';}
+catch{const {SoftwareRenderer}=await import('./software-renderer.js?v=3');renderer=new SoftwareRenderer();document.body.dataset.software='true';}
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.6));renderer.setSize(innerWidth,innerHeight);renderer.domElement.setAttribute('aria-label','مشهد الوادي ثلاثي الأبعاد');renderer.domElement.tabIndex=0;el('game').appendChild(renderer.domElement);
 world=createWorld(scene,{low:renderer.isSoftware||innerWidth<760});
 const player=world.player.root;camera.position.set(12,9,46);camera.lookAt(0,3,-8);

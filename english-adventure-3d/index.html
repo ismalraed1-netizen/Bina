@@ -31,7 +31,7 @@
 <div id="toast" class="toast" role="status"></div>
 <noscript><p class="no-script">تحتاج اللعبة تفعيل JavaScript في المتصفح.</p></noscript>
 <script type="module">
-try { await import('./game.js?v=2'); }
+try { await import('./game.js?v=3'); }
 catch(error) { console.error(error); document.getElementById('loadStatus').textContent='تعذّر تحميل اللعبة. تأكد من اتصال الإنترنت ثم أعد المحاولة.'; document.getElementById('retryBtn').classList.remove('hidden'); }
 document.getElementById('retryBtn').onclick=()=>location.reload();
 </script>
